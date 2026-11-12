@@ -1,1 +1,569 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Templates | Digital Design Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8f2e8;
+  color: #30271e;
+  font-family: 'DM Sans', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 7%;
+  border-bottom: 1px solid #e9dfd0;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #ad8050;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #51463a;
+  font-size: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-right button {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-count {
+  font-size: 12px;
+  background: #b38a59;
+  color: white;
+  padding: 3px 7px;
+  border-radius: 50%;
+}
+
+.hero {
+  text-align: center;
+  padding: 75px 20px 35px;
+}
+
+.eyebrow {
+  color: #8f7658;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 65px);
+  margin: 12px 0;
+  font-weight: 600;
+}
+
+.hero p {
+  color: #807365;
+  font-size: 15px;
+}
+
+.shop {
+  padding: 35px 5% 75px;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.section-top h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 29px;
+}
+
+.arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e2d5c4;
+  background: #fffaf2;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.arrows button:hover {
+  background: #e9d7bd;
+}
+
+.carousel {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 8px 2px 20px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.product {
+  flex: 0 0 225px;
+  background: #fffaf2;
+  border: 1px solid #eee3d4;
+  border-radius: 19px;
+  padding: 12px;
+  position: relative;
+  box-shadow: 0 8px 22px #6b4b2610;
+  transition: .25s;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px #6b4b2620;
+}
+
+.product.featured {
+  flex-basis: 265px;
+}
+
+.product-image {
+  height: 205px;
+  border-radius: 13px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured .product-image {
+  height: 230px;
+}
+
+.image-one {
+  background: linear-gradient(140deg, #ead6c3, #f9eee1);
+}
+
+.image-two {
+  background: linear-gradient(140deg, #d9e4d8, #f0eee1);
+}
+
+.image-three {
+  background: linear-gradient(140deg, #e6d8eb, #f7e8ed);
+}
+
+.image-four {
+  background: linear-gradient(140deg, #e9ddc7, #f5eee0);
+}
+
+.image-five {
+  background: linear-gradient(140deg, #d9e0e8, #f3e7d8);
+}
+
+.mockup {
+  width: 72%;
+  height: 75%;
+  background: #fffaf2;
+  border: 5px solid #ffffffa8;
+  border-radius: 7px;
+  box-shadow: 0 10px 20px #4b38251c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  transform: rotate(-5deg);
+}
+
+.mockup strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+.mockup small {
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: 9px;
+  color: #8b6e50;
+}
+
+.mockup .shape {
+  width: 60%;
+  height: 55px;
+  border-radius: 50%;
+  background: #d7b89a;
+  margin-top: 12px;
+}
+
+.image-two .mockup {
+  transform: rotate(5deg);
+  background: #eaf0e6;
+}
+
+.image-two .mockup .shape {
+  background: #91a38c;
+}
+
+.image-three .mockup {
+  background: #f7e9ed;
+  transform: rotate(-3deg);
+}
+
+.image-three .mockup .shape {
+  background: #c99ba9;
+}
+
+.image-four .mockup {
+  background: #f1e5cf;
+  transform: rotate(4deg);
+}
+
+.image-four .mockup .shape {
+  background: #b48c61;
+}
+
+.image-five .mockup {
+  background: #e5eaf0;
+  transform: rotate(-4deg);
+}
+
+.image-five .mockup .shape {
+  background: #8999a8;
+}
+
+.badge {
+  position: absolute;
+  top: 22px;
+  left: 21px;
+  z-index: 2;
+  background: #f2dfbd;
+  color: #715536;
+  font-size: 9px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  letter-spacing: .5px;
+}
+
+.heart {
+  position: absolute;
+  right: 20px;
+  top: 17px;
+  border: none;
+  background: transparent;
+  font-size: 21px;
+  cursor: pointer;
+  z-index: 3;
+  color: #66564a;
+}
+
+.heart.active {
+  color: #b75b52;
+}
+
+.dots {
+  text-align: center;
+  margin: 10px 0;
+  color: #b99b72;
+  letter-spacing: 5px;
+  font-size: 13px;
+}
+
+.product-info {
+  padding: 10px 3px 3px;
+}
+
+.product-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+.product-info p {
+  color: #887c6e;
+  font-size: 11px;
+  line-height: 1.6;
+  min-height: 35px;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 13px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.add {
+  background: #c4a47b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 13px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.add:hover {
+  background: #9d7950;
+}
+
+footer {
+  background: #eae0d2;
+  padding: 35px 7%;
+  text-align: center;
+  color: #776b5e;
+  font-size: 12px;
+}
+
+@media(max-width: 650px) {
+  header {
+    padding: 18px 5%;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 55px;
+  }
+
+  .product {
+    flex-basis: 205px;
+  }
+
+  .product.featured {
+    flex-basis: 235px;
+  }
+
+  .shop {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Studio<span>.</span></div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#shop">Collections</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="header-right">
+    <button aria-label="Search">⌕</button>
+    <button aria-label="Shopping cart">♧ <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">CREATIVE DIGITAL MARKETPLACE</div>
+  <h1>Design Your Vision.</h1>
+  <p>Beautiful Canva templates to grow your brand and business.</p>
+</section>
+
+<section class="shop" id="shop">
+
+  <div class="section-top">
+    <div>
+      <div class="eyebrow">OUR COLLECTION</div>
+      <h2>Featured Products</h2>
+    </div>
+
+    <div class="arrows">
+      <button onclick="scrollProducts(-1)">‹</button>
+      <button onclick="scrollProducts(1)">›</button>
+    </div>
+  </div>
+
+  <div class="carousel" id="carousel">
+
+    <article class="product">
+      <span class="badge">NEW</span>
+      <button class="heart" onclick="favorite(this)">♡</button>
+      <div class="product-image image-one">
+        <div class="mockup">
+          <small>YOUR BRAND</small>
+          <strong>Social<br>Media</strong>
+          <div class="shape"></div>
+        </div>
+      </div>
+      <div class="dots">• • •</div>
+      <div class="product-info">
+        <h3>Instagram Post Bundle</h3>
+        <p>Elegant posts for your business and personal brand.</p>
+        <div class="product-bottom">
+          <span class="price">$5.99</span>
+          <button class="add" onclick="addCart()">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product">
+      <span class="badge">TRENDING</span>
+      <button class="heart" onclick="favorite(this)">♡</button>
+      <div class="product-image image-two">
+        <div class="mockup">
+          <small>DAILY INSPO</small>
+          <strong>Simple<br>Living</strong>
+          <div class="shape"></div>
+        </div>
+      </div>
+      <div class="dots">• • •</div>
+      <div class="product-info">
+        <h3>Instagram Story Pack</h3>
+        <p>Beautiful story designs for daily engagement.</p>
+        <div class="product-bottom">
+          <span class="price">$4.99</span>
+          <button class="add" onclick="addCart()">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product featured">
+      <span class="badge">BEST SELLER</span>
+      <button class="heart" onclick="favorite(this)">♡</button>
+      <div class="product-image image-three">
+        <div class="mockup">
+          <small>THE BRAND KIT</small>
+          <strong>Build Your<br>Identity</strong>
+          <div class="shape"></div>
+        </div>
+      </div>
+      <div class="dots">• • •</div>
+      <div class="product-info">
+        <h3>Complete Branding Kit</h3>
+        <p>A complete visual identity for your growing brand.</p>
+        <div class="product-bottom">
+          <span class="price">$12.99</span>
+          <button class="add" onclick="addCart()">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product">
+      <span class="badge">POPULAR</span>
+      <button class="heart" onclick="favorite(this)">♡</button>
+      <div class="product-image image-four">
+        <div class="mockup">
+          <small>CONTENT PLAN</small>
+          <strong>30 Days<br>of Ideas</strong>
+          <div class="shape"></div>
+        </div>
+      </div>
+      <div class="dots">• • •</div>
+      <div class="product-info">
+        <h3>Content Planner Kit</h3>
+        <p>Organize your social media content with ease.</p>
+        <div class="product-bottom">
+          <span class="price">$7.99</span>
+          <button class="add" onclick="addCart()">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product">
+      <span class="badge">NEW</span>
+      <button class="heart" onclick="favorite(this)">♡</button>
+      <div class="product-image image-five">
+        <div class="mockup">
+          <small>CREATIVE STUDIO</small>
+          <strong>Carousel<br>Collection</strong>
+          <div class="shape"></div>
+        </div>
+      </div>
+      <div class="dots">• • •</div>
+      <div class="product-info">
+        <h3>Carousel Template Pack</h3>
+        <p>Make informative and attractive carousel posts.</p>
+        <div class="product-bottom">
+          <span class="price">$6.99</span>
+          <button class="add" onclick="addCart()">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <p>© 2026 Studio Templates. Designed for creative businesses.</p>
+</footer>
+
+<script>
+let cart = 0;
+
+function addCart() {
+  cart++;
+  document.getElementById("cartCount").textContent = cart;
+  alert("Added to cart! Cart items: " + cart);
+}
+
+function favorite(button) {
+  button.classList.toggle("active");
+  button.textContent =
+    button.classList.contains("active") ? "♥" : "♡";
+}
+
+function scrollProducts(direction) {
+  const carousel = document.getElementById("carousel");
+  carousel.scrollBy({
+    left: direction * 300,
+    behavior: "smooth"
+  });
+}
+</script>
+
+</body>
+</html>
