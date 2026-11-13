@@ -4,1205 +4,425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALMAMOON | Digital Design Studio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
+<title>Almamoon — Continue with Almamoon</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #E9EDE5;
-  --green: #71836A;
-  --dark: #263329;
-  --light: #F8F9F5;
-  --muted: #788174;
-  --border: #D7DED2;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--dark);
-  font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
-}
-
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; }
-
-.container {
-  width: min(1200px, 90%);
-  margin: auto;
-}
-
-/* NAVIGATION */
-
-nav {
-  height: 85px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-}
-
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 29px;
-  font-weight: 700;
-  letter-spacing: 3px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  font-size: 13px;
-}
-
-.nav-links a:hover { color: var(--green); }
-
-.cart {
-  border: 1px solid var(--green);
-  background: transparent;
-  padding: 11px 18px;
-  border-radius: 30px;
-  font-size: 12px;
-}
-
-/* HERO */
-
-.hero {
-  text-align: center;
-  padding: 95px 0 65px;
-}
-
-.eyebrow {
-  font-size: 11px;
-  color: var(--green);
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(46px, 7vw, 84px);
-  line-height: 1.08;
-  font-weight: 500;
-  margin: 25px auto;
-}
-
-.hero h1 em {
-  color: var(--green);
-  font-weight: 500;
-}
-
-.hero p {
-  max-width: 520px;
-  margin: auto;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.9;
-}
-
-.primary-btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 15px 29px;
-  background: var(--dark);
-  color: white;
-  border-radius: 3px;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  transition: .3s;
-}
-
-.primary-btn:hover {
-  background: var(--green);
-  transform: translateY(-3px);
-}
-
-/* INTERACTIVE CAROUSEL */
-
-.carousel-section {
-  overflow: hidden;
-  padding: 25px 0 85px;
-  cursor: grab;
-  user-select: none;
-  touch-action: pan-y;
-}
-
-.carousel-section.dragging { cursor: grabbing; }
-
-.track {
-  display: flex;
-  width: max-content;
-  gap: 24px;
-  will-change: transform;
-  animation: marquee 280s linear infinite;
-}
-
-.track:hover { animation-play-state: paused; }
-
-.carousel-card {
-  width: 260px;
-  height: 320px;
-  flex-shrink: 0;
-  border-radius: 7px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 12px 35px rgba(38,51,41,.09);
-  transition: transform .4s;
-  pointer-events: none;
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  -webkit-user-drag: none;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* SECTION HEADINGS */
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.section-heading h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(34px, 5vw, 48px);
-  font-weight: 500;
-  margin-top: 15px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-  margin-top: 12px;
-}
-
-/* CATEGORIES */
-
-.categories {
-  padding: 85px 0;
-  background: var(--light);
-}
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.category {
-  position: relative;
-  height: 235px;
-  overflow: hidden;
-  border-radius: 5px;
-}
-
-.category img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .6s;
-}
-
-.category:hover img { transform: scale(1.08); }
-
-.category-label {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 35px 16px 18px;
-  color: white;
-  font-family: 'Playfair Display', serif;
-  font-size: 23px;
-  background: linear-gradient(transparent, rgba(0,0,0,.65));
-}
-
-/* PRODUCTS */
-
-.products { padding: 90px 0; }
-
-.product-tools {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-
-.search {
-  width: 240px;
-  padding: 13px 16px;
-  border: 1px solid var(--border);
-  outline: none;
-  background: transparent;
-  border-radius: 3px;
-}
-
-.filters {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  border: 1px solid var(--border);
-  background: transparent;
-  padding: 10px 16px;
-  border-radius: 30px;
-  font-size: 11px;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background: var(--dark);
-  color: white;
-  border-color: var(--dark);
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px 20px;
-}
-
-.product-card {
-  background: var(--light);
-  border-radius: 5px;
-  overflow: hidden;
-  transition: .3s;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(38,51,41,.08);
-}
-
-.product-image {
-  height: 280px;
-  position: relative;
-  overflow: hidden;
-}
-
-.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .5s;
-}
-
-.product-card:hover .product-image img {
-  transform: scale(1.05);
-}
-
-.wishlist {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 36px;
-  height: 36px;
-  background: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 18px;
-}
-
-.product-info { padding: 19px; }
-
-.product-category {
-  color: var(--green);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.product-info h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 21px;
-  font-weight: 500;
-  margin: 9px 0;
-}
-
-.product-description {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.product-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 18px;
-}
-
-.price { font-weight: 700; font-size: 14px; }
-
-.view-btn {
-  border: none;
-  background: var(--dark);
-  color: white;
-  padding: 10px 15px;
-  font-size: 11px;
-  border-radius: 3px;
-}
-
-.view-btn:hover { background: var(--green); }
-
-.no-results {
-  display: none;
-  grid-column: 1/-1;
-  text-align: center;
-  padding: 40px;
-  color: var(--muted);
-}
-
-/* STORY */
-
-.story {
-  padding: 100px 0;
-  background: #DDE4D7;
-}
-
-.story-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 65px;
-  align-items: center;
-}
-
-.story-image {
-  height: 440px;
-  overflow: hidden;
-  border-radius: 5px;
-}
-
-.story-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.story-content h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  line-height: 1.15;
-  font-weight: 500;
-  margin: 20px 0;
-}
-
-.story-content p {
-  color: #687366;
-  font-size: 14px;
-  line-height: 1.9;
-}
-
-/* HOW IT WORKS */
-
-.how {
-  padding: 90px 0;
-  background: var(--light);
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-.step {
-  padding: 35px 25px;
-  text-align: center;
-  border: 1px solid var(--border);
-}
-
-.step-number {
-  font-family: 'Playfair Display', serif;
-  color: var(--green);
-  font-size: 35px;
-}
-
-.step h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 23px;
-  font-weight: 500;
-  margin: 15px 0;
-}
-
-.step p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-/* QUOTE */
-
-.quote {
-  padding: 100px 20px;
-  text-align: center;
-}
-
-.quote h2 {
-  max-width: 800px;
-  margin: 20px auto 0;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 5vw, 49px);
-  line-height: 1.35;
-  font-weight: 500;
-}
-
-.quote span {
-  color: var(--green);
-  font-style: italic;
-}
-
-/* FAQ */
-
-.faq {
-  padding: 85px 0;
-  background: var(--light);
-}
-
-.faq-list {
-  max-width: 750px;
-  margin: auto;
-}
-
-details {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-summary {
-  cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-size: 19px;
-}
-
-details p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-  padding-top: 15px;
-}
-
-/* NEWSLETTER */
-
-.newsletter {
-  padding: 85px 20px;
-  text-align: center;
-}
-
-.newsletter h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  font-weight: 500;
-  margin: 15px 0;
-}
-
-.newsletter p {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.newsletter-form {
-  display: flex;
-  max-width: 430px;
-  margin: 25px auto 0;
-}
-
-.newsletter-form input {
-  flex: 1;
-  min-width: 0;
-  padding: 15px;
-  border: 1px solid var(--border);
-  background: var(--light);
-  outline: none;
-}
-
-.newsletter-form button {
-  padding: 0 20px;
-  border: none;
-  background: var(--dark);
-  color: white;
-}
-
-/* FOOTER */
-
-footer {
-  background: var(--dark);
-  color: white;
-  padding: 60px 0 25px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 50px;
-}
-
-.footer-brand h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 29px;
-  letter-spacing: 3px;
-}
-
-.footer-brand p {
-  max-width: 300px;
-  margin-top: 15px;
-  color: #bac4b6;
-  font-size: 12px;
-  line-height: 1.8;
-}
-
-.footer-column h4 {
-  font-size: 12px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-.footer-column a {
-  display: block;
-  color: #bac4b6;
-  font-size: 12px;
-  margin: 13px 0;
-}
-
-.footer-column a:hover { color: white; }
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  border-top: 1px solid #465247;
-  margin-top: 50px;
-  padding-top: 22px;
-  color: #bac4b6;
-  font-size: 11px;
-}
-
-/* TOAST */
-
-.toast {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
-  z-index: 99;
-  padding: 15px 22px;
-  background: var(--dark);
-  color: white;
-  font-size: 12px;
-  border-radius: 4px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: .3s;
-  pointer-events: none;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* REVEAL */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:850px) {
-  .nav-links { gap: 14px; }
-  .category-grid { grid-template-columns: repeat(2, 1fr); }
-  .product-grid { grid-template-columns: repeat(2, 1fr); }
-  .story-grid { gap: 30px; }
-}
-
-@media(max-width:600px) {
-  nav { height: 70px; }
-  .logo { font-size: 23px; }
-  .nav-links { display: none; }
-
-  .hero { padding: 70px 0 45px; }
-
-  .carousel-card {
-    width: 210px;
-    height: 260px;
-  }
-
-  .category-grid { gap: 10px; }
-  .category { height: 180px; }
-
-  .product-grid { grid-template-columns: 1fr; }
-  .product-image { height: 300px; }
-
-  .story-grid { grid-template-columns: 1fr; }
-  .story-image { height: 300px; }
-  .story-content h2 { font-size: 38px; }
-
-  .steps { grid-template-columns: 1fr; }
-  .product-tools { align-items: stretch; }
-  .search { width: 100%; }
-
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1/-1; }
-  .footer-bottom { flex-direction: column; }
+  --bg:#f4f3f0;
+  --paper:#fff;
+  --ink:#181818;
+  --muted:#777873;
+  --line:#e6e4df;
+  --soft:#ecebe7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:var(--bg);color:var(--ink);
+ font-family:"DM Sans",sans-serif;transition:.25s;
+}
+body.dark{
+ --bg:#171817;--paper:#222421;--ink:#f2f0eb;
+ --muted:#aaa9a2;--line:#393a36;--soft:#2c2e2a;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+.topbar{
+ height:58px;display:flex;align-items:center;
+ justify-content:space-between;padding:0 4.2%;
+ border-bottom:1px solid var(--line);
+ background:var(--bg);position:relative;z-index:10;
+}
+.brand{font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center}
+.brand-mark{
+ width:18px;height:18px;background:var(--ink);
+ color:var(--bg);border-radius:6px;display:grid;place-items:center;
+}
+.hamburger{border:0;background:none;color:var(--ink);font-size:20px}
+.right-tools{display:flex;align-items:center;gap:15px}
+.toplink{font-size:10px;color:var(--muted);text-decoration:underline}
+.mode{border:1px solid var(--line);border-radius:30px;padding:4px}
+.mode button{border:0;background:transparent;color:var(--muted);border-radius:50%;width:25px;height:25px}
+.mode button.active{background:var(--ink);color:var(--bg)}
+.mode-label{font-size:8px;color:var(--muted)}
+main{padding:0 1.2%}
+.hero{
+ min-height:600px;background:var(--paper);border-radius:17px;
+ margin:10px auto 0;max-width:1500px;position:relative;
+ overflow:hidden;padding:38px 3.2% 28px;
+}
+.hero-heading{position:relative;z-index:3;max-width:390px}
+.eyebrow{
+ font-size:9px;text-transform:uppercase;letter-spacing:.19em;
+ color:var(--muted);margin-bottom:15px;
+}
+.hero h1{
+ font-size:clamp(34px,4.2vw,58px);font-weight:500;
+ line-height:1.02;letter-spacing:-.065em;margin:0;
+}
+.hero h1 em{font-family:"Playfair Display",serif;font-weight:500}
+.hero-sub{font-size:11px;color:var(--muted);max-width:270px;line-height:1.7}
+.counter{position:absolute;right:34%;top:40px;color:#aaa;font-size:10px}
+.hero-tags{position:absolute;right:3.4%;top:27px;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.pill{border:1px solid var(--ink);border-radius:20px;padding:5px 11px;font-size:9px}
+.stage{height:390px;position:relative;margin-top:8px}
+.product-card{
+ position:absolute;border-radius:17px;overflow:hidden;
+ box-shadow:0 18px 55px rgba(35,33,28,.12);
+ transition:.4s;cursor:pointer;
+}
+.product-card:hover{transform:translateY(-10px) scale(1.015);z-index:7!important}
+.art{height:100%;width:100%;position:relative;overflow:hidden}
+.art:before{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
+ z-index:1;
+}
+.product-card .meta{position:absolute;left:15px;bottom:12px;color:white;z-index:2}
+.meta small{display:block;font-size:8px;letter-spacing:.12em}
+.meta strong{display:block;font:500 20px "Playfair Display",serif;margin:5px 0}
+.meta span{font-size:8px}
+.card-one{width:18%;height:205px;left:2%;top:96px;z-index:1}
+.card-two{width:21%;height:275px;left:16%;top:75px;z-index:2}
+.card-three{width:29%;height:330px;left:36%;top:24px;z-index:4}
+.card-four{width:21%;height:245px;left:62%;top:100px;z-index:3}
+.card-five{width:17%;height:190px;right:1%;top:110px;z-index:1}
+.art-template{background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b)}
+.art-social{background:linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68)}
+.art-brand{background:linear-gradient(125deg,#697b79,#c5c4b7,#6d7770)}
+.art-ebook{background:linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a)}
+.art-presentation{background:linear-gradient(130deg,#9caaaf,#4f6975,#253a45)}
+.shape{
+ position:absolute;width:65%;height:78%;left:17%;top:8%;
+ background:#eee9df;color:#333;padding:15px;
+ box-shadow:10px 18px 30px #2225;z-index:1;
+ display:flex;flex-direction:column;justify-content:space-between;
+}
+.shape b{font:500 clamp(15px,2.5vw,28px)/1 "Playfair Display",serif}
+.shape i{font-size:7px;letter-spacing:.15em;font-style:normal}
+.hero-bottom{
+ display:flex;justify-content:space-between;align-items:end;
+ gap:20px;position:relative;z-index:5;margin:4px 1% 0;
+}
+.hero-bottom p{font-size:9px;line-height:1.6;color:var(--muted);max-width:280px}
+.hero-bottom strong{font-size:22px;color:var(--ink)}
+.contact-btn{
+ background:var(--ink);color:var(--bg);border:0;
+ border-radius:30px;padding:10px 17px;font-size:9px;
+}
+.catalog{max-width:1250px;margin:80px auto;padding:0 3.2%}
+.catalog-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}
+.catalog h2{font:500 clamp(28px,3vw,40px) "Playfair Display",serif;margin:0}
+.catalog-head p{font-size:11px;color:var(--muted);max-width:300px}
+.catalog-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{
+ border:1px solid var(--line);background:transparent;color:var(--muted);
+ padding:8px 13px;border-radius:25px;font-size:9px;
+}
+.filter.active,.filter:hover{background:var(--ink);color:var(--bg)}
+.search{
+ border:1px solid var(--line);background:var(--paper);color:var(--ink);
+ padding:10px 13px;border-radius:25px;font-size:10px;width:220px;
+}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.product{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.25s}
+.product:hover{transform:translateY(-5px)}
+.product-art{height:180px;display:grid;place-items:center;overflow:hidden}
+.product-art .mini{
+ width:54%;height:76%;background:#f3eee7;color:#292723;
+ padding:14px;box-shadow:8px 12px 25px #0003;
+ display:flex;flex-direction:column;justify-content:space-between;
+}
+.mini small{font-size:6px;letter-spacing:.15em}
+.mini b{font:500 21px "Playfair Display",serif}
+.mini span{font-size:7px}
+.product-info{padding:13px}
+.product-info h3{font-size:11px;margin:0 0 6px}
+.product-info p{font-size:9px;color:var(--muted);line-height:1.5}
+.product-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.price{font-size:11px;font-weight:600}
+.add{border:0;background:var(--ink);color:var(--bg);border-radius:20px;padding:8px 11px;font-size:8px}
+.about{max-width:1250px;margin:90px auto 70px;padding:0 3.2%}
+.about-box{background:var(--soft);border-radius:15px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.about h2{font:500 clamp(28px,3vw,42px) "Playfair Display",serif;margin:0}
+.about p{font-size:11px;line-height:1.7;color:var(--muted);max-width:430px}
+footer{border-top:1px solid var(--line);padding:25px 4.2%;display:flex;justify-content:space-between;color:var(--muted);font-size:9px}
+footer div:last-child{display:flex;gap:18px}
+.cart-panel{
+ position:fixed;right:0;top:0;bottom:0;width:min(380px,100%);
+ background:var(--paper);z-index:20;box-shadow:0 18px 55px #0002;
+ padding:24px;transform:translateX(105%);transition:.3s;
+ display:flex;flex-direction:column;
+}
+.cart-panel.open{transform:translateX(0)}
+.cart-overlay{position:fixed;inset:0;background:#0007;z-index:19;opacity:0;pointer-events:none}
+.cart-overlay.open{opacity:1;pointer-events:auto}
+.cart-head{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px}
+.cart-head h3{font:500 23px "Playfair Display",serif;margin:0}
+.close{border:0;background:none;color:var(--ink);font-size:23px}
+.cart-list{flex:1;overflow:auto}
+.cart-item{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:11px}
+.cart-item small{display:block;color:var(--muted);margin-top:5px}
+.remove{border:0;background:none;color:var(--muted);font-size:9px;text-decoration:underline}
+.cart-foot{border-top:1px solid var(--line);padding-top:15px}
+.total{display:flex;justify-content:space-between;margin-bottom:14px}
+.checkout{width:100%;border:0;background:var(--ink);color:var(--bg);border-radius:25px;padding:13px;font-size:9px}
+.cart-note{font-size:9px;color:var(--muted);line-height:1.5}
+@media(max-width:900px){.product-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+ .hero{min-height:650px;padding:30px 18px 22px}
+ .hero h1{font-size:40px}
+ .stage{height:360px;margin-top:25px}
+ .card-one{width:37%;height:150px;left:-3%;top:150px}
+ .card-two{width:43%;height:205px;left:10%;top:110px}
+ .card-three{width:54%;height:270px;left:34%;top:25px}
+ .card-four{width:42%;height:185px;left:59%;top:160px}
+ .card-five{display:none}
+ .catalog{margin:60px auto;padding:0 15px}
+ .catalog-head{display:block}
+ .catalog-tools{display:block}
+ .filters{margin-bottom:12px}
+ .search{width:100%}
+ .product-grid{gap:10px}
+ .product-art{height:145px}
+ .about-box{padding:28px 22px;display:block}
+ footer{padding:22px 17px;flex-direction:column;gap:15px}
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
-<nav>
-  <a href="#home" class="logo">ALMAMOON</a>
-
-  <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#categories">Categories</a>
-    <a href="#products">Shop</a>
-    <a href="#story">Our Story</a>
-    <a href="#faq">FAQ</a>
+<header class="topbar">
+ <button class="hamburger" onclick="jumpToCatalog()">☰</button>
+ <a class="brand" href="#"><span class="brand-mark">A</span> Almamoon</a>
+ <div class="right-tools">
+  <a class="toplink" href="#faq">FAQs</a>
+  <div class="mode">
+   <button id="lightBtn" class="active" onclick="setTheme(false)">☼</button>
+   <button id="darkBtn" onclick="setTheme(true)">☾</button>
   </div>
-
-  <button class="cart" onclick="showToast('Shopping cart coming soon.')">
-    BAG (<span id="cartCount">0</span>)
-  </button>
-</nav>
-</div>
+  <span class="mode-label" id="modeLabel">light mode</span>
+  <button class="hamburger" onclick="openCart()">♧ <sup id="cartCount">0</sup></button>
+ </div>
+</header>
 
 <main>
+<section class="hero">
+ <div class="hero-heading">
+  <div class="eyebrow">A curated digital collection</div>
+  <h1><em>Continue</em><br>with <em>Almamoon</em></h1>
+  <p class="hero-sub">Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point.</p>
+ </div>
 
-<section class="hero container" id="home">
-  <div class="eyebrow">A little creativity goes a long way</div>
-  <h1>Make your ideas<br>look <em>beautiful.</em></h1>
-  <p>Thoughtfully designed digital templates to help you create, organize and grow your ideas with confidence.</p>
-  <a href="#products" class="primary-btn">EXPLORE COLLECTION</a>
+ <div class="counter">01/05</div>
+ <div class="hero-tags">
+  <span class="pill">Creative tools</span>
+  <span class="pill">Digital goods</span>
+ </div>
+
+ <div class="stage">
+  <article class="product-card card-one" onclick="jumpToCatalog()">
+   <div class="art art-template"><div class="shape"><i>ALMAMOON STUDIO</i><b>Simple<br>living.</b><i>THE BRAND COLLECTION</i></div></div>
+   <div class="meta"><small>01 / Templates</small><strong>Brand kit</strong><span>Ready to customise</span></div>
+  </article>
+
+  <article class="product-card card-two" onclick="jumpToCatalog()">
+   <div class="art art-social"><div class="shape"><i>THE SOCIAL EDIT</i><b>Make<br>some noise.</b><i>POST · SHARE · GROW</i></div></div>
+   <div class="meta"><small>02 / Social media</small><strong>Social studio</strong><span>Content made simple</span></div>
+  </article>
+
+  <article class="product-card card-three" onclick="jumpToCatalog()">
+   <div class="art art-brand"><div class="shape"><i>ALMAMOON / EDITION 01</i><b>Creative<br>by nature.</b><i>DESIGN YOUR NEXT CHAPTER</i></div></div>
+   <div class="meta"><small>03 / Featured collection</small><strong>Digital templates</strong><span>Curated for modern creators</span></div>
+  </article>
+
+  <article class="product-card card-four" onclick="jumpToCatalog()">
+   <div class="art art-ebook"><div class="shape"><i>A LITTLE GUIDE</i><b>Find your<br>focus.</b><i>THE CREATOR'S HANDBOOK</i></div></div>
+   <div class="meta"><small>04 / E-books</small><strong>Creator guides</strong><span>Ideas worth keeping</span></div>
+  </article>
+
+  <article class="product-card card-five" onclick="jumpToCatalog()">
+   <div class="art art-presentation"><div class="shape"><i>THE PRESENTATION EDIT</i><b>Make it<br>matter.</b></div></div>
+   <div class="meta"><small>05 / Business</small><strong>Pitch decks</strong><span>Present with confidence</span></div>
+  </article>
+ </div>
+
+ <div class="hero-bottom">
+  <p><strong>2741</strong> customers are discovering new ways to create.<br>A growing collection for your next big idea.</p>
+  <button class="contact-btn" onclick="jumpToCatalog()">Explore products ↗</button>
+ </div>
 </section>
 
-<!-- CAROUSEL -->
+<section class="catalog" id="catalog">
+ <div class="catalog-head">
+  <div><div class="eyebrow">The Almamoon edit</div><h2>Find your next favourite.</h2></div>
+  <p>Explore practical, beautifully designed digital products made to help your ideas take shape.</p>
+ </div>
 
-<section class="carousel-section" id="carousel">
-  <div class="track" id="carouselTrack">
-
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Creative workspace"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=600" alt="Design workspace"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" alt="Writing desk"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Creative art"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600" alt="Office workspace"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600" alt="Notebook"></div>
-
+ <div class="catalog-tools">
+  <div class="filters">
+   <button class="filter active" data-filter="All">All items</button>
+   <button class="filter" data-filter="Canva Templates">Canva</button>
+   <button class="filter" data-filter="Social Media">Social media</button>
+   <button class="filter" data-filter="Business">Business</button>
+   <button class="filter" data-filter="E-books">E-books</button>
   </div>
+  <input class="search" id="search" type="search" placeholder="Search products...">
+ </div>
+
+ <div class="product-grid" id="productGrid"></div>
 </section>
 
-<!-- CATEGORIES -->
-
-<section class="categories" id="categories">
-<div class="container">
-  <div class="section-heading reveal">
-    <div class="eyebrow">Explore by category</div>
-    <h2>Find your creative corner</h2>
-    <p>Discover templates designed for every part of your journey.</p>
+<section class="about" id="faq">
+ <div class="about-box">
+  <div>
+   <div class="eyebrow">A little about us</div>
+   <h2>Good ideas deserve beautiful tools.</h2>
+   <p>Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move.</p>
   </div>
-
-  <div class="category-grid">
-    <a href="#products" class="category">
-      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=700" alt="Instagram">
-      <div class="category-label">Instagram</div>
-    </a>
-    <a href="#products" class="category">
-      <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=700" alt="Pinterest">
-      <div class="category-label">Pinterest</div>
-    </a>
-    <a href="#products" class="category">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700" alt="Business">
-      <div class="category-label">Business</div>
-    </a>
-    <a href="#products" class="category">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700" alt="Branding">
-      <div class="category-label">Branding</div>
-    </a>
-  </div>
-</div>
+  <a href="mailto:hello@almamoon.com">Talk to our team ↗</a>
+ </div>
 </section>
-
-<!-- PRODUCTS -->
-
-<section class="products" id="products">
-<div class="container">
-
-  <div class="section-heading reveal">
-    <div class="eyebrow">The collection</div>
-    <h2>Designed to inspire</h2>
-    <p>Simple, beautiful and practical digital products.</p>
-  </div>
-
-  <div class="product-tools">
-    <input type="search" class="search" id="searchInput" placeholder="Search templates...">
-
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="instagram">Instagram</button>
-      <button class="filter-btn" data-filter="pinterest">Pinterest</button>
-      <button class="filter-btn" data-filter="business">Business</button>
-    </div>
-  </div>
-
-  <div class="product-grid" id="productGrid">
-
-    <article class="product-card" data-category="instagram" data-name="Minimal Instagram Pack">
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=700" alt="Instagram template">
-        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Instagram</div>
-        <h3>Minimal Instagram Pack</h3>
-        <p class="product-description">Clean and modern social media designs.</p>
-        <div class="product-bottom">
-          <span class="price">$9.00</span>
-          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="pinterest" data-name="Pinterest Pin Bundle">
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=700" alt="Pinterest templates">
-        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Pinterest</div>
-        <h3>Pinterest Pin Bundle</h3>
-        <p class="product-description">Beautiful pins for your content strategy.</p>
-        <div class="product-bottom">
-          <span class="price">$7.00</span>
-          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="business" data-name="Business Planner">
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700" alt="Business planner">
-        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Business</div>
-        <h3>Business Planner</h3>
-        <p class="product-description">Organize your work and daily goals.</p>
-        <div class="product-bottom">
-          <span class="price">$12.00</span>
-          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="instagram" data-name="Instagram Story Kit">
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700" alt="Story kit">
-        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Instagram</div>
-        <h3>Instagram Story Kit</h3>
-        <p class="product-description">Creative stories for your brand.</p>
-        <div class="product-bottom">
-          <span class="price">$8.00</span>
-          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="business" data-name="Brand Identity Kit">
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=700" alt="Brand identity">
-        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Business</div>
-        <h3>Brand Identity Kit</h3>
-        <p class="product-description">Build a consistent visual identity.</p>
-        <div class="product-bottom">
-          <span class="price">$15.00</span>
-          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card" data-category="pinterest" data-name="Pinterest Creator Kit">
-      <div class="product-image">
-        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=700" alt="Creator kit">
-        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Pinterest</div>
-        <h3>Pinterest Creator Kit</h3>
-        <p class="product-description">Make your content stand out.</p>
-        <div class="product-bottom">
-          <span class="price">$10.00</span>
-          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
-        </div>
-      </div>
-    </article>
-
-    <div class="no-results" id="noResults">No products found. Try another search.</div>
-  </div>
-</div>
-</section>
-
-<!-- STORY -->
-
-<section class="story" id="story">
-<div class="container story-grid">
-  <div class="story-image reveal">
-    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900" alt="Creative workspace">
-  </div>
-
-  <div class="story-content reveal">
-    <div class="eyebrow">A little about us</div>
-    <h2>Creativity made simple.</h2>
-    <p>ALMAMOON is a digital design space built for people who love creating beautiful things. Our goal is to make design easier with practical, thoughtful and easy-to-use templates.</p>
-    <a href="#products" class="primary-btn">DISCOVER OUR WORK</a>
-  </div>
-</div>
-</section>
-
-<!-- HOW IT WORKS -->
-
-<section class="how">
-<div class="container">
-  <div class="section-heading reveal">
-    <div class="eyebrow">Simple process</div>
-    <h2>How it works</h2>
-    <p>Your next beautiful design is just a few steps away.</p>
-  </div>
-
-  <div class="steps">
-    <div class="step reveal">
-      <div class="step-number">01</div>
-      <h3>Choose</h3>
-      <p>Explore our collection and find a template that suits your needs.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-number">02</div>
-      <h3>Purchase</h3>
-      <p>Complete your order through our available payment process.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-number">03</div>
-      <h3>Create</h3>
-      <p>Access your template and personalize it for your own brand.</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- QUOTE -->
-
-<section class="quote">
-  <div class="eyebrow">A thought to remember</div>
-  <h2>"Good design is not just what you see. It's how it makes you <span>feel.</span>"</h2>
-</section>
-
-<!-- FAQ -->
-
-<section class="faq" id="faq">
-<div class="container">
-  <div class="section-heading">
-    <div class="eyebrow">Need help?</div>
-    <h2>Frequently asked questions</h2>
-  </div>
-
-  <div class="faq-list">
-    <details>
-      <summary>What are digital templates?</summary>
-      <p>Digital templates are ready-made designs that you can customize and use for your own projects.</p>
-    </details>
-    <details>
-      <summary>Do I need design experience?</summary>
-      <p>No. Our goal is to make templates simple and easy to customize.</p>
-    </details>
-    <details>
-      <summary>Can I edit Canva templates?</summary>
-      <p>Templates with a compatible Canva access link can be edited in Canva. Check each product's description before purchasing.</p>
-    </details>
-    <details>
-      <summary>How will I receive my purchase?</summary>
-      <p>Delivery instructions will be provided on each product's purchase page once the store's checkout system is set up.</p>
-    </details>
-  </div>
-</div>
-</section>
-
-<!-- NEWSLETTER -->
-
-<section class="newsletter">
-  <div class="eyebrow">Stay connected</div>
-  <h2>A little inspiration, delivered.</h2>
-  <p>Get updates about new collections and creative resources.</p>
-
-  <form class="newsletter-form" id="newsletterForm">
-    <input type="email" placeholder="Your email address" required>
-    <button type="submit">SUBSCRIBE</button>
-  </form>
-</section>
-
 </main>
 
-<!-- FOOTER -->
-
 <footer>
-<div class="container">
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h2>ALMAMOON</h2>
-      <p>Thoughtful digital templates for creative minds. Make your ideas look beautiful.</p>
-    </div>
-
-    <div class="footer-column">
-      <h4>EXPLORE</h4>
-      <a href="#home">Home</a>
-      <a href="#categories">Categories</a>
-      <a href="#products">Shop</a>
-      <a href="#story">Our Story</a>
-    </div>
-
-    <div class="footer-column">
-      <h4>HELP</h4>
-      <a href="#faq">FAQs</a>
-      <a href="mailto:hello@almamoon.com">Contact</a>
-      <a href="#faq">How it works</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <span>© 2026 ALMAMOON. All rights reserved.</span>
-    <span>Designed with creativity.</span>
-  </div>
-</div>
+ <div>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
+ <div><a href="#catalog">Shop</a><a href="#faq">About</a><a href="mailto:hello@almamoon.com">Contact</a></div>
 </footer>
 
-<div class="toast" id="toast"></div>
+<div class="cart-overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel">
+ <div class="cart-head"><h3>Your bag</h3><button class="close" onclick="closeCart()">×</button></div>
+ <div class="cart-list" id="cartList"></div>
+ <div class="cart-foot">
+  <div class="total"><span>Subtotal</span><strong id="total">$0.00</strong></div>
+  <button class="checkout" onclick="checkout()">Continue to checkout</button>
+  <p class="cart-note">Demo checkout only. Connect a payment gateway and secure file delivery before accepting real payments.</p>
+ </div>
+</aside>
 
 <script>
+const products = [
+ {id:1,name:"The Minimal Brand Kit",category:"Canva Templates",desc:"A refined identity starter pack for modern brands.",price:18,bg:"linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b)",title:"Simple<br>living."},
+ {id:2,name:"Social Studio Bundle",category:"Social Media",desc:"Editable posts and stories for your socials.",price:14,bg:"linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68)",title:"Make<br>some noise."},
+ {id:3,name:"Creative Resume",category:"Business",desc:"A clean, confident CV and portfolio template.",price:12,bg:"linear-gradient(125deg,#697b79,#c5c4b7,#6d7770)",title:"Your next<br>chapter."},
+ {id:4,name:"Creator's Content Planner",category:"Canva Templates",desc:"Plan your content with clarity and ease.",price:16,bg:"linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a)",title:"Create<br>with intent."},
+ {id:5,name:"The Freelancer Guide",category:"E-books",desc:"A practical guide for independent creators.",price:9,bg:"linear-gradient(135deg,#b8a78f,#75624e)",title:"Work on<br>your terms."},
+ {id:6,name:"Pitch Deck Essentials",category:"Business",desc:"Present your idea with a polished slide deck.",price:22,bg:"linear-gradient(130deg,#9caaaf,#4f6975,#253a45)",title:"Make it<br>matter."},
+ {id:7,name:"Instagram Story Set",category:"Social Media",desc:"A versatile story pack for everyday posting.",price:11,bg:"linear-gradient(135deg,#d6b6a6,#9e7d78)",title:"The daily<br>edit."},
+ {id:8,name:"Notion Life Dashboard",category:"Business",desc:"Keep your projects and plans in one place.",price:15,bg:"linear-gradient(135deg,#b6b7a5,#69735f)",title:"Make room<br>for more."}
+];
 
-/* INFINITE CAROUSEL */
+let filter = "All";
+let cart = [];
+const grid = document.getElementById("productGrid");
 
-const track = document.getElementById('carouselTrack');
-const carousel = document.getElementById('carousel');
+function render(){
+ const q = document.getElementById("search").value.toLowerCase().trim();
+ const list = products.filter(p =>
+  (filter === "All" || p.category === filter) &&
+  (`${p.name} ${p.category} ${p.desc}`).toLowerCase().includes(q)
+ );
 
-const originalCards = track.innerHTML;
-track.innerHTML = originalCards + originalCards;
-
-const AUTO_SPEED = 280;
-const HALF_WIDTH = () => track.scrollWidth / 2;
-
-let position = 0;
-let animationStart = null;
-let animationFrame = null;
-let isDragging = false;
-let isHovering = false;
-let startX = 0;
-let dragStartPosition = 0;
-let lastFrameTime = 0;
-
-function renderCarousel() {
-  track.style.transform = `translate3d(${position}px, 0, 0)`;
+ grid.innerHTML = list.length ? list.map(p => `
+  <article class="product">
+   <div class="product-art" style="background:${p.bg}">
+    <div class="mini">
+     <small>ALMAMOON / DIGITAL EDITION</small>
+     <b>${p.title}</b>
+     <span>DESIGNED FOR YOU</span>
+    </div>
+   </div>
+   <div class="product-info">
+    <h3>${p.name}</h3>
+    <p>${p.desc}</p>
+    <div class="product-row">
+     <span class="price">$${p.price.toFixed(2)}</span>
+     <button class="add" onclick="add(${p.id})">Add to bag +</button>
+    </div>
+   </div>
+  </article>
+ `).join("") : '<p>No products found. Try a different search.</p>';
 }
 
-function normalizePosition() {
-  const width = HALF_WIDTH();
-  if (!width) return;
-
-  while (position <= -width) position += width;
-  while (position > 0) position -= width;
-}
-
-function animateCarousel(timestamp) {
-  if (!animationStart) animationStart = timestamp;
-
-  if (!lastFrameTime) lastFrameTime = timestamp;
-
-  const delta = timestamp - lastFrameTime;
-  lastFrameTime = timestamp;
-
-  if (!isDragging && !isHovering) {
-    const width = HALF_WIDTH();
-    if (width) {
-      position -= (width / (AUTO_SPEED * 1000)) * delta;
-      normalizePosition();
-      renderCarousel();
-    }
-  }
-
-  animationFrame = requestAnimationFrame(animateCarousel);
-}
-
-function pauseCarousel() {
-  isHovering = true;
-}
-
-function resumeCarousel() {
-  isHovering = false;
-  lastFrameTime = 0;
-}
-
-carousel.addEventListener('mouseenter', pauseCarousel);
-carousel.addEventListener('mouseleave', resumeCarousel);
-
-carousel.addEventListener('pointerdown', (e) => {
-  if (e.pointerType === 'mouse' && e.button !== 0) return;
-
-  isDragging = true;
-  startX = e.clientX;
-  dragStartPosition = position;
-
-  carousel.classList.add('dragging');
-  carousel.setPointerCapture(e.pointerId);
+document.querySelectorAll(".filter").forEach(button => {
+ button.addEventListener("click", () => {
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  filter = button.dataset.filter;
+  render();
+ });
 });
 
-carousel.addEventListener('pointermove', (e) => {
-  if (!isDragging) return;
+document.getElementById("search").addEventListener("input",render);
 
-  const movement = e.clientX - startX;
-  position = dragStartPosition + movement;
-
-  normalizePosition();
-  renderCarousel();
-});
-
-function stopDragging() {
-  if (!isDragging) return;
-
-  isDragging = false;
-  carousel.classList.remove('dragging');
-  lastFrameTime = 0;
+function jumpToCatalog(){
+ document.getElementById("catalog").scrollIntoView({behavior:"smooth"});
 }
 
-carousel.addEventListener('pointerup', stopDragging);
-carousel.addEventListener('pointercancel', stopDragging);
-carousel.addEventListener('lostpointercapture', stopDragging);
-
-animationFrame = requestAnimationFrame(animateCarousel);
-
-/* PRODUCT FILTER */
-
-const filterButtons = document.querySelectorAll('.filter-btn');
-const productCards = document.querySelectorAll('.product-card');
-const searchInput = document.getElementById('searchInput');
-const noResults = document.getElementById('noResults');
-
-let activeFilter = 'all';
-
-function updateProducts() {
-  const searchTerm = searchInput.value.toLowerCase();
-  let count = 0;
-
-  productCards.forEach(card => {
-    const category = card.dataset.category;
-    const name = card.dataset.name.toLowerCase();
-
-    const matchesFilter =
-      activeFilter === 'all' || category === activeFilter;
-
-    const matchesSearch = name.includes(searchTerm);
-
-    if (matchesFilter && matchesSearch) {
-      card.style.display = '';
-      count++;
-    } else {
-      card.style.display = 'none';
-    }
-  });
-
-  noResults.style.display = count === 0 ? 'block' : 'none';
+function setTheme(dark){
+ document.body.classList.toggle("dark",dark);
+ document.getElementById("lightBtn").classList.toggle("active",!dark);
+ document.getElementById("darkBtn").classList.toggle("active",dark);
+ document.getElementById("modeLabel").textContent = dark ? "dark mode" : "light mode";
 }
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    activeFilter = button.dataset.filter;
-    updateProducts();
-  });
-});
-
-searchInput.addEventListener('input', updateProducts);
-
-/* WISHLIST */
-
-function toggleHeart(button) {
-  button.textContent = button.textContent === '♡' ? '♥' : '♡';
+function add(id){
+ const product = products.find(p => p.id === id);
+ const item = cart.find(p => p.id === id);
+ if(item) item.qty++;
+ else cart.push({...product,qty:1});
+ drawCart();
+ openCart();
 }
 
-/* TOAST */
-
-let toastTimer;
-
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.classList.add('show');
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2600);
+function removeItem(id){
+ cart = cart.filter(p => p.id !== id);
+ drawCart();
 }
 
-/* NEWSLETTER DEMO */
+function drawCart(){
+ document.getElementById("cartCount").textContent =
+  cart.reduce((n,p) => n+p.qty,0);
 
-document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  showToast('Thank you for subscribing!');
-  this.reset();
-});
+ document.getElementById("cartList").innerHTML = cart.length ?
+  cart.map(p => `
+   <div class="cart-item">
+    <div><b>${p.name}</b><small>Qty ${p.qty} · $${p.price.toFixed(2)} each</small></div>
+    <div><b>$${(p.price*p.qty).toFixed(2)}</b><br>
+     <button class="remove" onclick="removeItem(${p.id})">Remove</button>
+    </div>
+   </div>
+  `).join("") :
+  '<p>Your bag is empty. Explore the collection to find something you love.</p>';
 
-/* SCROLL REVEAL */
+ document.getElementById("total").textContent =
+  "$" + cart.reduce((n,p) => n+p.price*p.qty,0).toFixed(2);
+}
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
+function openCart(){
+ document.getElementById("cartPanel").classList.add("open");
+ document.getElementById("overlay").classList.add("open");
+}
 
-document.querySelectorAll('.reveal').forEach(element => {
-  observer.observe(element);
-});
+function closeCart(){
+ document.getElementById("cartPanel").classList.remove("open");
+ document.getElementById("overlay").classList.remove("open");
+}
 
+function checkout(){
+ if(!cart.length){
+  alert("Your bag is empty.");
+  return;
+ }
+ alert("Demo checkout. Connect a payment gateway and secure digital-download delivery before accepting real payments.");
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+render();
+drawCart();
 </script>
-
 </body>
 </html>
