@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALMAMOON — Digital Templates</title>
+<title>ALMAMOON | Digital Design Studio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,11 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
+a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
 
 .container {
@@ -52,62 +48,54 @@ button { font-family: inherit; cursor: pointer; }
 nav {
   height: 85px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid var(--border);
 }
 
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 29px;
-  letter-spacing: 3px;
   font-weight: 700;
+  letter-spacing: 3px;
 }
 
 .nav-links {
   display: flex;
-  gap: 35px;
-  align-items: center;
+  gap: 32px;
   font-size: 13px;
 }
 
 .nav-links a:hover { color: var(--green); }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
 .cart {
   border: 1px solid var(--green);
-  padding: 10px 17px;
+  background: transparent;
+  padding: 11px 18px;
   border-radius: 30px;
   font-size: 12px;
-  background: transparent;
 }
 
 /* HERO */
 
 .hero {
-  padding: 90px 0 65px;
   text-align: center;
+  padding: 95px 0 65px;
 }
 
 .eyebrow {
-  color: var(--green);
   font-size: 11px;
+  color: var(--green);
+  font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  font-weight: 700;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(45px, 7vw, 83px);
+  font-size: clamp(46px, 7vw, 84px);
   line-height: 1.08;
   font-weight: 500;
-  max-width: 850px;
   margin: 25px auto;
 }
 
@@ -117,11 +105,11 @@ nav {
 }
 
 .hero p {
-  max-width: 510px;
+  max-width: 520px;
   margin: auto;
   color: var(--muted);
-  line-height: 1.8;
   font-size: 14px;
+  line-height: 1.9;
 }
 
 .primary-btn {
@@ -131,8 +119,8 @@ nav {
   background: var(--dark);
   color: white;
   border-radius: 3px;
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
   transition: .3s;
 }
 
@@ -141,19 +129,24 @@ nav {
   transform: translateY(-3px);
 }
 
-/* SLOW CAROUSEL */
+/* INTERACTIVE CAROUSEL */
 
 .carousel-section {
   overflow: hidden;
-  padding: 25px 0 80px;
+  padding: 25px 0 85px;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
 }
+
+.carousel-section.dragging { cursor: grabbing; }
 
 .track {
   display: flex;
   width: max-content;
   gap: 24px;
-  animation: marquee 400s linear infinite;
   will-change: transform;
+  animation: marquee 280s linear infinite;
 }
 
 .track:hover { animation-play-state: paused; }
@@ -162,19 +155,20 @@ nav {
   width: 260px;
   height: 320px;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 7px;
   overflow: hidden;
   background: white;
-  box-shadow: 0 12px 35px rgba(38,51,41,.08);
+  box-shadow: 0 12px 35px rgba(38,51,41,.09);
   transition: transform .4s;
+  pointer-events: none;
 }
-
-.carousel-card:hover { transform: translateY(-10px); }
 
 .carousel-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
 @keyframes marquee {
@@ -182,7 +176,7 @@ nav {
   to { transform: translateX(-50%); }
 }
 
-/* SECTION HEADING */
+/* SECTION HEADINGS */
 
 .section-heading {
   text-align: center;
@@ -199,14 +193,14 @@ nav {
 .section-heading p {
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.8;
   margin-top: 12px;
-  line-height: 1.7;
 }
 
 /* CATEGORIES */
 
 .categories {
-  padding: 75px 0;
+  padding: 85px 0;
   background: var(--light);
 }
 
@@ -218,10 +212,9 @@ nav {
 
 .category {
   position: relative;
-  height: 230px;
+  height: 235px;
   overflow: hidden;
   border-radius: 5px;
-  background: #dce3d6;
 }
 
 .category img {
@@ -231,14 +224,13 @@ nav {
   transition: .6s;
 }
 
-.category:hover img { transform: scale(1.07); }
+.category:hover img { transform: scale(1.08); }
 
 .category-label {
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
-  padding: 25px 15px 18px;
+  padding: 35px 16px 18px;
   color: white;
   font-family: 'Playfair Display', serif;
   font-size: 23px;
@@ -247,26 +239,24 @@ nav {
 
 /* PRODUCTS */
 
-.products {
-  padding: 90px 0;
-}
+.products { padding: 90px 0; }
 
 .product-tools {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-  margin-bottom: 30px;
   flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .search {
-  padding: 13px 17px;
-  border: 1px solid var(--border);
-  background: transparent;
-  outline: none;
-  border-radius: 3px;
   width: 240px;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: transparent;
+  border-radius: 3px;
 }
 
 .filters {
@@ -276,9 +266,9 @@ nav {
 }
 
 .filter-btn {
-  padding: 10px 16px;
   border: 1px solid var(--border);
   background: transparent;
+  padding: 10px 16px;
   border-radius: 30px;
   font-size: 11px;
 }
@@ -331,17 +321,17 @@ nav {
   right: 14px;
   width: 36px;
   height: 36px;
+  background: white;
   border: none;
   border-radius: 50%;
-  background: white;
   font-size: 18px;
 }
 
 .product-info { padding: 19px; }
 
 .product-category {
-  font-size: 10px;
   color: var(--green);
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -353,19 +343,24 @@ nav {
   margin: 9px 0;
 }
 
+.product-description {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .product-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 17px;
+  margin-top: 18px;
 }
 
 .price { font-weight: 700; font-size: 14px; }
 
 .view-btn {
+  border: none;
   background: var(--dark);
   color: white;
-  border: none;
   padding: 10px 15px;
   font-size: 11px;
   border-radius: 3px;
@@ -375,13 +370,13 @@ nav {
 
 .no-results {
   display: none;
+  grid-column: 1/-1;
   text-align: center;
   padding: 40px;
   color: var(--muted);
-  grid-column: 1/-1;
 }
 
-/* BRAND STORY */
+/* STORY */
 
 .story {
   padding: 100px 0;
@@ -391,14 +386,14 @@ nav {
 .story-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 70px;
+  gap: 65px;
   align-items: center;
 }
 
 .story-image {
   height: 440px;
-  border-radius: 5px;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .story-image img {
@@ -410,8 +405,8 @@ nav {
 .story-content h2 {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
-  font-weight: 500;
   line-height: 1.15;
+  font-weight: 500;
   margin: 20px 0;
 }
 
@@ -431,12 +426,12 @@ nav {
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  text-align: center;
+  gap: 25px;
 }
 
 .step {
   padding: 35px 25px;
+  text-align: center;
   border: 1px solid var(--border);
 }
 
@@ -449,14 +444,14 @@ nav {
 .step h3 {
   font-family: 'Playfair Display', serif;
   font-size: 23px;
-  margin: 15px 0;
   font-weight: 500;
+  margin: 15px 0;
 }
 
 .step p {
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* QUOTE */
@@ -467,12 +462,12 @@ nav {
 }
 
 .quote h2 {
+  max-width: 800px;
+  margin: 20px auto 0;
   font-family: 'Playfair Display', serif;
   font-size: clamp(30px, 5vw, 49px);
-  font-weight: 500;
-  max-width: 800px;
-  margin: auto;
   line-height: 1.35;
+  font-weight: 500;
 }
 
 .quote span {
@@ -483,7 +478,7 @@ nav {
 /* FAQ */
 
 .faq {
-  padding: 80px 0;
+  padding: 85px 0;
   background: var(--light);
 }
 
@@ -493,8 +488,8 @@ nav {
 }
 
 details {
-  border-bottom: 1px solid var(--border);
   padding: 22px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 summary {
@@ -504,10 +499,10 @@ summary {
 }
 
 details p {
-  padding-top: 15px;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.8;
+  padding-top: 15px;
 }
 
 /* NEWSLETTER */
@@ -530,9 +525,9 @@ details p {
 }
 
 .newsletter-form {
-  margin: 25px auto 0;
   display: flex;
   max-width: 430px;
+  margin: 25px auto 0;
 }
 
 .newsletter-form input {
@@ -545,10 +540,10 @@ details p {
 }
 
 .newsletter-form button {
+  padding: 0 20px;
+  border: none;
   background: var(--dark);
   color: white;
-  border: none;
-  padding: 0 20px;
 }
 
 /* FOOTER */
@@ -567,16 +562,16 @@ footer {
 
 .footer-brand h2 {
   font-family: 'Playfair Display', serif;
-  letter-spacing: 3px;
   font-size: 29px;
+  letter-spacing: 3px;
 }
 
 .footer-brand p {
-  color: #bac4b6;
   max-width: 300px;
+  margin-top: 15px;
+  color: #bac4b6;
   font-size: 12px;
   line-height: 1.8;
-  margin-top: 15px;
 }
 
 .footer-column h4 {
@@ -595,32 +590,32 @@ footer {
 .footer-column a:hover { color: white; }
 
 .footer-bottom {
-  border-top: 1px solid #465247;
-  margin-top: 50px;
-  padding-top: 22px;
-  font-size: 11px;
-  color: #bac4b6;
   display: flex;
   justify-content: space-between;
   gap: 15px;
+  border-top: 1px solid #465247;
+  margin-top: 50px;
+  padding-top: 22px;
+  color: #bac4b6;
+  font-size: 11px;
 }
 
 /* TOAST */
 
 .toast {
   position: fixed;
-  bottom: 25px;
   right: 25px;
+  bottom: 25px;
+  z-index: 99;
+  padding: 15px 22px;
   background: var(--dark);
   color: white;
-  padding: 15px 22px;
-  border-radius: 4px;
   font-size: 12px;
+  border-radius: 4px;
   opacity: 0;
   transform: translateY(20px);
   transition: .3s;
   pointer-events: none;
-  z-index: 99;
 }
 
 .toast.show {
@@ -644,7 +639,7 @@ footer {
 /* RESPONSIVE */
 
 @media(max-width:850px) {
-  .nav-links { gap: 15px; }
+  .nav-links { gap: 14px; }
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .story-grid { gap: 30px; }
@@ -654,18 +649,28 @@ footer {
   nav { height: 70px; }
   .logo { font-size: 23px; }
   .nav-links { display: none; }
+
   .hero { padding: 70px 0 45px; }
-  .carousel-card { width: 210px; height: 260px; }
+
+  .carousel-card {
+    width: 210px;
+    height: 260px;
+  }
+
   .category-grid { gap: 10px; }
   .category { height: 180px; }
+
   .product-grid { grid-template-columns: 1fr; }
   .product-image { height: 300px; }
+
   .story-grid { grid-template-columns: 1fr; }
   .story-image { height: 300px; }
   .story-content h2 { font-size: 38px; }
+
   .steps { grid-template-columns: 1fr; }
   .product-tools { align-items: stretch; }
   .search { width: 100%; }
+
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1/-1; }
   .footer-bottom { flex-direction: column; }
@@ -676,9 +681,8 @@ footer {
 <body>
 
 <div class="container">
-
 <nav>
-  <a href="#" class="logo">ALMAMOON</a>
+  <a href="#home" class="logo">ALMAMOON</a>
 
   <div class="nav-links">
     <a href="#home">Home</a>
@@ -688,13 +692,10 @@ footer {
     <a href="#faq">FAQ</a>
   </div>
 
-  <div class="nav-right">
-    <button class="cart" onclick="showToast('Your shopping cart is coming soon.')">
-      BAG (<span id="cartCount">0</span>)
-    </button>
-  </div>
+  <button class="cart" onclick="showToast('Shopping cart coming soon.')">
+    BAG (<span id="cartCount">0</span>)
+  </button>
 </nav>
-
 </div>
 
 <main>
@@ -702,258 +703,266 @@ footer {
 <section class="hero container" id="home">
   <div class="eyebrow">A little creativity goes a long way</div>
   <h1>Make your ideas<br>look <em>beautiful.</em></h1>
-  <p>
-    Thoughtfully designed digital templates to help you create,
-    organize and grow your ideas with confidence.
-  </p>
+  <p>Thoughtfully designed digital templates to help you create, organize and grow your ideas with confidence.</p>
   <a href="#products" class="primary-btn">EXPLORE COLLECTION</a>
 </section>
 
-<section class="carousel-section">
+<!-- CAROUSEL -->
+
+<section class="carousel-section" id="carousel">
   <div class="track" id="carouselTrack">
 
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Workspace"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=600" alt="Design"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" alt="Writing"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Creative workspace"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=600" alt="Design workspace"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" alt="Writing desk"></div>
     <div class="carousel-card"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Creative art"></div>
-    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600" alt="Office"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600" alt="Office workspace"></div>
     <div class="carousel-card"><img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600" alt="Notebook"></div>
 
   </div>
 </section>
 
-<section class="categories" id="categories">
-  <div class="container">
-    <div class="section-heading reveal">
-      <div class="eyebrow">Explore by category</div>
-      <h2>Find your creative corner</h2>
-      <p>Discover templates designed for every part of your journey.</p>
-    </div>
+<!-- CATEGORIES -->
 
-    <div class="category-grid">
-      <a href="#products" class="category">
-        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=700" alt="Instagram">
-        <div class="category-label">Instagram</div>
-      </a>
-      <a href="#products" class="category">
-        <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=700" alt="Pinterest">
-        <div class="category-label">Pinterest</div>
-      </a>
-      <a href="#products" class="category">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700" alt="Business">
-        <div class="category-label">Business</div>
-      </a>
-      <a href="#products" class="category">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700" alt="Branding">
-        <div class="category-label">Branding</div>
-      </a>
-    </div>
+<section class="categories" id="categories">
+<div class="container">
+  <div class="section-heading reveal">
+    <div class="eyebrow">Explore by category</div>
+    <h2>Find your creative corner</h2>
+    <p>Discover templates designed for every part of your journey.</p>
   </div>
+
+  <div class="category-grid">
+    <a href="#products" class="category">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=700" alt="Instagram">
+      <div class="category-label">Instagram</div>
+    </a>
+    <a href="#products" class="category">
+      <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=700" alt="Pinterest">
+      <div class="category-label">Pinterest</div>
+    </a>
+    <a href="#products" class="category">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700" alt="Business">
+      <div class="category-label">Business</div>
+    </a>
+    <a href="#products" class="category">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700" alt="Branding">
+      <div class="category-label">Branding</div>
+    </a>
+  </div>
+</div>
 </section>
+
+<!-- PRODUCTS -->
 
 <section class="products" id="products">
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading reveal">
-      <div class="eyebrow">The collection</div>
-      <h2>Designed to inspire</h2>
-      <p>Simple, beautiful and practical digital products.</p>
-    </div>
+  <div class="section-heading reveal">
+    <div class="eyebrow">The collection</div>
+    <h2>Designed to inspire</h2>
+    <p>Simple, beautiful and practical digital products.</p>
+  </div>
 
-    <div class="product-tools">
-      <input type="search" class="search" id="searchInput" placeholder="Search templates...">
+  <div class="product-tools">
+    <input type="search" class="search" id="searchInput" placeholder="Search templates...">
 
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="instagram">Instagram</button>
-        <button class="filter-btn" data-filter="pinterest">Pinterest</button>
-        <button class="filter-btn" data-filter="business">Business</button>
-      </div>
-    </div>
-
-    <div class="product-grid" id="productGrid">
-
-      <article class="product-card" data-category="instagram" data-name="Minimal Instagram Pack">
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=700" alt="Instagram template">
-          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Instagram</div>
-          <h3>Minimal Instagram Pack</h3>
-          <p style="font-size:12px;color:#788174;">Clean and modern social media designs.</p>
-          <div class="product-bottom">
-            <span class="price">$9.00</span>
-            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="pinterest" data-name="Pinterest Pin Bundle">
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=700" alt="Pinterest templates">
-          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Pinterest</div>
-          <h3>Pinterest Pin Bundle</h3>
-          <p style="font-size:12px;color:#788174;">Beautiful pins for your content strategy.</p>
-          <div class="product-bottom">
-            <span class="price">$7.00</span>
-            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="business" data-name="Business Planner">
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700" alt="Business planner">
-          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Business</div>
-          <h3>Business Planner</h3>
-          <p style="font-size:12px;color:#788174;">Organize your work and daily goals.</p>
-          <div class="product-bottom">
-            <span class="price">$12.00</span>
-            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="instagram" data-name="Instagram Story Kit">
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700" alt="Story kit">
-          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Instagram</div>
-          <h3>Instagram Story Kit</h3>
-          <p style="font-size:12px;color:#788174;">Creative stories for your brand.</p>
-          <div class="product-bottom">
-            <span class="price">$8.00</span>
-            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="business" data-name="Brand Identity Kit">
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=700" alt="Brand identity">
-          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Business</div>
-          <h3>Brand Identity Kit</h3>
-          <p style="font-size:12px;color:#788174;">Build a consistent visual identity.</p>
-          <div class="product-bottom">
-            <span class="price">$15.00</span>
-            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="product-card" data-category="pinterest" data-name="Pinterest Creator Kit">
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=700" alt="Creator kit">
-          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
-        </div>
-        <div class="product-info">
-          <div class="product-category">Pinterest</div>
-          <h3>Pinterest Creator Kit</h3>
-          <p style="font-size:12px;color:#788174;">Make your content stand out.</p>
-          <div class="product-bottom">
-            <span class="price">$10.00</span>
-            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
-          </div>
-        </div>
-      </article>
-
-      <div class="no-results" id="noResults">No products found. Try another search.</div>
-
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="instagram">Instagram</button>
+      <button class="filter-btn" data-filter="pinterest">Pinterest</button>
+      <button class="filter-btn" data-filter="business">Business</button>
     </div>
   </div>
+
+  <div class="product-grid" id="productGrid">
+
+    <article class="product-card" data-category="instagram" data-name="Minimal Instagram Pack">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=700" alt="Instagram template">
+        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Instagram</div>
+        <h3>Minimal Instagram Pack</h3>
+        <p class="product-description">Clean and modern social media designs.</p>
+        <div class="product-bottom">
+          <span class="price">$9.00</span>
+          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="pinterest" data-name="Pinterest Pin Bundle">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=700" alt="Pinterest templates">
+        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Pinterest</div>
+        <h3>Pinterest Pin Bundle</h3>
+        <p class="product-description">Beautiful pins for your content strategy.</p>
+        <div class="product-bottom">
+          <span class="price">$7.00</span>
+          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="business" data-name="Business Planner">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700" alt="Business planner">
+        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Business</div>
+        <h3>Business Planner</h3>
+        <p class="product-description">Organize your work and daily goals.</p>
+        <div class="product-bottom">
+          <span class="price">$12.00</span>
+          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="instagram" data-name="Instagram Story Kit">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700" alt="Story kit">
+        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Instagram</div>
+        <h3>Instagram Story Kit</h3>
+        <p class="product-description">Creative stories for your brand.</p>
+        <div class="product-bottom">
+          <span class="price">$8.00</span>
+          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="business" data-name="Brand Identity Kit">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=700" alt="Brand identity">
+        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Business</div>
+        <h3>Brand Identity Kit</h3>
+        <p class="product-description">Build a consistent visual identity.</p>
+        <div class="product-bottom">
+          <span class="price">$15.00</span>
+          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card" data-category="pinterest" data-name="Pinterest Creator Kit">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=700" alt="Creator kit">
+        <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Pinterest</div>
+        <h3>Pinterest Creator Kit</h3>
+        <p class="product-description">Make your content stand out.</p>
+        <div class="product-bottom">
+          <span class="price">$10.00</span>
+          <button class="view-btn" onclick="showToast('Product details coming soon.')">VIEW PRODUCT</button>
+        </div>
+      </div>
+    </article>
+
+    <div class="no-results" id="noResults">No products found. Try another search.</div>
+  </div>
+</div>
 </section>
+
+<!-- STORY -->
 
 <section class="story" id="story">
-  <div class="container story-grid">
-    <div class="story-image reveal">
-      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900" alt="Creative workspace">
-    </div>
-
-    <div class="story-content reveal">
-      <div class="eyebrow">A little about us</div>
-      <h2>Creativity made simple.</h2>
-      <p>
-        ALMAMOON is a digital design space built for people who love
-        creating beautiful things. Our goal is to make design easier
-        with practical, thoughtful and easy-to-use templates.
-      </p>
-      <a href="#products" class="primary-btn">DISCOVER OUR WORK</a>
-    </div>
+<div class="container story-grid">
+  <div class="story-image reveal">
+    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900" alt="Creative workspace">
   </div>
+
+  <div class="story-content reveal">
+    <div class="eyebrow">A little about us</div>
+    <h2>Creativity made simple.</h2>
+    <p>ALMAMOON is a digital design space built for people who love creating beautiful things. Our goal is to make design easier with practical, thoughtful and easy-to-use templates.</p>
+    <a href="#products" class="primary-btn">DISCOVER OUR WORK</a>
+  </div>
+</div>
 </section>
+
+<!-- HOW IT WORKS -->
 
 <section class="how">
-  <div class="container">
-    <div class="section-heading reveal">
-      <div class="eyebrow">Simple process</div>
-      <h2>How it works</h2>
-      <p>Your next beautiful design is just a few steps away.</p>
-    </div>
+<div class="container">
+  <div class="section-heading reveal">
+    <div class="eyebrow">Simple process</div>
+    <h2>How it works</h2>
+    <p>Your next beautiful design is just a few steps away.</p>
+  </div>
 
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-number">01</div>
-        <h3>Choose</h3>
-        <p>Explore our collection and find a template that suits your needs.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-number">02</div>
-        <h3>Purchase</h3>
-        <p>Complete your order through our available payment process.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-number">03</div>
-        <h3>Create</h3>
-        <p>Access your template and personalize it for your own brand.</p>
-      </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-number">01</div>
+      <h3>Choose</h3>
+      <p>Explore our collection and find a template that suits your needs.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-number">02</div>
+      <h3>Purchase</h3>
+      <p>Complete your order through our available payment process.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-number">03</div>
+      <h3>Create</h3>
+      <p>Access your template and personalize it for your own brand.</p>
     </div>
   </div>
+</div>
 </section>
+
+<!-- QUOTE -->
 
 <section class="quote">
   <div class="eyebrow">A thought to remember</div>
   <h2>"Good design is not just what you see. It's how it makes you <span>feel.</span>"</h2>
 </section>
 
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="section-heading">
-      <div class="eyebrow">Need help?</div>
-      <h2>Frequently asked questions</h2>
-    </div>
+<!-- FAQ -->
 
-    <div class="faq-list">
-      <details>
-        <summary>What are digital templates?</summary>
-        <p>Digital templates are ready-made designs that you can customize and use for your own projects.</p>
-      </details>
-      <details>
-        <summary>Do I need design experience?</summary>
-        <p>No. Our goal is to make templates simple and easy to customize.</p>
-      </details>
-      <details>
-        <summary>Can I edit Canva templates?</summary>
-        <p>Templates with a compatible Canva access link can be edited in Canva. Check each product's description before purchasing.</p>
-      </details>
-      <details>
-        <summary>How will I receive my purchase?</summary>
-        <p>Delivery instructions will be provided on each product's purchase page once the store's checkout system is set up.</p>
-      </details>
-    </div>
+<section class="faq" id="faq">
+<div class="container">
+  <div class="section-heading">
+    <div class="eyebrow">Need help?</div>
+    <h2>Frequently asked questions</h2>
   </div>
+
+  <div class="faq-list">
+    <details>
+      <summary>What are digital templates?</summary>
+      <p>Digital templates are ready-made designs that you can customize and use for your own projects.</p>
+    </details>
+    <details>
+      <summary>Do I need design experience?</summary>
+      <p>No. Our goal is to make templates simple and easy to customize.</p>
+    </details>
+    <details>
+      <summary>Can I edit Canva templates?</summary>
+      <p>Templates with a compatible Canva access link can be edited in Canva. Check each product's description before purchasing.</p>
+    </details>
+    <details>
+      <summary>How will I receive my purchase?</summary>
+      <p>Delivery instructions will be provided on each product's purchase page once the store's checkout system is set up.</p>
+    </details>
+  </div>
+</div>
 </section>
+
+<!-- NEWSLETTER -->
 
 <section class="newsletter">
   <div class="eyebrow">Stay connected</div>
@@ -968,52 +977,143 @@ footer {
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-        <h2>ALMAMOON</h2>
-        <p>
-          Thoughtful digital templates for creative minds.
-          Make your ideas look beautiful.
-        </p>
-      </div>
-
-      <div class="footer-column">
-        <h4>EXPLORE</h4>
-        <a href="#home">Home</a>
-        <a href="#categories">Categories</a>
-        <a href="#products">Shop</a>
-        <a href="#story">Our Story</a>
-      </div>
-
-      <div class="footer-column">
-        <h4>HELP</h4>
-        <a href="#faq">FAQs</a>
-        <a href="mailto:hello@almamoon.com">Contact</a>
-        <a href="#faq">How it works</a>
-      </div>
-
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h2>ALMAMOON</h2>
+      <p>Thoughtful digital templates for creative minds. Make your ideas look beautiful.</p>
     </div>
 
-    <div class="footer-bottom">
-      <span>© 2026 ALMAMOON. All rights reserved.</span>
-      <span>Designed with creativity.</span>
+    <div class="footer-column">
+      <h4>EXPLORE</h4>
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Shop</a>
+      <a href="#story">Our Story</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>HELP</h4>
+      <a href="#faq">FAQs</a>
+      <a href="mailto:hello@almamoon.com">Contact</a>
+      <a href="#faq">How it works</a>
     </div>
   </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 ALMAMOON. All rights reserved.</span>
+    <span>Designed with creativity.</span>
+  </div>
+</div>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
 
-/* DUPLICATE CAROUSEL CONTENT FOR SEAMLESS LOOP */
+/* INFINITE CAROUSEL */
 
 const track = document.getElementById('carouselTrack');
-track.innerHTML += track.innerHTML;
+const carousel = document.getElementById('carousel');
 
-/* FILTER PRODUCTS */
+const originalCards = track.innerHTML;
+track.innerHTML = originalCards + originalCards;
+
+const AUTO_SPEED = 280;
+const HALF_WIDTH = () => track.scrollWidth / 2;
+
+let position = 0;
+let animationStart = null;
+let animationFrame = null;
+let isDragging = false;
+let isHovering = false;
+let startX = 0;
+let dragStartPosition = 0;
+let lastFrameTime = 0;
+
+function renderCarousel() {
+  track.style.transform = `translate3d(${position}px, 0, 0)`;
+}
+
+function normalizePosition() {
+  const width = HALF_WIDTH();
+  if (!width) return;
+
+  while (position <= -width) position += width;
+  while (position > 0) position -= width;
+}
+
+function animateCarousel(timestamp) {
+  if (!animationStart) animationStart = timestamp;
+
+  if (!lastFrameTime) lastFrameTime = timestamp;
+
+  const delta = timestamp - lastFrameTime;
+  lastFrameTime = timestamp;
+
+  if (!isDragging && !isHovering) {
+    const width = HALF_WIDTH();
+    if (width) {
+      position -= (width / (AUTO_SPEED * 1000)) * delta;
+      normalizePosition();
+      renderCarousel();
+    }
+  }
+
+  animationFrame = requestAnimationFrame(animateCarousel);
+}
+
+function pauseCarousel() {
+  isHovering = true;
+}
+
+function resumeCarousel() {
+  isHovering = false;
+  lastFrameTime = 0;
+}
+
+carousel.addEventListener('mouseenter', pauseCarousel);
+carousel.addEventListener('mouseleave', resumeCarousel);
+
+carousel.addEventListener('pointerdown', (e) => {
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+  isDragging = true;
+  startX = e.clientX;
+  dragStartPosition = position;
+
+  carousel.classList.add('dragging');
+  carousel.setPointerCapture(e.pointerId);
+});
+
+carousel.addEventListener('pointermove', (e) => {
+  if (!isDragging) return;
+
+  const movement = e.clientX - startX;
+  position = dragStartPosition + movement;
+
+  normalizePosition();
+  renderCarousel();
+});
+
+function stopDragging() {
+  if (!isDragging) return;
+
+  isDragging = false;
+  carousel.classList.remove('dragging');
+  lastFrameTime = 0;
+}
+
+carousel.addEventListener('pointerup', stopDragging);
+carousel.addEventListener('pointercancel', stopDragging);
+carousel.addEventListener('lostpointercapture', stopDragging);
+
+animationFrame = requestAnimationFrame(animateCarousel);
+
+/* PRODUCT FILTER */
 
 const filterButtons = document.querySelectorAll('.filter-btn');
 const productCards = document.querySelectorAll('.product-card');
@@ -1024,7 +1124,7 @@ let activeFilter = 'all';
 
 function updateProducts() {
   const searchTerm = searchInput.value.toLowerCase();
-  let visibleCount = 0;
+  let count = 0;
 
   productCards.forEach(card => {
     const category = card.dataset.category;
@@ -1037,13 +1137,13 @@ function updateProducts() {
 
     if (matchesFilter && matchesSearch) {
       card.style.display = '';
-      visibleCount++;
+      count++;
     } else {
       card.style.display = 'none';
     }
   });
 
-  noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  noResults.style.display = count === 0 ? 'block' : 'none';
 }
 
 filterButtons.forEach(button => {
@@ -1073,6 +1173,7 @@ function showToast(message) {
   toast.classList.add('show');
 
   clearTimeout(toastTimer);
+
   toastTimer = setTimeout(() => {
     toast.classList.remove('show');
   }, 2600);
