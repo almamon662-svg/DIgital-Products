@@ -4,779 +4,1104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#E9EDE5">
-<title>ALMAMOON — Digital Templates Studio</title>
+<title>ALMAMOON — Digital Templates</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:#E9EDE5;
-  --paper:#F8FAF5;
-  --white:#FFFFFF;
-  --green:#71836A;
-  --green-dark:#52664D;
-  --ink:#263329;
-  --muted:#778075;
-  --line:rgba(38,51,41,.13);
-  --serif:"Playfair Display", Georgia, serif;
-  --sans:"DM Sans", Arial, sans-serif;
-  --radius:20px;
-  --shadow:0 18px 55px rgba(38,51,41,.10);
+  --bg: #E9EDE5;
+  --green: #71836A;
+  --dark: #263329;
+  --light: #F8F9F5;
+  --muted: #788174;
+  --border: #D7DED2;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--sans);
-  overflow-x:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-button,input{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-img{display:block;width:100%;object-fit:cover}
-.container{width:min(1180px,calc(100% - 64px));margin:auto}
-.eyebrow{
-  font-size:10px;letter-spacing:2.6px;text-transform:uppercase;
-  color:var(--green);font-weight:700;
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
 }
-.section-heading{
-  font-family:var(--serif);font-size:clamp(34px,4.5vw,54px);
-  font-weight:400;line-height:1.12;letter-spacing:-1.5px;
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.section-top{
-  display:flex;align-items:end;justify-content:space-between;
-  gap:24px;margin-bottom:34px;
+
+button { font-family: inherit; cursor: pointer; }
+
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
 }
-.text-link{
-  font-size:12px;font-weight:700;letter-spacing:1px;
-  text-transform:uppercase;border-bottom:1px solid var(--green);
-  padding-bottom:7px;transition:.25s;
+
+/* NAVIGATION */
+
+nav {
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
 }
-.text-link:hover{color:var(--green);padding-right:7px}
-.primary-btn{
-  border:1px solid var(--ink);background:var(--ink);color:white;
-  padding:15px 24px;border-radius:3px;font-size:11px;
-  letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
-  display:inline-flex;align-items:center;justify-content:center;gap:14px;
-  transition:.3s;
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 29px;
+  letter-spacing: 3px;
+  font-weight: 700;
 }
-.primary-btn:hover{background:var(--green);border-color:var(--green);transform:translateY(-3px)}
-.secondary-btn{
-  border:1px solid var(--line);background:transparent;color:var(--ink);
-  padding:14px 22px;border-radius:3px;font-size:11px;
-  letter-spacing:1.3px;text-transform:uppercase;font-weight:700;
-  transition:.3s;
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  font-size: 13px;
 }
-.secondary-btn:hover{border-color:var(--green);color:var(--green)}
-/* announcement */
-.announcement{
-  text-align:center;background:var(--ink);color:#edf1e9;
-  padding:10px 15px;font-size:10px;letter-spacing:1.4px;
+
+.nav-links a:hover { color: var(--green); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.announcement span{color:#c6d4bd}
-/* header */
-.header{
-  height:82px;display:flex;align-items:center;
-  border-bottom:1px solid var(--line);background:rgba(233,237,229,.93);
-  position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);
+
+.cart {
+  border: 1px solid var(--green);
+  padding: 10px 17px;
+  border-radius: 30px;
+  font-size: 12px;
+  background: transparent;
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:30px}
-.logo{font-family:var(--serif);font-size:29px;letter-spacing:2px;font-weight:600}
-.logo small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:4px;text-align:center;margin-top:-3px}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#596458;transition:.2s}
-.nav-links a:hover{color:var(--green-dark)}
-.nav-actions{display:flex;align-items:center;gap:18px}
-.icon-btn{
-  background:none;border:0;color:var(--ink);font-size:18px;
-  position:relative;padding:5px;
+
+/* HERO */
+
+.hero {
+  padding: 90px 0 65px;
+  text-align: center;
 }
-.cart-count{
-  position:absolute;top:-4px;right:-7px;background:var(--green);
-  color:white;font-size:9px;width:16px;height:16px;border-radius:50%;
-  display:grid;place-items:center;
+
+.eyebrow {
+  color: var(--green);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
-.menu-toggle{display:none;background:none;border:0;font-size:23px;color:var(--ink)}
-/* hero */
-.hero{padding:58px 0 30px;overflow:hidden}
-.hero-intro{text-align:center;max-width:760px;margin:0 auto 34px}
-.hero-intro .eyebrow{margin-bottom:16px}
-.hero h1{
-  font-family:var(--serif);font-size:clamp(46px,7.4vw,88px);
-  line-height:.99;font-weight:400;letter-spacing:-3.5px;
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(45px, 7vw, 83px);
+  line-height: 1.08;
+  font-weight: 500;
+  max-width: 850px;
+  margin: 25px auto;
 }
-.hero h1 em{color:var(--green);font-weight:400}
-.hero-description{
-  color:#697469;font-size:13px;line-height:1.9;
-  max-width:470px;margin:20px auto 25px;
+
+.hero h1 em {
+  color: var(--green);
+  font-weight: 500;
 }
-.hero-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-/* animated showcase */
-.showcase{
-  position:relative;margin-top:52px;padding:10px 0 38px;
-  overflow:hidden;
+
+.hero p {
+  max-width: 510px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
 }
-.showcase:before,.showcase:after{
-  content:"";position:absolute;top:0;bottom:0;width:9%;
-  z-index:3;pointer-events:none;
+
+.primary-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 29px;
+  background: var(--dark);
+  color: white;
+  border-radius: 3px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: .3s;
 }
-.showcase:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
-.showcase:after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-.marquee{overflow:hidden}
-.marquee-track{
-  display:flex;width:max-content;gap:25px;
-  animation:drift 42s linear infinite;
-  will-change:transform;
+
+.primary-btn:hover {
+  background: var(--green);
+  transform: translateY(-3px);
 }
-.showcase:hover .marquee-track{animation-play-state:paused}
-@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.showcase-card{
-  width:218px;height:290px;flex:none;background:var(--paper);
-  border-radius:15px;overflow:hidden;position:relative;
-  box-shadow:0 20px 45px rgba(38,51,41,.13);
-  transition:transform .45s,box-shadow .45s;
+
+/* SLOW CAROUSEL */
+
+.carousel-section {
+  overflow: hidden;
+  padding: 25px 0 80px;
 }
-.showcase-card:nth-child(even){margin-top:26px}
-.showcase-card:hover{transform:translateY(-12px) rotate(-1deg);box-shadow:0 28px 55px rgba(38,51,41,.19)}
-.showcase-card img{height:100%;transition:transform .8s}
-.showcase-card:hover img{transform:scale(1.07)}
-.showcase-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(20,30,22,.02) 35%,rgba(20,30,22,.65));
-  display:flex;flex-direction:column;justify-content:end;padding:20px;color:white;
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+  animation: marquee 400s linear infinite;
+  will-change: transform;
 }
-.showcase-overlay span{font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.showcase-overlay h3{font-family:var(--serif);font-size:26px;font-weight:400}
-.showcase-label{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-top:12px;color:var(--muted);font-size:10px;letter-spacing:1px;
-  text-transform:uppercase;
+
+.track:hover { animation-play-state: paused; }
+
+.carousel-card {
+  width: 260px;
+  height: 320px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 12px 35px rgba(38,51,41,.08);
+  transition: transform .4s;
 }
-/* intro strip */
-.intro-strip{
-  padding:65px 0;border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+
+.carousel-card:hover { transform: translateY(-10px); }
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.intro-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
-.intro-grid h2{font-family:var(--serif);font-size:clamp(32px,4vw,49px);font-weight:400;line-height:1.2}
-.intro-grid p{font-size:13px;color:#697469;line-height:2;max-width:510px}
-/* categories */
-.categories{padding:100px 0 90px}
-.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.category-card{
-  position:relative;overflow:hidden;border-radius:var(--radius);
-  height:290px;background:#dce4d7;cursor:pointer;
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-.category-card img{height:100%;transition:transform .7s}
-.category-card:hover img{transform:scale(1.08)}
-.category-card:after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(0deg,rgba(22,34,24,.68),transparent 65%);
+
+/* SECTION HEADING */
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 45px;
 }
-.category-info{position:absolute;z-index:2;bottom:22px;left:22px;color:white}
-.category-info h3{font-family:var(--serif);font-size:27px;font-weight:400}
-.category-info span{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;opacity:.85}
-/* products */
-.products{padding:90px 0;background:var(--paper)}
-.product-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:30px}
-.search-box{
-  flex:1;min-width:180px;max-width:290px;position:relative;
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 500;
+  margin-top: 15px;
 }
-.search-box input{
-  width:100%;border:1px solid var(--line);background:transparent;
-  padding:13px 15px;outline:none;font-size:12px;color:var(--ink);
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 12px;
+  line-height: 1.7;
 }
-.search-box input:focus{border-color:var(--green)}
-.filter-btn{
-  padding:11px 16px;border:1px solid var(--line);background:transparent;
-  font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#697469;
-  transition:.2s;
+
+/* CATEGORIES */
+
+.categories {
+  padding: 75px 0;
+  background: var(--light);
 }
-.filter-btn.active,.filter-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px 22px}
-.product-card{min-width:0}
-.product-image{
-  height:330px;background:#e4e9df;position:relative;overflow:hidden;
-  border-radius:5px;
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
-.product-image img{height:100%;transition:transform .7s}
-.product-card:hover .product-image img{transform:scale(1.06)}
-.product-badge{
-  position:absolute;top:14px;left:14px;background:var(--paper);
-  padding:7px 10px;font-size:8px;letter-spacing:1.4px;text-transform:uppercase;
+
+.category {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #dce3d6;
 }
-.wishlist{
-  position:absolute;top:12px;right:12px;width:36px;height:36px;
-  background:rgba(255,255,255,.9);border:0;border-radius:50%;
-  font-size:17px;display:grid;place-items:center;transition:.2s;
+
+.category img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .6s;
 }
-.wishlist.active{color:#b85e63}
-.product-info{padding:16px 2px 0}
-.product-category{font-size:9px;letter-spacing:1.5px;color:var(--green);text-transform:uppercase}
-.product-title{font-family:var(--serif);font-size:23px;font-weight:400;margin:7px 0}
-.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.price{font-size:13px;font-weight:700}
-.add-btn{
-  background:transparent;border:0;border-bottom:1px solid var(--green);
-  color:var(--green-dark);font-size:10px;letter-spacing:1px;
-  text-transform:uppercase;padding:6px 0;font-weight:700;
+
+.category:hover img { transform: scale(1.07); }
+
+.category-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 15px 18px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  background: linear-gradient(transparent, rgba(0,0,0,.65));
 }
-.no-results{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted);font-size:14px}
-/* feature */
-.feature{padding:100px 0}
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
-.feature-image{height:510px;overflow:hidden;border-radius:4px}
-.feature-image img{height:100%}
-.feature-copy h2{font-family:var(--serif);font-size:clamp(38px,5vw,60px);font-weight:400;line-height:1.08;margin:17px 0 22px}
-.feature-copy p{font-size:13px;line-height:2;color:#697469;max-width:440px;margin-bottom:26px}
-.feature-list{display:grid;gap:17px;margin:28px 0}
-.feature-item{display:flex;gap:14px;align-items:center;font-size:12px}
-.feature-number{
-  width:30px;height:30px;border:1px solid var(--green);
-  border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:10px;
+
+/* PRODUCTS */
+
+.products {
+  padding: 90px 0;
 }
-/* process */
-.process{background:#dfe6da;padding:90px 0}
-.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin-top:42px}
-.process-card{border-top:1px solid rgba(38,51,41,.25);padding-top:22px}
-.process-card .number{font-family:var(--serif);font-size:40px;color:var(--green)}
-.process-card h3{font-family:var(--serif);font-size:24px;font-weight:400;margin:10px 0}
-.process-card p{font-size:12px;line-height:1.9;color:#697469;max-width:280px}
-/* quote */
-.quote{padding:100px 0;text-align:center}
-.quote blockquote{
-  font-family:var(--serif);font-size:clamp(29px,4.5vw,51px);
-  line-height:1.3;max-width:850px;margin:20px auto;
+
+.product-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
-.quote cite{font-style:normal;color:var(--green);font-size:10px;letter-spacing:2px;text-transform:uppercase}
-/* faq */
-.faq{padding:80px 0;background:var(--paper)}
-.faq-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
-.faq-list{border-top:1px solid var(--line)}
-.faq-item{border-bottom:1px solid var(--line)}
-.faq-question{
-  width:100%;border:0;background:none;text-align:left;padding:21px 0;
-  display:flex;justify-content:space-between;gap:15px;color:var(--ink);
-  font-family:var(--serif);font-size:19px;
+
+.search {
+  padding: 13px 17px;
+  border: 1px solid var(--border);
+  background: transparent;
+  outline: none;
+  border-radius: 3px;
+  width: 240px;
 }
-.faq-answer{display:none;color:#697469;font-size:12px;line-height:1.9;padding:0 25px 20px 0}
-.faq-item.open .faq-answer{display:block}
-.faq-item.open .faq-question span:last-child{transform:rotate(45deg)}
-/* newsletter */
-.newsletter{padding:75px 0;background:var(--green);color:white;text-align:center}
-.newsletter h2{font-family:var(--serif);font-size:clamp(34px,5vw,52px);font-weight:400}
-.newsletter p{font-size:12px;opacity:.85;margin:12px 0 25px}
-.newsletter-form{display:flex;max-width:440px;margin:auto}
-.newsletter-form input{
-  flex:1;min-width:0;border:0;padding:15px;background:white;
-  outline:none;font-size:12px;
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
-.newsletter-form button{
-  border:1px solid var(--ink);background:var(--ink);color:white;
-  padding:0 19px;font-size:10px;letter-spacing:1px;text-transform:uppercase;
+
+.filter-btn {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: 30px;
+  font-size: 11px;
 }
-/* footer */
-.footer{padding:65px 0 25px;background:var(--ink);color:#e9ede5}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:45px;padding-bottom:50px}
-.footer .logo{font-size:28px}
-.footer-about p{font-size:11px;line-height:1.9;color:#aeb9ab;max-width:250px;margin-top:18px}
-.footer h4{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:19px}
-.footer-links{display:grid;gap:13px}
-.footer-links a{font-size:11px;color:#aeb9ab;transition:.2s}
-.footer-links a:hover{color:white}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.15);padding-top:22px;
-  display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;
-  color:#aeb9ab;font-size:10px;
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--dark);
+  color: white;
+  border-color: var(--dark);
 }
-/* modal */
-.modal-backdrop{
-  display:none;position:fixed;inset:0;background:rgba(20,29,22,.6);
-  z-index:100;align-items:center;justify-content:center;padding:20px;
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 20px;
 }
-.modal-backdrop.show{display:flex}
-.modal{
-  background:var(--paper);width:min(490px,100%);padding:35px;
-  position:relative;max-height:90vh;overflow:auto;
+
+.product-card {
+  background: var(--light);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: .3s;
 }
-.modal-close{position:absolute;right:17px;top:14px;background:none;border:0;font-size:24px}
-.modal h3{font-family:var(--serif);font-size:32px;font-weight:400;margin:10px 0}
-.modal p{font-size:12px;line-height:1.9;color:#697469;margin-bottom:18px}
-.modal-price{font-size:18px;font-weight:700;margin:15px 0}
-.toast{
-  position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);
-  background:var(--ink);color:white;padding:13px 20px;font-size:11px;
-  opacity:0;pointer-events:none;transition:.3s;z-index:150;
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(38,51,41,.08);
 }
-.toast.show{opacity:1;transform:translate(-50%,0)}
-/* reveal */
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
-  .reveal{opacity:1;transform:none}
+
+.product-image {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
 }
-/* responsive */
-@media(max-width:900px){
-  .nav-links{gap:17px}
-  .category-grid{grid-template-columns:repeat(2,1fr)}
-  .product-grid{grid-template-columns:repeat(2,1fr)}
-  .intro-grid,.feature-grid{gap:35px}
-  .footer-grid{grid-template-columns:repeat(2,1fr)}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .5s;
 }
-@media(max-width:650px){
-  .container{width:calc(100% - 36px)}
-  .announcement{font-size:9px}
-  .header{height:70px}
-  .logo{font-size:25px}
-  .menu-toggle{display:block}
-  .nav-links{
-    display:none;position:absolute;top:70px;left:0;right:0;
-    background:var(--paper);padding:25px 25px 30px;
-    flex-direction:column;align-items:flex-start;gap:22px;
-    border-bottom:1px solid var(--line);
-  }
-  .nav-links.open{display:flex}
-  .nav-actions{gap:10px}
-  .hero{padding-top:48px}
-  .hero h1{letter-spacing:-2px}
-  .showcase{margin-top:38px}
-  .showcase-card{width:175px;height:240px}
-  .marquee-track{gap:15px;animation-duration:34s}
-  .intro-strip,.categories,.products,.feature,.process,.quote,.faq{padding:65px 0}
-  .intro-grid,.feature-grid,.faq-layout{grid-template-columns:1fr;gap:25px}
-  .section-top{align-items:start;flex-direction:column}
-  .category-card{height:230px}
-  .product-grid{gap:27px 12px}
-  .product-image{height:235px}
-  .product-title{font-size:19px}
-  .product-bottom{align-items:flex-start;flex-direction:column}
-  .product-tools{gap:8px}
-  .search-box{max-width:none;flex-basis:100%}
-  .feature-image{height:350px}
-  .process-grid{grid-template-columns:1fr;gap:28px}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:32px 20px}
-  .footer-about{grid-column:1/-1}
-  .newsletter-form{padding:0 5px}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
 }
-@media(max-width:390px){
-  .product-image{height:195px}
-  .category-card{height:190px}
-  .category-info{left:14px;bottom:15px}
-  .category-info h3{font-size:22px}
+
+.wishlist {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  font-size: 18px;
+}
+
+.product-info { padding: 19px; }
+
+.product-category {
+  font-size: 10px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.product-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 500;
+  margin: 9px 0;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 17px;
+}
+
+.price { font-weight: 700; font-size: 14px; }
+
+.view-btn {
+  background: var(--dark);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 11px;
+  border-radius: 3px;
+}
+
+.view-btn:hover { background: var(--green); }
+
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+  grid-column: 1/-1;
+}
+
+/* BRAND STORY */
+
+.story {
+  padding: 100px 0;
+  background: #DDE4D7;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.story-image {
+  height: 440px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 20px 0;
+}
+
+.story-content p {
+  color: #687366;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* HOW IT WORKS */
+
+.how {
+  padding: 90px 0;
+  background: var(--light);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+
+.step {
+  padding: 35px 25px;
+  border: 1px solid var(--border);
+}
+
+.step-number {
+  font-family: 'Playfair Display', serif;
+  color: var(--green);
+  font-size: 35px;
+}
+
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  margin: 15px 0;
+  font-weight: 500;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* QUOTE */
+
+.quote {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.quote h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 49px);
+  font-weight: 500;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.35;
+}
+
+.quote span {
+  color: var(--green);
+  font-style: italic;
+}
+
+/* FAQ */
+
+.faq {
+  padding: 80px 0;
+  background: var(--light);
+}
+
+.faq-list {
+  max-width: 750px;
+  margin: auto;
+}
+
+details {
+  border-bottom: 1px solid var(--border);
+  padding: 22px 0;
+}
+
+summary {
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+}
+
+details p {
+  padding-top: 15px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+  padding: 85px 20px;
+  text-align: center;
+}
+
+.newsletter h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.newsletter p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.newsletter-form {
+  margin: 25px auto 0;
+  display: flex;
+  max-width: 430px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--border);
+  background: var(--light);
+  outline: none;
+}
+
+.newsletter-form button {
+  background: var(--dark);
+  color: white;
+  border: none;
+  padding: 0 20px;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--dark);
+  color: white;
+  padding: 60px 0 25px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-brand h2 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 3px;
+  font-size: 29px;
+}
+
+.footer-brand p {
+  color: #bac4b6;
+  max-width: 300px;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+
+.footer-column h4 {
+  font-size: 12px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.footer-column a {
+  display: block;
+  color: #bac4b6;
+  font-size: 12px;
+  margin: 13px 0;
+}
+
+.footer-column a:hover { color: white; }
+
+.footer-bottom {
+  border-top: 1px solid #465247;
+  margin-top: 50px;
+  padding-top: 22px;
+  font-size: 11px;
+  color: #bac4b6;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* TOAST */
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--dark);
+  color: white;
+  padding: 15px 22px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .3s;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  .nav-links { gap: 15px; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .story-grid { gap: 30px; }
+}
+
+@media(max-width:600px) {
+  nav { height: 70px; }
+  .logo { font-size: 23px; }
+  .nav-links { display: none; }
+  .hero { padding: 70px 0 45px; }
+  .carousel-card { width: 210px; height: 260px; }
+  .category-grid { gap: 10px; }
+  .category { height: 180px; }
+  .product-grid { grid-template-columns: 1fr; }
+  .product-image { height: 300px; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story-image { height: 300px; }
+  .story-content h2 { font-size: 38px; }
+  .steps { grid-template-columns: 1fr; }
+  .product-tools { align-items: stretch; }
+  .search { width: 100%; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1/-1; }
+  .footer-bottom { flex-direction: column; }
 }
 </style>
 </head>
 
 <body>
-<div class="announcement">
-  A LITTLE MORE BEAUTY IN YOUR EVERYDAY WORK — <span>EXPLORE THE COLLECTION</span>
+
+<div class="container">
+
+<nav>
+  <a href="#" class="logo">ALMAMOON</a>
+
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Shop</a>
+    <a href="#story">Our Story</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <div class="nav-right">
+    <button class="cart" onclick="showToast('Your shopping cart is coming soon.')">
+      BAG (<span id="cartCount">0</span>)
+    </button>
+  </div>
+</nav>
+
 </div>
 
-<header class="header">
-  <div class="container nav">
-    <a href="#" class="logo">ALMAMOON<small>DESIGN STUDIO</small></a>
+<main>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="#collections">Collections</a>
-      <a href="#shop">Shop</a>
-      <a href="#story">Our Story</a>
-      <a href="#faq">FAQ</a>
-    </nav>
+<section class="hero container" id="home">
+  <div class="eyebrow">A little creativity goes a long way</div>
+  <h1>Make your ideas<br>look <em>beautiful.</em></h1>
+  <p>
+    Thoughtfully designed digital templates to help you create,
+    organize and grow your ideas with confidence.
+  </p>
+  <a href="#products" class="primary-btn">EXPLORE COLLECTION</a>
+</section>
 
-    <div class="nav-actions">
-      <button class="icon-btn" aria-label="Search" onclick="document.getElementById('productSearch').focus()">⌕</button>
-      <button class="icon-btn" aria-label="Wishlist" onclick="showToast('Your wishlist is saved in this session.')">♡</button>
-      <button class="icon-btn" aria-label="Cart" onclick="showCart()">♧<span class="cart-count" id="cartCount">0</span></button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+<section class="carousel-section">
+  <div class="track" id="carouselTrack">
+
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Workspace"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=600" alt="Design"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" alt="Writing"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600" alt="Creative art"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600" alt="Office"></div>
+    <div class="carousel-card"><img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600" alt="Notebook"></div>
+
+  </div>
+</section>
+
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">Explore by category</div>
+      <h2>Find your creative corner</h2>
+      <p>Discover templates designed for every part of your journey.</p>
+    </div>
+
+    <div class="category-grid">
+      <a href="#products" class="category">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=700" alt="Instagram">
+        <div class="category-label">Instagram</div>
+      </a>
+      <a href="#products" class="category">
+        <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=700" alt="Pinterest">
+        <div class="category-label">Pinterest</div>
+      </a>
+      <a href="#products" class="category">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700" alt="Business">
+        <div class="category-label">Business</div>
+      </a>
+      <a href="#products" class="category">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700" alt="Branding">
+        <div class="category-label">Branding</div>
+      </a>
     </div>
   </div>
-</header>
+</section>
 
-<main>
-  <section class="hero">
-    <div class="container">
-      <div class="hero-intro reveal">
-        <div class="eyebrow">Thoughtfully designed digital goods</div>
-        <h1>Make your ideas<br>look <em>beautiful.</em></h1>
-        <p class="hero-description">
-          Thoughtful Canva templates and digital resources to help
-          creators, dreamers and small businesses create with confidence.
-        </p>
-        <div class="hero-buttons">
-          <a class="primary-btn" href="#shop">Explore templates <span>↗</span></a>
-          <a class="secondary-btn" href="#story">Discover our studio</a>
-        </div>
+<section class="products" id="products">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <div class="eyebrow">The collection</div>
+      <h2>Designed to inspire</h2>
+      <p>Simple, beautiful and practical digital products.</p>
+    </div>
+
+    <div class="product-tools">
+      <input type="search" class="search" id="searchInput" placeholder="Search templates...">
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="instagram">Instagram</button>
+        <button class="filter-btn" data-filter="pinterest">Pinterest</button>
+        <button class="filter-btn" data-filter="business">Business</button>
       </div>
+    </div>
 
-      <div class="showcase reveal">
-        <div class="marquee">
-          <div class="marquee-track" id="marqueeTrack">
-            <article class="showcase-card">
-              <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=700&q=85" alt="Creative design inspiration">
-              <div class="showcase-overlay"><span>01 / Social media</span><h3>Social Stories</h3></div>
-            </article>
-            <article class="showcase-card">
-              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700&q=85" alt="Travel inspiration">
-              <div class="showcase-overlay"><span>02 / Pinterest</span><h3>Visual Journals</h3></div>
-            </article>
-            <article class="showcase-card">
-              <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700&q=85" alt="Creative workspace">
-              <div class="showcase-overlay"><span>03 / Business</span><h3>Studio Essentials</h3></div>
-            </article>
-            <article class="showcase-card">
-              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=85" alt="Fashion brand inspiration">
-              <div class="showcase-overlay"><span>04 / Branding</span><h3>Brand Mood</h3></div>
-            </article>
-            <article class="showcase-card">
-              <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=700&q=85" alt="Minimal interior">
-              <div class="showcase-overlay"><span>05 / Lifestyle</span><h3>Everyday Edit</h3></div>
-            </article>
-            <article class="showcase-card">
-              <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700&q=85" alt="Writing and planning">
-              <div class="showcase-overlay"><span>06 / Planning</span><h3>Daily Notes</h3></div>
-            </article>
+    <div class="product-grid" id="productGrid">
+
+      <article class="product-card" data-category="instagram" data-name="Minimal Instagram Pack">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=700" alt="Instagram template">
+          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Instagram</div>
+          <h3>Minimal Instagram Pack</h3>
+          <p style="font-size:12px;color:#788174;">Clean and modern social media designs.</p>
+          <div class="product-bottom">
+            <span class="price">$9.00</span>
+            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
           </div>
         </div>
-        <div class="showcase-label"><span>A collection of creative possibilities</span><span>Scroll less. Create more. ↗</span></div>
-      </div>
-    </div>
-  </section>
+      </article>
 
-  <section class="intro-strip">
-    <div class="container intro-grid reveal">
-      <h2>Design that feels<br><em>like you.</em></h2>
-      <p>
-        We believe good design should feel effortless. ALMAMOON brings
-        together carefully crafted digital templates that make your
-        everyday creative work simpler, more thoughtful and more beautiful.
-      </p>
-    </div>
-  </section>
-
-  <section class="categories" id="collections">
-    <div class="container">
-      <div class="section-top reveal">
-        <div><div class="eyebrow">Find your creative corner</div><h2 class="section-heading">Explore collections</h2></div>
-        <a href="#shop" class="text-link">View all products ↗</a>
-      </div>
-
-      <div class="category-grid">
-        <article class="category-card reveal" onclick="filterProducts('Instagram')">
-          <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=700&q=85" alt="Instagram collection">
-          <div class="category-info"><span>01 / Connect</span><h3>Instagram</h3></div>
-        </article>
-        <article class="category-card reveal" onclick="filterProducts('Pinterest')">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700&q=85" alt="Pinterest collection">
-          <div class="category-info"><span>02 / Inspire</span><h3>Pinterest</h3></div>
-        </article>
-        <article class="category-card reveal" onclick="filterProducts('Business')">
-          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700&q=85" alt="Business collection">
-          <div class="category-info"><span>03 / Build</span><h3>Business</h3></div>
-        </article>
-        <article class="category-card reveal" onclick="filterProducts('Branding')">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=85" alt="Branding collection">
-          <div class="category-info"><span>04 / Define</span><h3>Branding</h3></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="products" id="shop">
-    <div class="container">
-      <div class="section-top reveal">
-        <div><div class="eyebrow">The thoughtfully made edit</div><h2 class="section-heading">Made for your next idea.</h2></div>
-        <span class="text-link">New & noteworthy</span>
-      </div>
-
-      <div class="product-tools reveal">
-        <div class="search-box"><input id="productSearch" type="search" placeholder="Search templates..." aria-label="Search products"></div>
-        <button class="filter-btn active" data-filter="All">All</button>
-        <button class="filter-btn" data-filter="Instagram">Instagram</button>
-        <button class="filter-btn" data-filter="Pinterest">Pinterest</button>
-        <button class="filter-btn" data-filter="Business">Business</button>
-        <button class="filter-btn" data-filter="Branding">Branding</button>
-      </div>
-
-      <div class="product-grid" id="productGrid"></div>
-    </div>
-  </section>
-
-  <section class="feature" id="story">
-    <div class="container feature-grid">
-      <div class="feature-image reveal">
-        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1100&q=90" alt="A calm creative workspace">
-      </div>
-      <div class="feature-copy reveal">
-        <div class="eyebrow">A little about us</div>
-        <h2>Less time designing. More time creating.</h2>
-        <p>
-          ALMAMOON is a digital design studio built around one simple idea:
-          creative tools should be beautiful, practical and easy to use.
-          Find a design that fits your vision, personalize it and make it yours.
-        </p>
-        <div class="feature-list">
-          <div class="feature-item"><span class="feature-number">01</span> Thoughtfully designed templates</div>
-          <div class="feature-item"><span class="feature-number">02</span> Easy-to-customize layouts</div>
-          <div class="feature-item"><span class="feature-number">03</span> Made for everyday creativity</div>
+      <article class="product-card" data-category="pinterest" data-name="Pinterest Pin Bundle">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=700" alt="Pinterest templates">
+          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
         </div>
-        <a href="#shop" class="primary-btn">Find your template ↗</a>
+        <div class="product-info">
+          <div class="product-category">Pinterest</div>
+          <h3>Pinterest Pin Bundle</h3>
+          <p style="font-size:12px;color:#788174;">Beautiful pins for your content strategy.</p>
+          <div class="product-bottom">
+            <span class="price">$7.00</span>
+            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="business" data-name="Business Planner">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=700" alt="Business planner">
+          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Business</div>
+          <h3>Business Planner</h3>
+          <p style="font-size:12px;color:#788174;">Organize your work and daily goals.</p>
+          <div class="product-bottom">
+            <span class="price">$12.00</span>
+            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="instagram" data-name="Instagram Story Kit">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700" alt="Story kit">
+          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Instagram</div>
+          <h3>Instagram Story Kit</h3>
+          <p style="font-size:12px;color:#788174;">Creative stories for your brand.</p>
+          <div class="product-bottom">
+            <span class="price">$8.00</span>
+            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="business" data-name="Brand Identity Kit">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=700" alt="Brand identity">
+          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Business</div>
+          <h3>Brand Identity Kit</h3>
+          <p style="font-size:12px;color:#788174;">Build a consistent visual identity.</p>
+          <div class="product-bottom">
+            <span class="price">$15.00</span>
+            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="pinterest" data-name="Pinterest Creator Kit">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=700" alt="Creator kit">
+          <button class="wishlist" onclick="toggleHeart(this)">♡</button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Pinterest</div>
+          <h3>Pinterest Creator Kit</h3>
+          <p style="font-size:12px;color:#788174;">Make your content stand out.</p>
+          <div class="product-bottom">
+            <span class="price">$10.00</span>
+            <button class="view-btn" onclick="showToast('Product details will be available soon.')">VIEW PRODUCT</button>
+          </div>
+        </div>
+      </article>
+
+      <div class="no-results" id="noResults">No products found. Try another search.</div>
+
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-image reveal">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900" alt="Creative workspace">
+    </div>
+
+    <div class="story-content reveal">
+      <div class="eyebrow">A little about us</div>
+      <h2>Creativity made simple.</h2>
+      <p>
+        ALMAMOON is a digital design space built for people who love
+        creating beautiful things. Our goal is to make design easier
+        with practical, thoughtful and easy-to-use templates.
+      </p>
+      <a href="#products" class="primary-btn">DISCOVER OUR WORK</a>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">Simple process</div>
+      <h2>How it works</h2>
+      <p>Your next beautiful design is just a few steps away.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-number">01</div>
+        <h3>Choose</h3>
+        <p>Explore our collection and find a template that suits your needs.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">02</div>
+        <h3>Purchase</h3>
+        <p>Complete your order through our available payment process.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">03</div>
+        <h3>Create</h3>
+        <p>Access your template and personalize it for your own brand.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="process">
-    <div class="container">
-      <div class="eyebrow reveal">Simple by design</div>
-      <h2 class="section-heading reveal">Your ideas, in three steps.</h2>
-      <div class="process-grid">
-        <article class="process-card reveal"><div class="number">01</div><h3>Find your favourite</h3><p>Explore the collection and choose a template that matches your style and needs.</p></article>
-        <article class="process-card reveal"><div class="number">02</div><h3>Make it yours</h3><p>Open your Canva template link and personalize the design with your own content.</p></article>
-        <article class="process-card reveal"><div class="number">03</div><h3>Create & share</h3><p>Download your finished design and bring your ideas into the world.</p></article>
-      </div>
-    </div>
-  </section>
+<section class="quote">
+  <div class="eyebrow">A thought to remember</div>
+  <h2>"Good design is not just what you see. It's how it makes you <span>feel.</span>"</h2>
+</section>
 
-  <section class="quote">
-    <div class="container reveal">
-      <div class="eyebrow">A note from our studio</div>
-      <blockquote>“Beautiful things happen when thoughtful design meets a little imagination.”</blockquote>
-      <cite>— The ALMAMOON philosophy</cite>
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Need help?</div>
+      <h2>Frequently asked questions</h2>
     </div>
-  </section>
 
-  <section class="faq" id="faq">
-    <div class="container faq-layout">
-      <div class="reveal">
-        <div class="eyebrow">Good to know</div>
-        <h2 class="section-heading">A few helpful answers.</h2>
-        <p style="font-size:12px;color:#697469;line-height:1.9;margin-top:18px">Have a question before choosing your template? Start here.</p>
-      </div>
-      <div class="faq-list reveal">
-        <div class="faq-item"><button class="faq-question">What do I receive after purchasing? <span>＋</span></button><div class="faq-answer">You will receive the digital files or access instructions specified on the individual product page. Check each listing before purchase.</div></div>
-        <div class="faq-item"><button class="faq-question">Can I edit the templates? <span>＋</span></button><div class="faq-answer">Templates marked as editable are designed to be customized in Canva. You may need a Canva account. Check the product description for any plan or asset requirements.</div></div>
-        <div class="faq-item"><button class="faq-question">Are these physical products? <span>＋</span></button><div class="faq-answer">No. ALMAMOON products are digital downloads. Nothing physical will be shipped.</div></div>
-        <div class="faq-item"><button class="faq-question">Can I resell the templates? <span>＋</span></button><div class="faq-answer">No. Unless a product's license explicitly says otherwise, templates are for your own use and may not be resold or redistributed.</div></div>
-      </div>
+    <div class="faq-list">
+      <details>
+        <summary>What are digital templates?</summary>
+        <p>Digital templates are ready-made designs that you can customize and use for your own projects.</p>
+      </details>
+      <details>
+        <summary>Do I need design experience?</summary>
+        <p>No. Our goal is to make templates simple and easy to customize.</p>
+      </details>
+      <details>
+        <summary>Can I edit Canva templates?</summary>
+        <p>Templates with a compatible Canva access link can be edited in Canva. Check each product's description before purchasing.</p>
+      </details>
+      <details>
+        <summary>How will I receive my purchase?</summary>
+        <p>Delivery instructions will be provided on each product's purchase page once the store's checkout system is set up.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="newsletter">
-    <div class="container reveal">
-      <div class="eyebrow" style="color:#e5eddf">A little inspiration in your inbox</div>
-      <h2>Stay in the creative loop.</h2>
-      <p>New releases, design inspiration and thoughtful resources.</p>
-      <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="Your email address" required aria-label="Email address">
-        <button type="submit">Subscribe ↗</button>
-      </form>
-    </div>
-  </section>
+<section class="newsletter">
+  <div class="eyebrow">Stay connected</div>
+  <h2>A little inspiration, delivered.</h2>
+  <p>Get updates about new collections and creative resources.</p>
+
+  <form class="newsletter-form" id="newsletterForm">
+    <input type="email" placeholder="Your email address" required>
+    <button type="submit">SUBSCRIBE</button>
+  </form>
+</section>
+
 </main>
 
-<footer class="footer">
+<footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-about">
-        <a href="#" class="logo">ALMAMOON<small>DESIGN STUDIO</small></a>
-        <p>Thoughtful digital templates for people with ideas worth sharing. Make your everyday creative work a little more beautiful.</p>
+
+      <div class="footer-brand">
+        <h2>ALMAMOON</h2>
+        <p>
+          Thoughtful digital templates for creative minds.
+          Make your ideas look beautiful.
+        </p>
       </div>
-      <div><h4>Explore</h4><div class="footer-links"><a href="#shop">All templates</a><a href="#collections">Collections</a><a href="#shop">Best sellers</a></div></div>
-      <div><h4>Studio</h4><div class="footer-links"><a href="#story">Our story</a><a href="#faq">FAQ</a><a href="mailto:hello@almamoon.com">Contact</a></div></div>
-      <div><h4>Follow along</h4><div class="footer-links"><a href="#">Instagram ↗</a><a href="#">Pinterest ↗</a><a href="#">Facebook ↗</a></div></div>
+
+      <div class="footer-column">
+        <h4>EXPLORE</h4>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Shop</a>
+        <a href="#story">Our Story</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>HELP</h4>
+        <a href="#faq">FAQs</a>
+        <a href="mailto:hello@almamoon.com">Contact</a>
+        <a href="#faq">How it works</a>
+      </div>
+
     </div>
-    <div class="footer-bottom"><span>© 2026 ALMAMOON DESIGN STUDIO</span><span>Made with intention. Designed for you.</span></div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ALMAMOON. All rights reserved.</span>
+      <span>Designed with creativity.</span>
+    </div>
   </div>
 </footer>
 
-<div class="modal-backdrop" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
-    <div class="eyebrow" id="modalCategory">Digital template</div>
-    <h3 id="modalTitle">Product title</h3>
-    <p id="modalDescription"></p>
-    <div class="modal-price" id="modalPrice"></div>
-    <button class="primary-btn" id="modalAdd">Add to cart ↗</button>
-  </div>
-</div>
-<div class="toast" id="toast" role="status"></div>
+<div class="toast" id="toast"></div>
 
 <script>
-const products = [
-  {id:1,title:"The Social Edit",category:"Instagram",price:"$12",badge:"Bestseller",image:"https://images.unsplash.com/photo-1531058020387-3be344556be6?w=900&q=85",description:"A versatile collection of social media layouts for creators and small businesses. Replace the sample text and images with your own."},
-  {id:2,title:"Pinterest Moodboard",category:"Pinterest",price:"$9",badge:"New",image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=85",description:"Create a consistent Pinterest presence with carefully composed visual layouts and pin designs."},
-  {id:3,title:"The Brand Starter",category:"Branding",price:"$18",badge:"Popular",image:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=85",description:"A brand identity starter kit to help you organize your visual direction and brand presentation."},
-  {id:4,title:"Business Essentials",category:"Business",price:"$15",badge:"Featured",image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=85",description:"Useful business templates for presenting your services, planning your content and communicating clearly."},
-  {id:5,title:"Daily Story Pack",category:"Instagram",price:"$10",badge:"New",image:"https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=900&q=85",description:"A collection of story layouts for announcements, daily updates and engaging social content."},
-  {id:6,title:"Creative Pin Collection",category:"Pinterest",price:"$11",badge:"Popular",image:"https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=85",description:"A coordinated set of Pinterest-inspired layouts to present your ideas and content beautifully."}
-];
 
-let activeFilter = "All";
-let cart = [];
-let selectedProduct = null;
+/* DUPLICATE CAROUSEL CONTENT FOR SEAMLESS LOOP */
+
+const track = document.getElementById('carouselTrack');
+track.innerHTML += track.innerHTML;
+
+/* FILTER PRODUCTS */
+
+const filterButtons = document.querySelectorAll('.filter-btn');
+const productCards = document.querySelectorAll('.product-card');
+const searchInput = document.getElementById('searchInput');
+const noResults = document.getElementById('noResults');
+
+let activeFilter = 'all';
+
+function updateProducts() {
+  const searchTerm = searchInput.value.toLowerCase();
+  let visibleCount = 0;
+
+  productCards.forEach(card => {
+    const category = card.dataset.category;
+    const name = card.dataset.name.toLowerCase();
+
+    const matchesFilter =
+      activeFilter === 'all' || category === activeFilter;
+
+    const matchesSearch = name.includes(searchTerm);
+
+    if (matchesFilter && matchesSearch) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+}
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    activeFilter = button.dataset.filter;
+    updateProducts();
+  });
+});
+
+searchInput.addEventListener('input', updateProducts);
+
+/* WISHLIST */
+
+function toggleHeart(button) {
+  button.textContent = button.textContent === '♡' ? '♥' : '♡';
+}
+
+/* TOAST */
+
 let toastTimer;
 
-const productGrid = document.getElementById("productGrid");
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
 
-function renderProducts(){
-  const query = document.getElementById("productSearch").value.toLowerCase().trim();
-  const filtered = products.filter(p =>
-    (activeFilter === "All" || p.category === activeFilter) &&
-    (p.title.toLowerCase().includes(query) || p.category.toLowerCase().includes(query))
-  );
-
-  productGrid.innerHTML = "";
-
-  if(!filtered.length){
-    productGrid.innerHTML = '<div class="no-results">No templates found. Try another search.</div>';
-    return;
-  }
-
-  filtered.forEach(p => {
-    const card = document.createElement("article");
-    card.className = "product-card reveal";
-    card.innerHTML = `
-      <div class="product-image">
-        <img src="${p.image}" alt="${p.title}" loading="lazy">
-        <span class="product-badge">${p.badge}</span>
-        <button class="wishlist" aria-label="Add ${p.title} to wishlist" aria-pressed="false">♡</button>
-      </div>
-      <div class="product-info">
-        <div class="product-category">${p.category}</div>
-        <h3 class="product-title">${p.title}</h3>
-        <div class="product-bottom">
-          <span class="price">${p.price}</span>
-          <button class="add-btn" data-product="${p.id}">View product ↗</button>
-        </div>
-      </div>`;
-    productGrid.appendChild(card);
-
-    card.querySelector(".wishlist").addEventListener("click",e=>{
-      const btn=e.currentTarget;
-      btn.classList.toggle("active");
-      btn.setAttribute("aria-pressed",btn.classList.contains("active"));
-      btn.textContent=btn.classList.contains("active")?"♥":"♡";
-      showToast(btn.classList.contains("active")?"Added to wishlist":"Removed from wishlist");
-    });
-
-    card.querySelector(".add-btn").addEventListener("click",()=>openProduct(p.id));
-  });
-
-  observeReveals();
-}
-
-function setFilter(filter){
-  activeFilter=filter;
-  document.querySelectorAll(".filter-btn").forEach(btn=>{
-    btn.classList.toggle("active",btn.dataset.filter===filter);
-  });
-  renderProducts();
-}
-
-function filterProducts(category){
-  setFilter(category);
-  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
-}
-
-document.querySelectorAll(".filter-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>setFilter(btn.dataset.filter));
-});
-document.getElementById("productSearch").addEventListener("input",renderProducts);
-
-function openProduct(id){
-  selectedProduct=products.find(p=>p.id===id);
-  if(!selectedProduct)return;
-  document.getElementById("modalCategory").textContent=selectedProduct.category+" / Digital template";
-  document.getElementById("modalTitle").textContent=selectedProduct.title;
-  document.getElementById("modalDescription").textContent=selectedProduct.description;
-  document.getElementById("modalPrice").textContent=selectedProduct.price;
-  document.getElementById("modalAdd").onclick=()=>{addToCart(selectedProduct);closeModal()};
-  document.getElementById("productModal").classList.add("show");
-}
-
-function closeModal(){document.getElementById("productModal").classList.remove("show")}
-document.getElementById("productModal").addEventListener("click",e=>{
-  if(e.target.id==="productModal")closeModal();
-});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-
-function addToCart(product){
-  cart.push(product);
-  document.getElementById("cartCount").textContent=cart.length;
-  showToast(product.title+" added to your demo cart");
-}
-
-function showCart(){
-  if(!cart.length){showToast("Your cart is empty.");return}
-  const names=cart.map(p=>p.title).join(", ");
-  showToast("Demo cart: "+names);
-}
-
-function showToast(message){
-  const toast=document.getElementById("toast");
-  toast.textContent=message;
-  toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>toast.classList.remove("show"),2800);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2600);
 }
 
-/* FAQ accordion */
-document.querySelectorAll(".faq-question").forEach(button=>{
-  button.addEventListener("click",()=>{
-    button.parentElement.classList.toggle("open");
-  });
-});
+/* NEWSLETTER DEMO */
 
-/* Mobile menu */
-document.getElementById("menuToggle").addEventListener("click",()=>{
-  document.getElementById("navLinks").classList.toggle("open");
-});
-document.querySelectorAll(".nav-links a").forEach(link=>{
-  link.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open"));
-});
-
-/* Newsletter demo */
-document.getElementById("newsletterForm").addEventListener("submit",e=>{
+document.getElementById('newsletterForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  showToast("Thanks! Connect an email service to collect subscribers.");
-  e.target.reset();
+  showToast('Thank you for subscribing!');
+  this.reset();
 });
 
-/* Reveal animations */
-let revealObserver;
-function observeReveals(){
-  if(!("IntersectionObserver" in window)){
-    document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
-    return;
-  }
-  if(!revealObserver){
-    revealObserver=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },{threshold:.12});
-  }
-  document.querySelectorAll(".reveal:not(.visible)").forEach(el=>revealObserver.observe(el));
-}
+/* SCROLL REVEAL */
 
-/* Duplicate carousel cards for a seamless continuous loop */
-const track=document.getElementById("marqueeTrack");
-const originalCards=[...track.children];
-originalCards.forEach(card=>{
-  const clone=card.cloneNode(true);
-  clone.setAttribute("aria-hidden","true");
-  track.appendChild(clone);
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+  observer.observe(element);
 });
 
-renderProducts();
-observeReveals();
 </script>
+
 </body>
 </html>
