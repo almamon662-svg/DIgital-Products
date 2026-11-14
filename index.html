@@ -6,410 +6,1239 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Almamoon — Continue with Almamoon</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#f4f3f0;--paper:#fff;--ink:#181818;--muted:#777873;--line:#e6e4df;--soft:#ecebe7}
+:root{
+  --bg:#f4f3f0;
+  --paper:#fff;
+  --ink:#181818;
+  --muted:#777873;
+  --line:#e6e4df;
+  --soft:#ecebe7;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;transition:.25s}
-body.dark{--bg:#171817;--paper:#222421;--ink:#f2f0eb;--muted:#aaa9a2;--line:#393a36;--soft:#2c2e2a}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"DM Sans",sans-serif;
+  transition:.25s;
+}
+body.dark{
+  --bg:#171817;
+  --paper:#222421;
+  --ink:#f2f0eb;
+  --muted:#aaa9a2;
+  --line:#393a36;
+  --soft:#2c2e2a;
+}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{cursor:pointer}
-.topbar{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 4.2%;border-bottom:1px solid var(--line);background:var(--bg);position:relative;z-index:10}
-.brand{font-size:13px;font-weight:700;display:flex;gap:8px;align-items:center}
-.brand-mark{width:18px;height:18px;background:var(--ink);color:var(--bg);border-radius:6px;display:grid;place-items:center}
-.hamburger{border:0;background:none;color:var(--ink);font-size:20px}
+
+.topbar{
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 4.2%;
+  border-bottom:1px solid var(--line);
+  background:var(--bg);
+  position:relative;
+  z-index:10;
+}
+.brand{
+  font-size:13px;
+  font-weight:700;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.brand-mark{
+  width:18px;
+  height:18px;
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:6px;
+  display:grid;
+  place-items:center;
+}
+.hamburger{
+  border:0;
+  background:none;
+  color:var(--ink);
+  font-size:20px;
+}
 .right-tools{display:flex;align-items:center;gap:15px}
 .toplink{font-size:10px;color:var(--muted);text-decoration:underline}
 .mode{border:1px solid var(--line);border-radius:30px;padding:4px}
-.mode button{border:0;background:transparent;color:var(--muted);border-radius:50%;width:25px;height:25px}
+.mode button{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  border-radius:50%;
+  width:25px;
+  height:25px;
+}
 .mode button.active{background:var(--ink);color:var(--bg)}
 .mode-label{font-size:8px;color:var(--muted)}
+
 main{padding:0 1.2%}
-.hero{min-height:600px;background:var(--paper);border-radius:17px;margin:10px auto 0;max-width:1500px;position:relative;overflow:hidden;padding:38px 3.2% 28px}
+.hero{
+  min-height:600px;
+  background:var(--paper);
+  border-radius:17px;
+  margin:10px auto 0;
+  max-width:1500px;
+  position:relative;
+  overflow:hidden;
+  padding:38px 3.2% 28px;
+}
 .hero-heading{position:relative;z-index:3;max-width:390px}
-.eyebrow{font-size:9px;text-transform:uppercase;letter-spacing:.19em;color:var(--muted);margin-bottom:15px}
-.hero h1{font-size:clamp(34px,4.2vw,58px);font-weight:500;line-height:1.02;letter-spacing:-.065em;margin:0}
-.hero h1 em{font-family:"Playfair Display",serif;font-weight:500}
-.hero-sub{font-size:11px;color:var(--muted);max-width:270px;line-height:1.7}
-.counter{position:absolute;right:34%;top:40px;color:#aaa;font-size:10px}
-.hero-tags{position:absolute;right:3.4%;top:27px;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.pill{border:1px solid var(--ink);border-radius:20px;padding:5px 11px;font-size:9px}
+.eyebrow{
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.19em;
+  color:var(--muted);
+  margin-bottom:15px;
+}
+.hero h1{
+  font-size:clamp(34px,4.2vw,58px);
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-.065em;
+  margin:0;
+}
+.hero h1 em{
+  font-family:"Playfair Display",serif;
+  font-weight:500;
+}
+.hero-sub{
+  font-size:11px;
+  color:var(--muted);
+  max-width:270px;
+  line-height:1.7;
+}
+.counter{
+  position:absolute;
+  right:34%;
+  top:40px;
+  color:#aaa;
+  font-size:10px;
+}
+.hero-tags{
+  position:absolute;
+  right:3.4%;
+  top:27px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:4px;
+}
+.pill{
+  border:1px solid var(--ink);
+  border-radius:20px;
+  padding:5px 11px;
+  font-size:9px;
+}
 .stage{height:390px;position:relative;margin-top:8px}
-.product-card{position:absolute;border-radius:17px;overflow:hidden;box-shadow:0 18px 55px rgba(35,33,28,.12);transition:.4s;cursor:pointer}
-.product-card:hover{transform:translateY(-10px) scale(1.015);z-index:7!important}
-.art{height:100%;width:100%;position:relative;overflow:hidden}
-.art:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));z-index:1}
-.product-card .meta{position:absolute;left:15px;bottom:12px;color:white;z-index:2}
+.product-card{
+  position:absolute;
+  border-radius:17px;
+  overflow:hidden;
+  box-shadow:0 18px 55px rgba(35,33,28,.12);
+  transition:.4s;
+  cursor:pointer;
+}
+.product-card:hover{
+  transform:translateY(-10px) scale(1.015);
+  z-index:7!important;
+}
+.art{
+  height:100%;
+  width:100%;
+  position:relative;
+  overflow:hidden;
+}
+.art:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
+  z-index:1;
+  pointer-events:none;
+}
+.art img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.shape{
+  position:absolute;
+  width:65%;
+  height:78%;
+  left:17%;
+  top:8%;
+  background:#eee9df;
+  color:#333;
+  padding:15px;
+  box-shadow:10px 18px 30px #2225;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.shape b{
+  font:500 clamp(15px,2.5vw,28px)/1 "Playfair Display",serif;
+}
+.shape i{font-size:7px;letter-spacing:.15em;font-style:normal}
+.meta{
+  position:absolute;
+  left:15px;
+  bottom:12px;
+  color:white;
+  z-index:2;
+  right:8px;
+}
 .meta small{display:block;font-size:8px;letter-spacing:.12em}
-.meta strong{display:block;font:500 20px "Playfair Display",serif;margin:5px 0}
+.meta strong{
+  display:block;
+  font:500 20px "Playfair Display",serif;
+  margin:5px 0;
+}
 .meta span{font-size:8px}
+
 .card-one{width:18%;height:205px;left:2%;top:96px;z-index:1}
 .card-two{width:21%;height:275px;left:16%;top:75px;z-index:2}
 .card-three{width:29%;height:330px;left:36%;top:24px;z-index:4}
 .card-four{width:21%;height:245px;left:62%;top:100px;z-index:3}
 .card-five{width:17%;height:190px;right:1%;top:110px;z-index:1}
+
 .art-template{background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b)}
 .art-social{background:linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68)}
 .art-brand{background:linear-gradient(125deg,#697b79,#c5c4b7,#6d7770)}
 .art-ebook{background:linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a)}
 .art-presentation{background:linear-gradient(130deg,#9caaaf,#4f6975,#253a45)}
-.shape{position:absolute;width:65%;height:78%;left:17%;top:8%;background:#eee9df;color:#333;padding:15px;box-shadow:10px 18px 30px #2225;z-index:1;display:flex;flex-direction:column;justify-content:space-between}
-.shape b{font:500 clamp(15px,2.5vw,28px)/1 "Playfair Display",serif}
-.shape i{font-size:7px;letter-spacing:.15em;font-style:normal}
-.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:20px;position:relative;z-index:5;margin:4px 1% 0}
-.hero-bottom p{font-size:9px;line-height:1.6;color:var(--muted);max-width:280px}
+
+.hero-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  position:relative;
+  z-index:5;
+  margin:4px 1% 0;
+}
+.hero-bottom p{
+  font-size:9px;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:280px;
+}
 .hero-bottom strong{font-size:22px;color:var(--ink)}
-.contact-btn{background:var(--ink);color:var(--bg);border:0;border-radius:30px;padding:10px 17px;font-size:9px}
-.catalog{max-width:1250px;margin:80px auto;padding:0 3.2%}
-.catalog-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}
-.catalog h2{font:500 clamp(28px,3vw,40px) "Playfair Display",serif;margin:0}
-.catalog-head p{font-size:11px;color:var(--muted);max-width:300px}
-.catalog-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
+.contact-btn{
+  background:var(--ink);
+  color:var(--bg);
+  border:0;
+  border-radius:30px;
+  padding:10px 17px;
+  font-size:9px;
+}
+
+/* TOP 5 SECTION */
+.featured-section{
+  max-width:1250px;
+  margin:65px auto 0;
+  padding:0 3.2%;
+}
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:20px;
+  margin-bottom:22px;
+}
+.section-heading h2{
+  font:500 clamp(28px,3vw,40px) "Playfair Display",serif;
+  margin:0;
+}
+.section-heading p{
+  font-size:11px;
+  color:var(--muted);
+  max-width:300px;
+  line-height:1.6;
+}
+
+/* CATEGORY PRODUCT SECTION */
+.catalog{
+  max-width:1250px;
+  margin:75px auto;
+  padding:0 3.2%;
+  display:none;
+}
+.catalog.visible{display:block}
+.catalog-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:22px;
+  gap:20px;
+}
+.catalog h2{
+  font:500 clamp(28px,3vw,40px) "Playfair Display",serif;
+  margin:0;
+}
+.catalog-head p{
+  font-size:11px;
+  color:var(--muted);
+  max-width:300px;
+  line-height:1.6;
+}
+.catalog-tools{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:20px;
+}
 .filters{display:flex;gap:7px;flex-wrap:wrap}
-.filter{border:1px solid var(--line);background:transparent;color:var(--muted);padding:8px 13px;border-radius:25px;font-size:9px}
-.filter.active,.filter:hover{background:var(--ink);color:var(--bg)}
-.search{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:10px 13px;border-radius:25px;font-size:10px;width:220px}
-.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.product{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.25s}
+.filter{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--muted);
+  padding:8px 13px;
+  border-radius:25px;
+  font-size:9px;
+}
+.filter.active,.filter:hover{
+  background:var(--ink);
+  color:var(--bg);
+}
+.search{
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--ink);
+  padding:10px 13px;
+  border-radius:25px;
+  font-size:10px;
+  width:220px;
+}
+
+/* PRODUCT CARDS */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.product{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  transition:.25s;
+}
 .product:hover{transform:translateY(-5px)}
-.product-art{height:180px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b)}
-.product-art img{width:100%;height:100%;object-fit:cover}
-.product-art .mini{width:54%;height:76%;background:#f3eee7;color:#292723;padding:14px;box-shadow:8px 12px 25px #0003;display:flex;flex-direction:column;justify-content:space-between}
+.product-art{
+  height:210px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:var(--soft);
+}
+.product-art img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:8px;
+}
+.product-art .mini{
+  width:54%;
+  height:76%;
+  background:#f3eee7;
+  color:#292723;
+  padding:14px;
+  box-shadow:8px 12px 25px #0003;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
 .mini small{font-size:6px;letter-spacing:.15em}
 .mini b{font:500 21px "Playfair Display",serif}
 .mini span{font-size:7px}
 .product-info{padding:13px}
-.product-info h3{font-size:11px;margin:0 0 6px}
-.product-info p{font-size:9px;color:var(--muted);line-height:1.5}
-.product-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:12px;padding-top:10px;gap:5px}
+.product-info h3{font-size:11px;margin:0}
+.product-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid var(--line);
+  margin-top:12px;
+  padding-top:10px;
+  gap:5px;
+}
 .price{font-size:11px;font-weight:600}
-.add{border:0;background:var(--ink);color:var(--bg);border-radius:20px;padding:8px 11px;font-size:8px}
-.about{max-width:1250px;margin:90px auto 70px;padding:0 3.2%}
-.about-box{background:var(--soft);border-radius:15px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:30px}
-.about h2{font:500 clamp(28px,3vw,42px) "Playfair Display",serif;margin:0}
-.about p{font-size:11px;line-height:1.7;color:var(--muted);max-width:430px}
-footer{border-top:1px solid var(--line);padding:25px 4.2%;display:flex;justify-content:space-between;color:var(--muted);font-size:9px}
+.add{
+  border:0;
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:20px;
+  padding:8px 11px;
+  font-size:8px;
+}
+.empty-message{
+  grid-column:1/-1;
+  color:var(--muted);
+  font-size:12px;
+  padding:25px 0;
+}
+.back-button{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  border-radius:25px;
+  padding:8px 13px;
+  font-size:9px;
+  margin-bottom:18px;
+}
+
+.about{
+  max-width:1250px;
+  margin:90px auto 70px;
+  padding:0 3.2%;
+}
+.about-box{
+  background:var(--soft);
+  border-radius:15px;
+  padding:45px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+.about h2{
+  font:500 clamp(28px,3vw,42px) "Playfair Display",serif;
+  margin:0;
+}
+.about p{
+  font-size:11px;
+  line-height:1.7;
+  color:var(--muted);
+  max-width:430px;
+}
+footer{
+  border-top:1px solid var(--line);
+  padding:25px 4.2%;
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:9px;
+}
 footer div:last-child{display:flex;gap:18px}
-.cart-panel{position:fixed;right:0;top:0;bottom:0;width:min(380px,100%);background:var(--paper);z-index:20;box-shadow:0 18px 55px #0002;padding:24px;transform:translateX(105%);transition:.3s;display:flex;flex-direction:column}
+
+/* CART */
+.cart-panel{
+  position:fixed;
+  right:0;
+  top:0;
+  bottom:0;
+  width:min(380px,100%);
+  background:var(--paper);
+  z-index:20;
+  box-shadow:0 18px 55px #0002;
+  padding:24px;
+  transform:translateX(105%);
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
 .cart-panel.open{transform:translateX(0)}
-.cart-overlay{position:fixed;inset:0;background:#0007;z-index:19;opacity:0;pointer-events:none}
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  background:#0007;
+  z-index:19;
+  opacity:0;
+  pointer-events:none;
+}
 .cart-overlay.open{opacity:1;pointer-events:auto}
-.cart-head{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:15px}
-.cart-head h3{font:500 23px "Playfair Display",serif;margin:0}
+.cart-head{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  padding-bottom:15px;
+}
+.cart-head h3{
+  font:500 23px "Playfair Display",serif;
+  margin:0;
+}
 .close{border:0;background:none;color:var(--ink);font-size:23px}
 .cart-list{flex:1;overflow:auto}
-.cart-item{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-size:11px;gap:10px}
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+  font-size:11px;
+  gap:10px;
+}
 .cart-item small{display:block;color:var(--muted);margin-top:5px}
-.remove{border:0;background:none;color:var(--muted);font-size:9px;text-decoration:underline}
+.remove{
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:9px;
+  text-decoration:underline;
+}
 .cart-foot{border-top:1px solid var(--line);padding-top:15px}
 .total{display:flex;justify-content:space-between;margin-bottom:14px}
-.checkout{width:100%;border:0;background:var(--ink);color:var(--bg);border-radius:25px;padding:13px;font-size:9px}
+.checkout{
+  width:100%;
+  border:0;
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:25px;
+  padding:13px;
+  font-size:9px;
+}
 .cart-note{font-size:9px;color:var(--muted);line-height:1.5}
-@media(max-width:900px){.product-grid{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:900px){
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+}
 @media(max-width:600px){
-.hero{min-height:650px;padding:30px 18px 22px}
-.hero h1{font-size:40px}
-.stage{height:360px;margin-top:25px}
-.card-one{width:37%;height:150px;left:-3%;top:150px}
-.card-two{width:43%;height:205px;left:10%;top:110px}
-.card-three{width:54%;height:270px;left:34%;top:25px}
-.card-four{width:42%;height:185px;left:59%;top:160px}
-.card-five{display:none}
-.catalog{margin:60px auto;padding:0 15px}
-.catalog-head{display:block}
-.catalog-tools{display:block}
-.filters{margin-bottom:12px}
-.search{width:100%}
-.product-grid{gap:10px}
-.product-art{height:145px}
-.about-box{padding:28px 22px;display:block}
-footer{padding:22px 17px;flex-direction:column;gap:15px}
+  .topbar{padding:0 15px}
+  .hero{min-height:650px;padding:30px 18px 22px}
+  .hero h1{font-size:40px}
+  .stage{height:360px;margin-top:25px}
+  .card-one{width:37%;height:150px;left:-3%;top:150px}
+  .card-two{width:43%;height:205px;left:10%;top:110px}
+  .card-three{width:54%;height:270px;left:34%;top:25px}
+  .card-four{width:42%;height:185px;left:59%;top:160px}
+  .card-five{display:none}
+  .hero-tags{top:20px;right:15px}
+  .counter{right:30%;top:20px}
+  .meta{left:9px;bottom:8px}
+  .meta strong{font-size:15px}
+  .meta small,.meta span{font-size:7px}
+  .featured-section{margin:50px auto 0;padding:0 15px}
+  .section-heading{display:block}
+  .section-heading p{margin-top:10px}
+  .catalog{margin:60px auto;padding:0 15px}
+  .catalog-head{display:block}
+  .catalog-head p{margin-top:10px}
+  .catalog-tools{display:block}
+  .filters{margin-bottom:12px}
+  .search{width:100%}
+  .product-grid{gap:10px}
+  .product-art{height:145px}
+  .product-info{padding:10px}
+  .product-info h3{font-size:10px;line-height:1.5}
+  .add{padding:7px 9px}
+  .about-box{padding:28px 22px;display:block}
+  footer{padding:22px 17px;flex-direction:column;gap:15px}
 }
 </style>
 </head>
+
 <body>
 
 <header class="topbar">
-<button class="hamburger" onclick="jumpToCatalog()">☰</button>
-<a class="brand" href="#"><span class="brand-mark">A</span> Almamoon</a>
-<div class="right-tools">
-<a class="toplink" href="#faq">FAQs</a>
-<div class="mode">
-<button id="lightBtn" class="active" onclick="setTheme(false)">☼</button>
-<button id="darkBtn" onclick="setTheme(true)">☾</button>
-</div>
-<span class="mode-label" id="modeLabel">light mode</span>
-<button class="hamburger" onclick="openCart()">♧ <sup id="cartCount">0</sup></button>
-</div>
+  <button class="hamburger" onclick="jumpToCatalog()">☰</button>
+  <a class="brand" href="#"><span class="brand-mark">A</span> Almamoon</a>
+
+  <div class="right-tools">
+    <a class="toplink" href="#faq">FAQs</a>
+    <div class="mode">
+      <button id="lightBtn" class="active" onclick="setTheme(false)">☼</button>
+      <button id="darkBtn" onclick="setTheme(true)">☾</button>
+    </div>
+    <span class="mode-label" id="modeLabel">light mode</span>
+    <button class="hamburger" onclick="openCart()">♧ <sup id="cartCount">0</sup></button>
+  </div>
 </header>
 
 <main>
-<section class="hero">
-<div class="hero-heading">
-<div class="eyebrow">A curated digital collection</div>
-<h1><em>Continue</em><br>with <em>Almamoon</em></h1>
-<p class="hero-sub">Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point.</p>
-</div>
-<div class="counter">01/05</div>
-<div class="hero-tags">
-<span class="pill">Creative tools</span>
-<span class="pill">Digital goods</span>
-</div>
-<div class="stage">
-<article class="product-card card-one" onclick="jumpToCatalog()">
-<div class="art art-template"><div class="shape"><i>ALMAMOON STUDIO</i><b>Simple<br>living.</b><i>THE BRAND COLLECTION</i></div></div>
-<div class="meta"><small>01 / Templates</small><strong>Brand kit</strong><span>Ready to customise</span></div>
-</article>
-<article class="product-card card-two" onclick="jumpToCatalog()">
-<div class="art art-social"><div class="shape"><i>THE SOCIAL EDIT</i><b>Make<br>some noise.</b><i>POST · SHARE · GROW</i></div></div>
-<div class="meta"><small>02 / Social media</small><strong>Social studio</strong><span>Content made simple</span></div>
-</article>
-<article class="product-card card-three" onclick="jumpToCatalog()">
-<div class="art art-brand"><div class="shape"><i>ALMAMOON / EDITION 01</i><b>Creative<br>by nature.</b><i>DESIGN YOUR NEXT CHAPTER</i></div></div>
-<div class="meta"><small>03 / Featured collection</small><strong>Digital templates</strong><span>Curated for modern creators</span></div>
-</article>
-<article class="product-card card-four" onclick="jumpToCatalog()">
-<div class="art art-ebook"><div class="shape"><i>A LITTLE GUIDE</i><b>Find your<br>focus.</b><i>THE CREATOR'S HANDBOOK</i></div></div>
-<div class="meta"><small>04 / E-books</small><strong>Creator guides</strong><span>Ideas worth keeping</span></div>
-</article>
-<article class="product-card card-five" onclick="jumpToCatalog()">
-<div class="art art-presentation"><div class="shape"><i>THE PRESENTATION EDIT</i><b>Make it<br>matter.</b></div></div>
-<div class="meta"><small>05 / Business</small><strong>Pitch decks</strong><span>Present with confidence</span></div>
-</article>
-</div>
-<div class="hero-bottom">
-<p><strong>Almamoon</strong><br>A growing collection for your next big idea.</p>
-<button class="contact-btn" onclick="jumpToCatalog()">Explore products ↗</button>
-</div>
-</section>
 
-<section class="catalog" id="catalog">
-<div class="catalog-head">
-<div><div class="eyebrow">The Almamoon edit</div><h2>Find your next favourite.</h2></div>
-<p>Explore practical, beautifully designed digital products made to help your ideas take shape.</p>
-</div>
-<div class="catalog-tools">
-<div class="filters">
-<button class="filter active" data-filter="All">All items</button>
-<button class="filter" data-filter="Canva Templates">Canva</button>
-<button class="filter" data-filter="Social Media">Social media</button>
-<button class="filter" data-filter="Business">Business</button>
-<button class="filter" data-filter="E-books">E-books</button>
-</div>
-<input class="search" id="search" type="search" placeholder="Search products...">
-</div>
-<div class="product-grid" id="productGrid"></div>
-</section>
+  <!-- ORIGINAL FIVE OVERLAPPING HIGHLIGHT CARDS -->
+  <section class="hero">
+    <div class="hero-heading">
+      <div class="eyebrow">A curated digital collection</div>
+      <h1><em>Continue</em><br>with <em>Almamoon</em></h1>
+      <p class="hero-sub">Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point.</p>
+    </div>
 
-<section class="about" id="faq">
-<div class="about-box">
-<div>
-<div class="eyebrow">A little about us</div>
-<h2>Good ideas deserve beautiful tools.</h2>
-<p>Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move.</p>
-</div>
-<a href="mailto:hello@almamoon.com">Talk to our team ↗</a>
-</div>
-</section>
+    <div class="counter">01/05</div>
+
+    <div class="hero-tags">
+      <span class="pill">Creative tools</span>
+      <span class="pill">Digital goods</span>
+    </div>
+
+    <div class="stage" id="highlightStage">
+
+      <article class="product-card card-one" onclick="selectHighlight(0)">
+        <div class="art art-template">
+          <div class="shape">
+            <i>ALMAMOON STUDIO</i>
+            <b>Simple<br>living.</b>
+            <i>THE BRAND COLLECTION</i>
+          </div>
+        </div>
+        <div class="meta">
+          <small>01 / Templates</small>
+          <strong>All Templates</strong>
+          <span>Explore the collection</span>
+        </div>
+      </article>
+
+      <article class="product-card card-two" onclick="selectHighlight(1)">
+        <div class="art art-social">
+          <div class="shape">
+            <i>THE SOCIAL EDIT</i>
+            <b>Make<br>some noise.</b>
+            <i>POST · SHARE · GROW</i>
+          </div>
+        </div>
+        <div class="meta">
+          <small>02 / Category</small>
+          <strong>Resume & CV</strong>
+          <span>Professional templates</span>
+        </div>
+      </article>
+
+      <article class="product-card card-three" onclick="selectHighlight(2)">
+        <div class="art art-brand">
+          <div class="shape">
+            <i>ALMAMOON / EDITION 01</i>
+            <b>Creative<br>by nature.</b>
+            <i>DESIGN YOUR NEXT CHAPTER</i>
+          </div>
+        </div>
+        <div class="meta">
+          <small>03 / Category</small>
+          <strong>Presentation</strong>
+          <span>Make your ideas matter</span>
+        </div>
+      </article>
+
+      <article class="product-card card-four" onclick="selectHighlight(3)">
+        <div class="art art-ebook">
+          <div class="shape">
+            <i>A LITTLE GUIDE</i>
+            <b>Find your<br>focus.</b>
+            <i>THE CREATOR'S HANDBOOK</i>
+          </div>
+        </div>
+        <div class="meta">
+          <small>04 / Category</small>
+          <strong>Social Media</strong>
+          <span>Content made simple</span>
+        </div>
+      </article>
+
+      <article class="product-card card-five" onclick="selectHighlight(4)">
+        <div class="art art-presentation">
+          <div class="shape">
+            <i>THE MENU EDIT</i>
+            <b>Make it<br>matter.</b>
+          </div>
+        </div>
+        <div class="meta">
+          <small>05 / Category</small>
+          <strong>Menu Templates</strong>
+          <span>Designed for business</span>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="hero-bottom">
+      <p><strong>Almamoon</strong><br>A growing collection for your next big idea.</p>
+      <button class="contact-btn" onclick="showAllProducts()">Explore products ↗</button>
+    </div>
+  </section>
+
+  <!-- ONLY ADMIN-SELECTED TOP 5 PRODUCTS SHOW HERE -->
+  <section class="featured-section" id="featuredSection">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">Handpicked for you</div>
+        <h2>Featured products.</h2>
+      </div>
+      <p>Discover five selected products from the Almamoon collection.</p>
+    </div>
+    <div class="product-grid" id="featuredGrid">
+      <p class="empty-message">Loading featured products...</p>
+    </div>
+  </section>
+
+  <!-- CATEGORY PRODUCTS ARE HIDDEN UNTIL A CATEGORY IS CLICKED -->
+  <section class="catalog" id="catalog">
+    <button class="back-button" onclick="hideCatalog()">← Back to homepage</button>
+
+    <div class="catalog-head">
+      <div>
+        <div class="eyebrow">The Almamoon edit</div>
+        <h2 id="catalogTitle">Explore templates.</h2>
+      </div>
+      <p id="catalogDescription">Explore practical, beautifully designed digital products.</p>
+    </div>
+
+    <div class="catalog-tools">
+      <div class="filters" id="filters"></div>
+      <input class="search" id="search" type="search" placeholder="Search products...">
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section class="about" id="faq">
+    <div class="about-box">
+      <div>
+        <div class="eyebrow">A little about us</div>
+        <h2>Good ideas deserve beautiful tools.</h2>
+        <p>Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move.</p>
+      </div>
+      <a href="mailto:hello@almamoon.com">Talk to our team ↗</a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-<div>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
-<div><a href="#catalog">Shop</a><a href="#faq">About</a><a href="mailto:hello@almamoon.com">Contact</a></div>
+  <div>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
+  <div>
+    <a href="#catalog" onclick="showAllProducts()">Shop</a>
+    <a href="#faq">About</a>
+    <a href="mailto:hello@almamoon.com">Contact</a>
+  </div>
 </footer>
 
 <div class="cart-overlay" id="overlay" onclick="closeCart()"></div>
+
 <aside class="cart-panel" id="cartPanel">
-<div class="cart-head"><h3>Your bag</h3><button class="close" onclick="closeCart()">×</button></div>
-<div class="cart-list" id="cartList"></div>
-<div class="cart-foot">
-<div class="total"><span>Subtotal</span><strong id="total">$0.00</strong></div>
-<button class="checkout" onclick="checkout()">Continue to checkout</button>
-<p class="cart-note">Checkout is currently in demo mode. Payments and secure downloads are not connected yet.</p>
-</div>
+  <div class="cart-head">
+    <h3>Your bag</h3>
+    <button class="close" onclick="closeCart()">×</button>
+  </div>
+
+  <div class="cart-list" id="cartList"></div>
+
+  <div class="cart-foot">
+    <div class="total">
+      <span>Subtotal</span>
+      <strong id="total">$0.00</strong>
+    </div>
+    <button class="checkout" onclick="checkout()">Continue to checkout</button>
+    <p class="cart-note">Checkout is currently in demo mode. Payments and secure downloads are not connected yet.</p>
+  </div>
 </aside>
 
 <script>
-// https://almamoon-backend.onrender.com
-const API_URL = "https://almamoon-backend.onrender.com/api/products";
+const API_BASE = "https://almamoon-backend.onrender.com/api";
 
+const PRODUCTS_API = API_BASE + "/products";
+const TOP5_API = API_BASE + "/products/top5";
+const HIGHLIGHTS_API = API_BASE + "/highlights";
 
 let products = [];
-let filter = "All";
+let featuredProducts = [];
+let highlights = [];
 let cart = [];
+let filter = "All Templates";
+let selectedCategory = null;
 
 const grid = document.getElementById("productGrid");
+const featuredGrid = document.getElementById("featuredGrid");
+
+const defaultHighlights = [
+  {
+    title:"All Templates",
+    subtitle:"Explore the collection",
+    category:"All Templates",
+    image_url:""
+  },
+  {
+    title:"Resume & CV Templates",
+    subtitle:"Professional templates",
+    category:"Resume & CV Templates",
+    image_url:""
+  },
+  {
+    title:"Presentation Templates",
+    subtitle:"Make your ideas matter",
+    category:"Presentation Templates",
+    image_url:""
+  },
+  {
+    title:"Social Media Templates",
+    subtitle:"Content made simple",
+    category:"Social Media Templates",
+    image_url:""
+  },
+  {
+    title:"Menu Templates",
+    subtitle:"Designed for business",
+    category:"Menu Templates",
+    image_url:""
+  }
+];
+
+const cardClasses = [
+  "card-one",
+  "card-two",
+  "card-three",
+  "card-four",
+  "card-five"
+];
+
+const artClasses = [
+  "art-template",
+  "art-social",
+  "art-brand",
+  "art-ebook",
+  "art-presentation"
+];
 
 function escapeHTML(value){
- return String(value ?? "").replace(/[&<>"']/g, char => ({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[char]);
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
 }
 
 function money(price,currency){
- const symbol = currency === "BDT" ? "৳" : "$";
- return symbol + Number(price || 0).toFixed(2);
+  const symbol = currency === "BDT" ? "৳" : "$";
+  return symbol + Number(price || 0).toFixed(2);
 }
 
-function render(){
- const q = document.getElementById("search").value.toLowerCase().trim();
-
- const list = products.filter(p => {
-  const matchesSearch = `${p.name} ${p.desc}`.toLowerCase().includes(q);
-  const matchesCategory = filter === "All" || p.category === filter;
-  return matchesSearch && matchesCategory;
- });
-
- grid.innerHTML = list.length ? list.map(p => `
-  <article class="product">
-   <div class="product-art">
-    ${p.image_url
-      ? `<img src="${escapeHTML(p.image_url)}" alt="${escapeHTML(p.name)}">`
-      : `<div class="mini">
-          <small>ALMAMOON / DIGITAL EDITION</small>
-          <b>${escapeHTML(p.name)}</b>
-          <span>DESIGNED FOR YOU</span>
-         </div>`
-    }
-   </div>
-   <div class="product-info">
-    <h3>${escapeHTML(p.name)}</h3>
-    <p>${escapeHTML(p.desc || "A digital product from Almamoon.")}</p>
-    <div class="product-row">
-     <span class="price">${money(p.price,p.currency)}</span>
-     <button class="add" onclick="add('${escapeHTML(p.id)}')">Add to bag +</button>
-    </div>
-   </div>
-  </article>
- `).join("") : '<p>No products found. Try a different search.</p>';
+function normalizeCategory(value){
+  return String(value || "").trim().toLowerCase();
 }
 
-async function loadProducts(){
- grid.innerHTML = "<p>Loading products...</p>";
+function isAllCategory(value){
+  const category = normalizeCategory(value);
+  return category === "all" || category === "all templates";
+}
 
- try{
-  const response = await fetch(API_URL);
+function mapProduct(p){
+  return {
+    id:p.id,
+    name:p.title || p.name || "Untitled product",
+    desc:p.description || "",
+    price:Number(p.price || 0),
+    currency:p.currency || "USD",
+    image_url:p.image_url || "",
+    category:p.category || "Other",
+    featured_order:p.featured_order
+  };
+}
 
-  if(!response.ok){
-   throw new Error("API request failed: " + response.status);
+/* PRODUCT CARD */
+function productCard(p){
+  return `
+    <article class="product">
+      <div class="product-art">
+        ${
+          p.image_url
+          ? `<img src="${escapeHTML(p.image_url)}" alt="${escapeHTML(p.name)}" loading="lazy">`
+          : `<div class="mini">
+              <small>ALMAMOON / DIGITAL EDITION</small>
+              <b>${escapeHTML(p.name)}</b>
+              <span>DESIGNED FOR YOU</span>
+            </div>`
+        }
+      </div>
+
+      <div class="product-info">
+        <h3>${escapeHTML(p.name)}</h3>
+        <div class="product-row">
+          <span class="price">${money(p.price,p.currency)}</span>
+          <button class="add" onclick="add('${escapeHTML(p.id)}')">Add to bag +</button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/* RENDER TOP 5 */
+function renderFeatured(){
+  if(!featuredProducts.length){
+    featuredGrid.innerHTML =
+      '<p class="empty-message">No featured products selected yet. Select five products from your Admin Panel.</p>';
+    return;
   }
 
-  const data = await response.json();
-
-  if(!Array.isArray(data)){
-   throw new Error("Unexpected product data");
-  }
-
-  products = data.map(p => ({
-   id: p.id,
-   name: p.title,
-   desc: p.description,
-   price: Number(p.price),
-   currency: p.currency || "USD",
-   image_url: p.image_url,
-   category: "All"
-  }));
-
-  render();
-
- }catch(error){
-  console.error("Product loading error:",error);
-  grid.innerHTML = "<p>Products could not be loaded. Please refresh or check the backend connection.</p>";
- }
+  featuredGrid.innerHTML = featuredProducts
+    .slice(0,5)
+    .map(productCard)
+    .join("");
 }
 
-document.querySelectorAll(".filter").forEach(button => {
- button.addEventListener("click",()=>{
-  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  filter = button.dataset.filter;
-  render();
- });
-});
+/* RENDER CATEGORY PRODUCTS */
+function renderCategoryProducts(){
+  if(!selectedCategory){
+    grid.innerHTML = "";
+    return;
+  }
 
-document.getElementById("search").addEventListener("input",render);
+  const q = document.getElementById("search").value.toLowerCase().trim();
+
+  const list = products.filter(p => {
+    const matchesSearch =
+      `${p.name} ${p.desc} ${p.category}`.toLowerCase().includes(q);
+
+    const matchesCategory =
+      isAllCategory(selectedCategory) ||
+      normalizeCategory(p.category) === normalizeCategory(selectedCategory);
+
+    return matchesSearch && matchesCategory;
+  });
+
+  grid.innerHTML = list.length
+    ? list.map(productCard).join("")
+    : '<p class="empty-message">No products found in this category. Try another category or search.</p>';
+}
+
+/* CATEGORY BUTTONS */
+function renderFilters(){
+  const container = document.getElementById("filters");
+
+  const categories = [
+    ...new Set(
+      products
+        .map(p => p.category)
+        .filter(c => c && !isAllCategory(c))
+    )
+  ];
+
+  const allCategories = ["All Templates", ...categories];
+
+  container.innerHTML = allCategories.map(category => `
+    <button
+      class="filter ${normalizeCategory(category) === normalizeCategory(selectedCategory) ? "active" : ""}"
+      onclick="selectCategory('${escapeHTML(category)}')">
+      ${escapeHTML(category)}
+    </button>
+  `).join("");
+}
+
+/* OPEN CATEGORY */
+function selectCategory(category){
+  selectedCategory = category;
+  filter = category;
+
+  document.getElementById("catalogTitle").textContent =
+    isAllCategory(category) ? "All Templates." : category + ".";
+
+  document.getElementById("catalogDescription").textContent =
+    isAllCategory(category)
+    ? "Explore all available digital products from Almamoon."
+    : "Explore products in this category.";
+
+  document.getElementById("search").value = "";
+
+  document.getElementById("catalog").classList.add("visible");
+
+  renderFilters();
+  renderCategoryProducts();
+
+  document.getElementById("catalog").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+/* HIGHLIGHT CARD CLICK */
+function selectHighlight(index){
+  const item = highlights[index] || defaultHighlights[index];
+
+  if(!item) return;
+
+  selectCategory(item.category || item.title || "All Templates");
+}
+
+function showAllProducts(){
+  selectCategory("All Templates");
+}
+
+function hideCatalog(){
+  document.getElementById("catalog").classList.remove("visible");
+  selectedCategory = null;
+  document.getElementById("search").value = "";
+
+  document.getElementById("featuredSection").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
 
 function jumpToCatalog(){
- document.getElementById("catalog").scrollIntoView({behavior:"smooth"});
+  showAllProducts();
 }
 
+/* LOAD HIGHLIGHT DATA FROM ADMIN PANEL */
+function renderHighlights(){
+  const stage = document.getElementById("highlightStage");
+
+  stage.innerHTML = highlights.slice(0,5).map((item,index) => {
+    const title = item.title || defaultHighlights[index].title;
+    const subtitle = item.subtitle || defaultHighlights[index].subtitle;
+    const category = item.category || title;
+    const image = item.image_url || "";
+
+    return `
+      <article
+        class="product-card ${cardClasses[index]}"
+        onclick="selectHighlight(${index})"
+        title="Explore ${escapeHTML(title)}">
+
+        <div class="art ${artClasses[index]}">
+          ${
+            image
+            ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" loading="lazy">`
+            : `<div class="shape">
+                <i>ALMAMOON STUDIO</i>
+                <b>${escapeHTML(title)}</b>
+                <i>DESIGNED FOR YOUR NEXT IDEA</i>
+              </div>`
+          }
+        </div>
+
+        <div class="meta">
+          <small>0${index+1} / Category</small>
+          <strong>${escapeHTML(title)}</strong>
+          <span>${escapeHTML(subtitle)}</span>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  /* If API returns fewer than five, use default remaining cards */
+  if(highlights.length < 5){
+    const remaining = defaultHighlights.slice(highlights.length);
+
+    remaining.forEach((item,remainingIndex) => {
+      const index = highlights.length + remainingIndex;
+
+      stage.insertAdjacentHTML("beforeend", `
+        <article
+          class="product-card ${cardClasses[index]}"
+          onclick="selectCategory('${escapeHTML(item.category)}')">
+
+          <div class="art ${artClasses[index]}">
+            <div class="shape">
+              <i>ALMAMOON STUDIO</i>
+              <b>${escapeHTML(item.title)}</b>
+              <i>DESIGNED FOR YOUR NEXT IDEA</i>
+            </div>
+          </div>
+
+          <div class="meta">
+            <small>0${index+1} / Category</small>
+            <strong>${escapeHTML(item.title)}</strong>
+            <span>${escapeHTML(item.subtitle)}</span>
+          </div>
+        </article>
+      `);
+    });
+  }
+}
+
+/* LOAD PRODUCTS */
+async function loadProducts(){
+  try{
+    const response = await fetch(PRODUCTS_API);
+
+    if(!response.ok){
+      throw new Error("Products API error: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if(!Array.isArray(data)){
+      throw new Error("Invalid products response");
+    }
+
+    products = data.map(mapProduct);
+
+    if(selectedCategory){
+      renderFilters();
+      renderCategoryProducts();
+    }
+
+  }catch(error){
+    console.error("Product loading error:",error);
+    products = [];
+  }
+}
+
+/* LOAD TOP 5 SELECTED IN ADMIN PANEL */
+async function loadFeatured(){
+  try{
+    const response = await fetch(TOP5_API);
+
+    if(!response.ok){
+      throw new Error("Top 5 API error: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if(!Array.isArray(data)){
+      throw new Error("Invalid Top 5 response");
+    }
+
+    featuredProducts = data.map(mapProduct).slice(0,5);
+    renderFeatured();
+
+  }catch(error){
+    console.error("Featured products loading error:",error);
+
+    featuredGrid.innerHTML =
+      '<p class="empty-message">Featured products could not be loaded. Please check the backend connection.</p>';
+  }
+}
+
+/* LOAD HIGHLIGHTS FROM ADMIN PANEL */
+async function loadHighlights(){
+  try{
+    const response = await fetch(HIGHLIGHTS_API);
+
+    if(!response.ok){
+      throw new Error("Highlights API error: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if(!Array.isArray(data)){
+      throw new Error("Invalid highlights response");
+    }
+
+    const mapped = data
+      .map(item => ({
+        position:Number(item.position || 0),
+        title:item.title || "",
+        subtitle:item.subtitle || "",
+        category:item.category || item.title || "",
+        image_url:item.image_url || ""
+      }))
+      .sort((a,b) => a.position - b.position);
+
+    highlights = mapped.length ? mapped : defaultHighlights;
+    renderHighlights();
+
+  }catch(error){
+    console.error("Highlights loading error:",error);
+    highlights = defaultHighlights;
+    renderHighlights();
+  }
+}
+
+/* SEARCH */
+document.getElementById("search").addEventListener("input",renderCategoryProducts);
+
+/* THEME */
 function setTheme(dark){
- document.body.classList.toggle("dark",dark);
- document.getElementById("lightBtn").classList.toggle("active",!dark);
- document.getElementById("darkBtn").classList.toggle("active",dark);
- document.getElementById("modeLabel").textContent = dark ? "dark mode" : "light mode";
+  document.body.classList.toggle("dark",dark);
+
+  document.getElementById("lightBtn").classList.toggle("active",!dark);
+  document.getElementById("darkBtn").classList.toggle("active",dark);
+
+  document.getElementById("modeLabel").textContent =
+    dark ? "dark mode" : "light mode";
 }
 
+/* CART */
 function add(id){
- const product = products.find(p=>String(p.id)===String(id));
- if(!product) return;
+  const product = products.find(p => String(p.id) === String(id));
 
- const item = cart.find(p=>String(p.id)===String(id));
+  if(!product){
+    alert("Product could not be found. Please refresh the page.");
+    return;
+  }
 
- if(item) item.qty++;
- else cart.push({...product,qty:1});
+  const item = cart.find(p => String(p.id) === String(id));
 
- drawCart();
- openCart();
+  if(item){
+    item.qty++;
+  }else{
+    cart.push({...product,qty:1});
+  }
+
+  drawCart();
+  openCart();
 }
 
 function removeItem(id){
- cart = cart.filter(p=>String(p.id)!==String(id));
- drawCart();
+  cart = cart.filter(p => String(p.id) !== String(id));
+  drawCart();
 }
 
 function drawCart(){
- document.getElementById("cartCount").textContent =
-  cart.reduce((n,p)=>n+p.qty,0);
+  document.getElementById("cartCount").textContent =
+    cart.reduce((n,p) => n + p.qty,0);
 
- document.getElementById("cartList").innerHTML = cart.length
- ? cart.map(p=>`
-  <div class="cart-item">
-   <div>
-    <b>${escapeHTML(p.name)}</b>
-    <small>Qty ${p.qty} · ${money(p.price,p.currency)} each</small>
-   </div>
-   <div>
-    <b>${money(p.price*p.qty,p.currency)}</b><br>
-    <button class="remove" onclick="removeItem('${escapeHTML(p.id)}')">Remove</button>
-   </div>
-  </div>
- `).join("")
- : '<p>Your bag is empty. Explore the collection to find something you love.</p>';
+  document.getElementById("cartList").innerHTML = cart.length
+    ? cart.map(p => `
+      <div class="cart-item">
+        <div>
+          <b>${escapeHTML(p.name)}</b>
+          <small>Qty ${p.qty} · ${money(p.price,p.currency)} each</small>
+        </div>
+        <div>
+          <b>${money(p.price*p.qty,p.currency)}</b><br>
+          <button class="remove" onclick="removeItem('${escapeHTML(p.id)}')">Remove</button>
+        </div>
+      </div>
+    `).join("")
+    : '<p>Your bag is empty. Explore the collection to find something you love.</p>';
 
- const total = cart.reduce((n,p)=>n+p.price*p.qty,0);
- const currencies = [...new Set(cart.map(p=>p.currency))];
+  const total = cart.reduce((n,p) => n + p.price*p.qty,0);
+  const currencies = [...new Set(cart.map(p => p.currency))];
 
- document.getElementById("total").textContent =
-  currencies.length === 1
-   ? money(total,currencies[0])
-   : "Multiple currencies";
+  document.getElementById("total").textContent =
+    currencies.length === 1
+    ? money(total,currencies[0])
+    : currencies.length > 1
+      ? "Multiple currencies"
+      : money(0,"USD");
 }
 
 function openCart(){
- document.getElementById("cartPanel").classList.add("open");
- document.getElementById("overlay").classList.add("open");
+  document.getElementById("cartPanel").classList.add("open");
+  document.getElementById("overlay").classList.add("open");
 }
 
 function closeCart(){
- document.getElementById("cartPanel").classList.remove("open");
- document.getElementById("overlay").classList.remove("open");
+  document.getElementById("cartPanel").classList.remove("open");
+  document.getElementById("overlay").classList.remove("open");
 }
 
 function checkout(){
- if(!cart.length){
-  alert("Your bag is empty.");
-  return;
- }
+  if(!cart.length){
+    alert("Your bag is empty.");
+    return;
+  }
 
- alert("Payment gateway is not connected yet. Please do not use this demo checkout for real payments.");
+  alert("Payment gateway is not connected yet. Please do not use this demo checkout for real payments.");
 }
 
+/* INITIALIZE */
 document.getElementById("year").textContent = new Date().getFullYear();
 
 drawCart();
+renderHighlights();
+
 loadProducts();
+loadFeatured();
+loadHighlights();
 </script>
+
 </body>
 </html>
