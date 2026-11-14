@@ -1,899 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almamoon</title>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --bg:#f4f3f0;
-  --paper:#fff;
-  --ink:#181818;
-  --muted:#777873;
-  --line:#e6e4df;
-  --soft:#ecebe7;
-  --accent:#181818;
-  --button-text:#fff;
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:"DM Sans",sans-serif;
-  transition:.25s;
-}
-
-body.dark{
-  --bg:#171817;
-  --paper:#222421;
-  --ink:#f2f0eb;
-  --muted:#aaa9a2;
-  --line:#393a36;
-  --soft:#2c2e2a;
-}
-
-button,input{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-
-/* HEADER */
-
-.topbar{
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 4%;
-  border-bottom:1px solid var(--line);
-}
-
-.brand{
-  font-size:14px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.brand-mark{
-  width:20px;
-  height:20px;
-  background:var(--ink);
-  color:var(--bg);
-  border-radius:6px;
-  display:grid;
-  place-items:center;
-}
-
-.right-tools{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.hamburger{
-  border:0;
-  background:transparent;
-  color:var(--ink);
-  font-size:25px;
-  padding:5px 10px;
-}
-
-.toplink{
-  font-size:10px;
-  color:var(--muted);
-  text-decoration:underline;
-}
-
-.mode{
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:3px;
-}
-
-.mode button{
-  width:25px;
-  height:25px;
-  border:0;
-  border-radius:50%;
-  background:transparent;
-  color:var(--muted);
-}
-
-.mode button.active{
-  background:var(--ink);
-  color:var(--bg);
-}
-
-.mode-label{
-  font-size:8px;
-  color:var(--muted);
-}
-
-/* MENU */
-
-.menu-wrap{
-  position:relative;
-  display:inline-flex;
-}
-
-.menu-dropdown{
-  display:none;
-  position:absolute;
-  top:43px;
-  left:0;
-  width:245px;
-  max-height:75vh;
-  overflow-y:auto;
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:13px;
-  padding:12px;
-  z-index:50;
-  box-shadow:0 15px 40px #0002;
-}
-
-.menu-dropdown.open{
-  display:flex;
-  flex-direction:column;
-}
-
-.menu-title{
-  font-size:9px;
-  letter-spacing:2px;
-  color:var(--muted);
-  padding:9px;
-  border-bottom:1px solid var(--line);
-  margin-bottom:6px;
-}
-
-.menu-dropdown button,
-.menu-dropdown a{
-  display:block;
-  width:100%;
-  padding:11px 10px;
-  text-align:left;
-  border:0;
-  border-radius:7px;
-  background:transparent;
-  color:var(--ink);
-  font-size:11px;
-}
-
-.menu-dropdown button:hover,
-.menu-dropdown a:hover{
-  background:var(--soft);
-}
-
-.menu-divider{
-  border-top:1px solid var(--line);
-  margin:7px 0;
-}
-
-/* TOP SEARCH */
-
-.search-top{
-  max-width:720px;
-  margin:17px auto 12px;
-  padding:0 15px;
-}
-
-.search-top input{
-  width:100%;
-  border:1px solid var(--line);
-  background:var(--paper);
-  color:var(--ink);
-  padding:14px 20px;
-  border-radius:30px;
-  font-size:12px;
-  outline:none;
-}
-
-.search-top input:focus{border-color:var(--muted)}
-
-/* HERO */
-
-main{padding:0 1.2%}
-
-.hero{
-  min-height:590px;
-  background:var(--paper);
-  border-radius:17px;
-  margin:10px auto 0;
-  max-width:1500px;
-  position:relative;
-  overflow:hidden;
-  padding:38px 3.2% 28px;
-}
-
-.hero-heading{
-  position:relative;
-  z-index:3;
-  max-width:390px;
-}
-
-.eyebrow{
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.19em;
-  color:var(--muted);
-  margin-bottom:15px;
-}
-
-.hero h1{
-  font-size:clamp(34px,4.2vw,58px);
-  font-weight:500;
-  line-height:1.02;
-  letter-spacing:-.065em;
-  margin:0;
-  white-space:pre-line;
-}
-
-.hero h1 em{
-  font-family:"Playfair Display",serif;
-  font-weight:500;
-}
-
-.hero-sub{
-  font-size:11px;
-  color:var(--muted);
-  max-width:270px;
-  line-height:1.7;
-}
-
-/* HIGHLIGHTS */
-
-.stage{
-  height:390px;
-  position:relative;
-  margin-top:8px;
-}
-
-.product-card{
-  position:absolute;
-  border-radius:17px;
-  overflow:visible;
-  cursor:pointer;
-  transition:transform .35s;
-}
-
-.product-card:hover{
-  transform:translateY(-8px) scale(1.025);
-  z-index:10!important;
-}
-
-.art{
-  width:100%;
-  height:100%;
-  position:relative;
-  overflow:hidden;
-  border-radius:17px;
-  background:var(--soft);
-}
-
-.art img{
-  width:100%;
-  height:100%;
-  position:absolute;
-  inset:0;
-  object-fit:cover;
-}
-
-/* HIGHLIGHT FALLBACK BACKGROUNDS */
-
-.art-template{
-  background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b);
-}
-.art-social{
-  background:linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68);
-}
-.art-brand{
-  background:linear-gradient(125deg,#697b79,#c5c4b7,#6d7770);
-}
-.art-ebook{
-  background:linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a);
-}
-.art-presentation{
-  background:linear-gradient(130deg,#9caaaf,#4f6975,#253a45);
-}
-
-/* HIGHLIGHT CARD POSITIONS */
-
-.card-one{
-  width:18%;
-  height:205px;
-  left:2%;
-  top:96px;
-  z-index:1;
-}
-.card-two{
-  width:21%;
-  height:275px;
-  left:16%;
-  top:75px;
-  z-index:2;
-}
-.card-three{
-  width:29%;
-  height:330px;
-  left:36%;
-  top:24px;
-  z-index:5;
-}
-.card-four{
-  width:21%;
-  height:245px;
-  left:62%;
-  top:100px;
-  z-index:3;
-}
-.card-five{
-  width:17%;
-  height:190px;
-  right:1%;
-  top:110px;
-  z-index:1;
-}
-
-/* HIGHLIGHT LABEL */
-
-.highlight-category{
-  position:absolute;
-  top:calc(100% + 9px);
-  left:50%;
-  transform:translate(-50%,-5px);
-  background:var(--ink);
-  color:var(--bg);
-  padding:8px 13px;
-  border-radius:20px;
-  font-size:10px;
-  white-space:nowrap;
-  opacity:0;
-  visibility:hidden;
-  transition:.2s;
-  pointer-events:none;
-  z-index:15;
-}
-
-.product-card:hover .highlight-category,
-.product-card.show-category .highlight-category{
-  opacity:1;
-  visibility:visible;
-  transform:translate(-50%,0);
-}
-
-.hero-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:20px;
-  position:relative;
-  z-index:5;
-  margin:4px 1% 0;
-}
-
-.hero-bottom p{
-  font-size:9px;
-  line-height:1.6;
-  color:var(--muted);
-  max-width:280px;
-}
-
-.hero-bottom strong{
-  font-size:22px;
-  color:var(--ink);
-}
-
-.contact-btn{
-  background:var(--accent);
-  color:var(--button-text);
-  border:0;
-  border-radius:30px;
-  padding:10px 17px;
-  font-size:9px;
-}
-
-/* CATALOG */
-
-.catalog{
-  display:none;
-  max-width:1250px;
-  margin:65px auto;
-  padding:0 3.2%;
-}
-
-.catalog.visible{display:block}
-
-.catalog-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:20px;
-  margin-bottom:22px;
-}
-
-.catalog h2{
-  font:500 clamp(28px,3vw,40px) "Playfair Display",serif;
-  margin:0;
-}
-
-.catalog-head p{
-  font-size:11px;
-  color:var(--muted);
-  max-width:300px;
-  line-height:1.6;
-}
-
-.catalog-tools{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.search{
-  border:1px solid var(--line);
-  background:var(--paper);
-  color:var(--ink);
-  padding:10px 13px;
-  border-radius:25px;
-  font-size:10px;
-  width:220px;
-}
-
-.back-button{
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--ink);
-  border-radius:25px;
-  padding:8px 13px;
-  font-size:9px;
-  margin-bottom:18px;
-}
-
-/* PRODUCT GRID */
-
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.product{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:12px;
-  overflow:hidden;
-  transition:.25s;
-}
-
-.product:hover{transform:translateY(-5px)}
-
-.product-art{
-  height:210px;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  background:var(--soft);
-}
-
-.product-art img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:8px;
-}
-
-.product-info{padding:13px}
-.product-info h3{font-size:11px;margin:0}
-.product-info p{display:none}
-
-.product-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-top:1px solid var(--line);
-  margin-top:12px;
-  padding-top:10px;
-  gap:5px;
-}
-
-.price{font-size:11px;font-weight:600}
-
-.add{
-  border:0;
-  background:var(--accent);
-  color:var(--button-text);
-  border-radius:20px;
-  padding:8px 11px;
-  font-size:8px;
-}
-
-.empty-message{
-  grid-column:1/-1;
-  color:var(--muted);
-  font-size:12px;
-  padding:25px 0;
-}
-
-/* ABOUT */
-
-.about{
-  max-width:1250px;
-  margin:90px auto 70px;
-  padding:0 3.2%;
-}
-
-.about-box{
-  background:var(--soft);
-  border-radius:15px;
-  padding:45px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:30px;
-}
-
-.about h2{
-  font:500 clamp(28px,3vw,42px) "Playfair Display",serif;
-  margin:0;
-}
-
-.about p{
-  font-size:11px;
-  line-height:1.7;
-  color:var(--muted);
-  max-width:430px;
-}
-
-/* FOOTER */
-
-footer{
-  border-top:1px solid var(--line);
-  padding:25px 4.2%;
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:9px;
-}
-
-footer div:last-child{
-  display:flex;
-  gap:18px;
-}
-
-/* CART */
-
-.cart-panel{
-  position:fixed;
-  right:0;
-  top:0;
-  bottom:0;
-  width:min(380px,100%);
-  background:var(--paper);
-  z-index:60;
-  box-shadow:0 18px 55px #0002;
-  padding:24px;
-  transform:translateX(105%);
-  transition:.3s;
-  display:flex;
-  flex-direction:column;
-}
-
-.cart-panel.open{transform:translateX(0)}
-
-.cart-overlay{
-  position:fixed;
-  inset:0;
-  background:#0007;
-  z-index:59;
-  opacity:0;
-  pointer-events:none;
-}
-
-.cart-overlay.open{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.cart-head{
-  display:flex;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-  padding-bottom:15px;
-}
-
-.cart-head h3{
-  font:500 23px "Playfair Display",serif;
-  margin:0;
-}
-
-.close{
-  border:0;
-  background:none;
-  color:var(--ink);
-  font-size:23px;
-}
-
-.cart-list{flex:1;overflow:auto}
-
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 0;
-  border-bottom:1px solid var(--line);
-  font-size:11px;
-  gap:10px;
-}
-
-.cart-item small{
-  display:block;
-  color:var(--muted);
-  margin-top:5px;
-}
-
-.remove{
-  border:0;
-  background:none;
-  color:var(--muted);
-  font-size:9px;
-  text-decoration:underline;
-}
-
-.cart-foot{
-  border-top:1px solid var(--line);
-  padding-top:15px;
-}
-
-.total{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:14px;
-}
-
-.checkout{
-  width:100%;
-  border:0;
-  background:var(--accent);
-  color:var(--button-text);
-  border-radius:25px;
-  padding:13px;
-  font-size:9px;
-}
-
-.cart-note{
-  font-size:9px;
-  color:var(--muted);
-  line-height:1.5;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-  .product-grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
-  .topbar{padding:0 12px}
-  .right-tools{gap:7px}
-  .mode-label{display:none}
-  .hero{min-height:590px;padding:30px 15px 22px}
-  .hero h1{font-size:40px}
-  .stage{height:340px;margin-top:25px}
-
-  .card-one{width:34%;height:140px;left:0;top:150px}
-  .card-two{width:39%;height:190px;left:12%;top:100px}
-  .card-three{width:48%;height:250px;left:26%;top:15px}
-  .card-four{width:38%;height:175px;left:58%;top:145px}
-  .card-five{width:28%;height:125px;right:0;top:35px}
-
-  .hero-bottom{margin-top:0}
-  .catalog{margin:50px auto;padding:0 15px}
-  .catalog-head{display:block}
-  .catalog-head p{margin-top:10px}
-  .catalog-tools{display:block}
-  .search{width:100%}
-  .product-grid{gap:10px}
-  .product-art{height:145px}
-  .product-info{padding:10px}
-  .product-info h3{font-size:10px;line-height:1.5}
-  .add{padding:7px 9px}
-  .about-box{padding:28px 22px;display:block}
-  footer{padding:22px 17px;flex-direction:column;gap:15px}
-}
-</style>
-</head>
-
-<body>
-
-<header class="topbar">
-
-  <div class="menu-wrap">
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">⋮</button>
-
-    <div class="menu-dropdown" id="mainMenu">
-      <div class="menu-title">ALMAMOON MENU</div>
-
-      <button onclick="showTop5();toggleMenu()">Home / Featured</button>
-      <button onclick="showAllProducts();toggleMenu()">All Templates</button>
-
-      <div class="menu-divider"></div>
-
-      <button onclick="showCategory('Resume & CV Templates');toggleMenu()">Resume & CV</button>
-      <button onclick="showCategory('Presentation Templates');toggleMenu()">Presentations</button>
-      <button onclick="showCategory('Social Media Templates');toggleMenu()">Social Media</button>
-      <button onclick="showCategory('Menu Templates');toggleMenu()">Menu Templates</button>
-
-      <div class="menu-divider"></div>
-
-      <button onclick="openCart();toggleMenu()">Shopping Cart</button>
-      <button onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});toggleMenu()">About / FAQs</button>
-      <button onclick="setTheme(!document.body.classList.contains('dark'));toggleMenu()">Switch Theme</button>
-      <a href="mailto:hello@almamoon.com" id="menuContact">Contact Us ↗</a>
-    </div>
-  </div>
-
-  <a class="brand" href="#">
-    <span class="brand-mark">A</span> Almamoon
-  </a>
-
-  <div class="right-tools">
-    <a class="toplink" href="#faq">FAQs</a>
-
-    <div class="mode">
-      <button id="lightBtn" class="active" onclick="setTheme(false)">☼</button>
-      <button id="darkBtn" onclick="setTheme(true)">☾</button>
-    </div>
-
-    <span class="mode-label" id="modeLabel">light mode</span>
-
-    <button class="hamburger" onclick="openCart()">♧ <sup id="cartCount">0</sup></button>
-  </div>
-
-</header>
-
-<div class="search-top">
-  <input id="topSearch" type="search" placeholder="Search products...">
-</div>
-
-<main>
-
-<section class="hero">
-
-  <div class="hero-heading">
-    <div class="eyebrow" id="heroEyebrow">A curated digital collection</div>
-
-    <h1 id="heroTitle"><em>Continue</em><br>with <em>Almamoon</em></h1>
-
-    <p class="hero-sub" id="heroSubtitle">
-      Thoughtful templates and digital tools for people building something beautiful.
-      Find your next creative starting point.
-    </p>
-  </div>
-
-  <div class="stage" id="highlightStage">
-
-    <article class="product-card card-one" onclick="selectHighlight(1)">
-      <div class="art art-template"></div>
-      <div class="highlight-category">Resume & CV Templates</div>
-    </article>
-
-    <article class="product-card card-two" onclick="selectHighlight(3)">
-      <div class="art art-social"></div>
-      <div class="highlight-category">Social Media Templates</div>
-    </article>
-
-    <article class="product-card card-three" onclick="selectHighlight(0)">
-      <div class="art art-brand"></div>
-      <div class="highlight-category">All Templates</div>
-    </article>
-
-    <article class="product-card card-four" onclick="selectHighlight(2)">
-      <div class="art art-ebook"></div>
-      <div class="highlight-category">Presentation Templates</div>
-    </article>
-
-    <article class="product-card card-five" onclick="selectHighlight(4)">
-      <div class="art art-presentation"></div>
-      <div class="highlight-category">Menu Templates</div>
-    </article>
-
-  </div>
-
-  <div class="hero-bottom">
-    <p>
-      <strong>Almamoon</strong><br>
-      <span id="heroBottomText">A growing collection for your next big idea.</span>
-    </p>
-
-    <button class="contact-btn" id="heroButton" onclick="showTop5()">Explore products ↗</button>
-  </div>
-
-</section>
-
-<section class="catalog" id="catalog">
-
-  <button class="back-button" onclick="hideCatalog()">← Back to homepage</button>
-
-  <div class="catalog-head">
-    <div>
-      <div class="eyebrow">The Almamoon edit</div>
-      <h2 id="catalogTitle">All Templates.</h2>
-    </div>
-    <p id="catalogDescription">Explore the Almamoon collection.</p>
-  </div>
-
-  <div class="catalog-tools">
-    <input class="search" id="search" type="search" placeholder="Search products...">
-  </div>
-
-  <div class="product-grid" id="productGrid"></div>
-
-</section>
-
-<section class="about" id="faq">
-  <div class="about-box">
-    <div>
-      <div class="eyebrow" id="aboutEyebrow">A little about us</div>
-      <h2 id="aboutHeading">Good ideas deserve beautiful tools.</h2>
-      <p id="aboutText">
-        Almamoon is a growing collection of digital resources for creators,
-        small businesses, and curious minds. Browse the collection and find
-        something that helps you make your next move.
-      </p>
-    </div>
-
-    <a href="mailto:hello@almamoon.com" id="aboutContact">Talk to our team ↗</a>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div id="footerText">© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
-  <div>
-    <a href="#" onclick="showTop5()">Shop</a>
-    <a href="#faq">About</a>
-    <a href="mailto:hello@almamoon.com" id="footerContact">Contact</a>
-  </div>
-</footer>
-
-<div class="cart-overlay" id="overlay" onclick="closeCart()"></div>
-
-<aside class="cart-panel" id="cartPanel">
-
-  <div class="cart-head">
-    <h3>Your bag</h3>
-    <button class="close" onclick="closeCart()">×</button>
-  </div>
-
-  <div class="cart-list" id="cartList"></div>
-
-  <div class="cart-foot">
-    <div class="total">
-      <span>Subtotal</span>
-      <strong id="total">$0.00</strong>
-    </div>
-
-    <button class="checkout" onclick="checkout()">Continue to checkout</button>
-
-    <p class="cart-note">
-      Checkout is currently in demo mode. Payments and secure downloads are not connected yet.
-    </p>
-  </div>
-
-</aside>
-
-<script>
 const API="https://almamoon-backend.onrender.com/api";
 
 const PRODUCTS_API=API+"/products";
@@ -909,14 +14,6 @@ let selectedCategory=null;
 let showingTop5=false;
 let websiteSettings={};
 
-const backgrounds=[
-  "art-template",
-  "art-social",
-  "art-brand",
-  "art-ebook",
-  "art-presentation"
-];
-
 const defaults=[
   {title:"All Templates",category:"All Templates"},
   {title:"Resume & CV Templates",category:"Resume & CV Templates"},
@@ -927,11 +24,7 @@ const defaults=[
 
 function esc(value){
   return String(value??"").replace(/[&<>"']/g,char=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[char]);
 }
 
@@ -947,67 +40,31 @@ function money(price,currency){
   return (currency==="BDT"?"৳":"$")+Number(price||0).toFixed(2);
 }
 
-/* IMAGE SETTINGS FROM ADMIN PANEL */
+/* IMAGE SETTINGS */
 
 function getImageOptions(item,fallbackFit){
 
-  const fitValue=
-    item.image_fit||
-    item.imageFit||
-    item.fit||
-    fallbackFit;
-
+  const fitValue=item.image_fit||item.imageFit||item.fit||fallbackFit;
   const allowedFits=["contain","cover","fill","none","scale-down"];
+  const fit=allowedFits.includes(String(fitValue))?String(fitValue):fallbackFit;
 
-  const fit=allowedFits.includes(String(fitValue))
-    ?String(fitValue)
-    :fallbackFit;
-
-  const zoomValue=Number(
-    item.image_zoom||
-    item.imageZoom||
-    item.zoom||
-    100
-  );
-
+  const zoomValue=Number(item.image_zoom||item.imageZoom||item.zoom||100);
   const zoom=Math.min(200,Math.max(50,zoomValue||100));
 
-  const xValue=Number(
-    item.image_x??
-    item.image_position_x??
-    item.imageX??
-    item.position_x??
-    50
-  );
-
-  const yValue=Number(
-    item.image_y??
-    item.image_position_y??
-    item.imageY??
-    item.position_y??
-    50
-  );
-
-  const x=Math.min(100,Math.max(0,xValue));
-  const y=Math.min(100,Math.max(0,yValue));
+  const xValue=Number(item.image_x??item.image_position_x??item.imageX??item.position_x??50);
+  const yValue=Number(item.image_y??item.image_position_y??item.imageY??item.position_y??50);
 
   return {
     fit,
     zoom,
-    x,
-    y
+    x:Math.min(100,Math.max(0,xValue)),
+    y:Math.min(100,Math.max(0,yValue))
   };
 }
 
 function imageStyle(item,fallbackFit){
-
-  const settings=getImageOptions(item,fallbackFit);
-
-  return `
-    object-fit:${settings.fit};
-    object-position:${settings.x}% ${settings.y}%;
-    transform:scale(${settings.zoom/100});
-  `;
+  const s=getImageOptions(item,fallbackFit);
+  return `object-fit:${s.fit};object-position:${s.x}% ${s.y}%;transform:scale(${s.zoom/100});`;
 }
 
 /* PRODUCT DATA */
@@ -1021,7 +78,6 @@ function mapProduct(p){
     currency:p.currency||"USD",
     image_url:p.image_url||"",
     category:p.category||"Other",
-
     image_fit:p.image_fit||p.imageFit||"contain",
     image_zoom:p.image_zoom||p.imageZoom||100,
     image_x:p.image_x??p.image_position_x??50,
@@ -1033,15 +89,14 @@ function mapProduct(p){
 
 function applyWebsiteSettings(settings){
 
-  if(!settings || typeof settings!=="object")return;
+  if(!settings||typeof settings!=="object")return;
 
   websiteSettings=settings;
 
   const getValue=(key,fallback)=>{
     const value=settings[key];
     return value===undefined||value===null||String(value).trim()===""
-      ?fallback
-      :String(value);
+      ?fallback:String(value);
   };
 
   const setText=(id,value)=>{
@@ -1049,123 +104,42 @@ function applyWebsiteSettings(settings){
     if(element)element.textContent=value;
   };
 
-  /* HERO CONTENT */
+  setText("heroEyebrow",getValue("eyebrow","A curated digital collection"));
+  setText("heroTitle",getValue("heroTitle","Continue\nwith Almamoon"));
+  setText("heroSubtitle",getValue("heroSubtitle","Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point."));
+  setText("heroButton",getValue("buttonText","Explore products ↗"));
 
-  setText(
-    "heroEyebrow",
-    getValue("eyebrow","A curated digital collection")
-  );
+  setText("aboutText",getValue("aboutText","Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move."));
 
-  setText(
-    "heroTitle",
-    getValue("heroTitle","Continue\nwith Almamoon")
-  );
-
-  setText(
-    "heroSubtitle",
-    getValue(
-      "heroSubtitle",
-      "Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point."
-    )
-  );
-
-  setText(
-    "heroButton",
-    getValue("buttonText","Explore products ↗")
-  );
-
-  /* ABOUT CONTENT */
-
-  setText(
-    "aboutText",
-    getValue(
-      "aboutText",
-      "Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move."
-    )
-  );
-
-  /* FOOTER */
-
-  setText(
-    "footerText",
-    getValue(
-      "footerText",
-      "© "+new Date().getFullYear()+" ALMAMOON — MADE FOR YOUR NEXT IDEA."
-    )
-  );
-
-  /* CONTACT TEXT */
-
-  setText(
-    "aboutContact",
-    getValue("contactText","Talk to our team ↗")
-  );
-
-  setText(
-    "footerContact",
-    getValue("contactText","Contact")
-  );
-
-  setText(
-    "menuContact",
-    getValue("contactText","Contact Us")+" ↗"
-  );
-
-  /* WEBSITE COLORS */
+  setText("footerText",getValue("footerText","© "+new Date().getFullYear()+" ALMAMOON — MADE FOR YOUR NEXT IDEA."));
+  setText("aboutContact",getValue("contactText","Talk to our team ↗"));
+  setText("footerContact",getValue("contactText","Contact"));
+  setText("menuContact",getValue("contactText","Contact Us")+" ↗");
 
   const root=document.documentElement;
 
-  const bg=getValue("bgColor","#f4f3f0");
-  const ink=getValue("inkColor","#181818");
-  const accent=getValue("accentColor","#181818");
-  const buttonText=getValue("buttonTextColor","#ffffff");
+  const colors={
+    "--bg":getValue("bgColor","#f4f3f0"),
+    "--ink":getValue("inkColor","#181818"),
+    "--accent":getValue("accentColor","#181818"),
+    "--button-text":getValue("buttonTextColor","#ffffff")
+  };
 
-  if(/^#[0-9a-fA-F]{3,8}$/.test(bg)){
-    root.style.setProperty("--bg",bg);
-  }
-
-  if(/^#[0-9a-fA-F]{3,8}$/.test(ink)){
-    root.style.setProperty("--ink",ink);
-  }
-
-  if(/^#[0-9a-fA-F]{3,8}$/.test(accent)){
-    root.style.setProperty("--accent",accent);
-  }
-
-  if(/^#[0-9a-fA-F]{3,8}$/.test(buttonText)){
-    root.style.setProperty("--button-text",buttonText);
-  }
+  Object.entries(colors).forEach(([key,value])=>{
+    if(/^#[0-9a-fA-F]{3,8}$/.test(value)){
+      root.style.setProperty(key,value);
+    }
+  });
 }
 
 async function loadWebsiteSettings(){
-
   try{
-
     const response=await fetch(SETTINGS_API);
-
-    if(!response.ok){
-      throw new Error("Settings API "+response.status);
-    }
-
+    if(!response.ok)throw new Error("Settings API "+response.status);
     const data=await response.json();
-
-    /*
-      Supports both:
-      { settings: {...} }
-      and direct settings object responses.
-    */
-
-    const settings=
-      data?.settings&&typeof data.settings==="object"
-      ?data.settings
-      :data;
-
-    applyWebsiteSettings(settings);
-
+    applyWebsiteSettings(data?.settings&&typeof data.settings==="object"?data.settings:data);
   }catch(error){
-
     console.error("Website settings loading error:",error);
-
   }
 }
 
@@ -1176,13 +150,10 @@ function toggleMenu(){
 }
 
 document.addEventListener("click",function(event){
-
   const menu=document.getElementById("mainMenu");
-
-  if(menu && !event.target.closest(".menu-wrap")){
+  if(menu&&!event.target.closest(".menu-wrap")){
     menu.classList.remove("open");
   }
-
 });
 
 /* HIGHLIGHTS */
@@ -1206,32 +177,22 @@ function renderHighlights(){
   stage.innerHTML=visualOrder.map(item=>{
 
     const data=items[item.dataIndex];
-
     const title=data.category||data.title||"All Templates";
     const image=data.image_url||"";
-
     const style=imageStyle(data,"cover");
 
     return `
-      <article
-        class="product-card ${item.className}"
+      <article class="product-card ${item.className}"
         onclick="selectHighlight(${item.dataIndex})"
         ontouchstart="this.classList.add('show-category')"
         ontouchend="setTimeout(()=>this.classList.remove('show-category'),1800)"
         aria-label="${esc(title)}">
-
         <div class="art ${item.background}">
-          ${image
-            ?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy" style="${style}">`
-            :""
-          }
+          ${image?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy" style="${style}">`:""}
         </div>
-
         <div class="highlight-category">${esc(title)}</div>
-
       </article>
     `;
-
   }).join("");
 }
 
@@ -1240,13 +201,12 @@ function renderHighlights(){
 function selectHighlight(index){
 
   const item=highlights[index]||defaults[index];
-
   if(!item)return;
 
   const category=item.category||item.title||"All Templates";
 
   if(index===0||isAll(category)){
-    showTop5();
+    showAllProducts();
   }else{
     showCategory(category);
   }
@@ -1257,33 +217,46 @@ function selectHighlight(index){
 function openCatalog(title,description){
 
   const section=document.getElementById("catalog");
-
   section.classList.add("visible");
 
   document.getElementById("catalogTitle").textContent=title;
-
   document.getElementById("catalogDescription").textContent=description;
 
-  section.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
+  section.scrollIntoView({behavior:"smooth",block:"start"});
 }
+
+/* SHOW TOP 5 */
 
 function showTop5(){
 
-  selectedCategory="All Templates";
+  selectedCategory=null;
   showingTop5=true;
+
+  document.getElementById("search").value="";
+
+  openCatalog("Featured Products.","Five products selected by you in the Admin Panel.");
+
+  renderProducts();
+}
+
+/* SHOW ALL PRODUCTS */
+
+function showAllProducts(){
+
+  selectedCategory="__all_products__";
+  showingTop5=false;
 
   document.getElementById("search").value="";
 
   openCatalog(
     "All Templates.",
-    "Five products selected by you in the Admin Panel."
+    "Explore all products from every category in the Almamoon collection."
   );
 
   renderProducts();
 }
+
+/* SHOW CATEGORY */
 
 function showCategory(category){
 
@@ -1292,16 +265,9 @@ function showCategory(category){
 
   document.getElementById("search").value="";
 
-  openCatalog(
-    category+".",
-    "Explore products in this category."
-  );
+  openCatalog(category+".","Explore products in this category.");
 
   renderProducts();
-}
-
-function showAllProducts(){
-  showTop5();
 }
 
 function hideCatalog(){
@@ -1314,10 +280,7 @@ function hideCatalog(){
   document.getElementById("search").value="";
   document.getElementById("topSearch").value="";
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 /* PRODUCT DISPLAY */
@@ -1328,27 +291,19 @@ function productCardHTML(p){
 
   return `
     <article class="product">
-
       <div class="product-art">
-        ${
-          p.image_url
-          ? `<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" style="${style}">`
-          : `<div>${esc(p.name)}</div>`
+        ${p.image_url
+          ?`<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" style="${style}">`
+          :`<div>${esc(p.name)}</div>`
         }
       </div>
-
       <div class="product-info">
         <h3>${esc(p.name)}</h3>
-
         <div class="product-row">
           <span class="price">${money(p.price,p.currency)}</span>
-
-          <button class="add" onclick="add('${esc(p.id)}')">
-            Add to bag +
-          </button>
+          <button class="add" onclick="add('${esc(p.id)}')">Add to bag +</button>
         </div>
       </div>
-
     </article>
   `;
 }
@@ -1356,15 +311,14 @@ function productCardHTML(p){
 function renderProducts(){
 
   const grid=document.getElementById("productGrid");
-
   const q=document.getElementById("search").value.toLowerCase().trim();
 
-  let list;
+  let list=[];
 
- if(showingTop5){
-    list=top5;
-  }else if(norm(selectedCategory)==="all templates"){
-    list=products;
+  if(showingTop5){
+    list=[...top5];
+  }else if(selectedCategory==="__all_products__"||isAll(selectedCategory)){
+    list=[...products];
   }else{
     list=products.filter(p=>
       norm(p.category)===norm(selectedCategory)
@@ -1378,8 +332,7 @@ function renderProducts(){
   }
 
   if(!list.length){
-    grid.innerHTML=
-      '<p class="empty-message">No products found in this category.</p>';
+    grid.innerHTML='<p class="empty-message">No products found.</p>';
     return;
   }
 
@@ -1391,25 +344,16 @@ function renderProducts(){
 async function loadProducts(){
 
   try{
-
     const response=await fetch(PRODUCTS_API);
-
-    if(!response.ok){
-      throw new Error("Products API "+response.status);
-    }
+    if(!response.ok)throw new Error("Products API "+response.status);
 
     const data=await response.json();
-
-    if(!Array.isArray(data)){
-      throw new Error("Invalid products response");
-    }
+    if(!Array.isArray(data))throw new Error("Invalid products response");
 
     products=data.map(mapProduct);
 
   }catch(error){
-
     console.error("Products loading error:",error);
-
   }
 }
 
@@ -1418,25 +362,16 @@ async function loadProducts(){
 async function loadTop5(){
 
   try{
-
     const response=await fetch(TOP5_API);
-
-    if(!response.ok){
-      throw new Error("Top 5 API "+response.status);
-    }
+    if(!response.ok)throw new Error("Top 5 API "+response.status);
 
     const data=await response.json();
-
-    if(!Array.isArray(data)){
-      throw new Error("Invalid Top 5 response");
-    }
+    if(!Array.isArray(data))throw new Error("Invalid Top 5 response");
 
     top5=data.map(mapProduct).slice(0,5);
 
   }catch(error){
-
     console.error("Top 5 loading error:",error);
-
   }
 }
 
@@ -1445,76 +380,35 @@ async function loadTop5(){
 async function loadHighlights(){
 
   try{
-
     const response=await fetch(HIGHLIGHTS_API);
-
-    if(!response.ok){
-      throw new Error("Highlights API "+response.status);
-    }
+    if(!response.ok)throw new Error("Highlights API "+response.status);
 
     const data=await response.json();
+    if(!Array.isArray(data))throw new Error("Invalid highlights response");
 
-    if(!Array.isArray(data)){
-      throw new Error("Invalid highlights response");
-    }
-
-    highlights=data.sort((a,b)=>
-      Number(a.position)-Number(b.position)
-    );
+    highlights=data.sort((a,b)=>Number(a.position)-Number(b.position));
 
   }catch(error){
-
     console.error("Highlights loading error:",error);
-
-    highlights=defaults.map(item=>({
-      ...item,
-      image_url:""
-    }));
-
+    highlights=defaults.map(item=>({...item,image_url:""}));
   }
 
   renderHighlights();
 }
 
-/* TOP SEARCH */
+/* SEARCH */
 
 function searchProducts(query){
 
   const q=query.trim().toLowerCase();
-
   if(!q)return;
-
-  const matching=products.filter(p=>
-    (p.name+" "+p.category).toLowerCase().includes(q)
-  );
-
-  if(!matching.length){
-
-    showingTop5=false;
-    selectedCategory="__search__";
-
-    openCatalog(
-      "Search results.",
-      "Products matching your search."
-    );
-
-    document.getElementById("search").value=q;
-
-    renderSearchResults(q);
-
-    return;
-  }
 
   selectedCategory="__search__";
   showingTop5=false;
 
-  openCatalog(
-    "Search results.",
-    "Products matching your search."
-  );
+  openCatalog("Search results.","Products matching your search.");
 
   document.getElementById("search").value=q;
-
   renderSearchResults(q);
 }
 
@@ -1532,23 +426,18 @@ function renderSearchResults(q){
 }
 
 document.getElementById("topSearch").addEventListener("keydown",event=>{
-
   if(event.key==="Enter"){
     searchProducts(event.target.value);
   }
-
 });
 
 document.getElementById("search").addEventListener("input",()=>{
 
   if(selectedCategory==="__search__"){
-    renderSearchResults(
-      document.getElementById("search").value.toLowerCase()
-    );
+    renderSearchResults(document.getElementById("search").value.toLowerCase());
   }else{
     renderProducts();
   }
-
 });
 
 /* THEME */
@@ -1560,17 +449,15 @@ function setTheme(dark){
   document.getElementById("lightBtn").classList.toggle("active",!dark);
   document.getElementById("darkBtn").classList.toggle("active",dark);
 
-  document.getElementById("modeLabel").textContent=
-    dark?"dark mode":"light mode";
+  document.getElementById("modeLabel").textContent=dark?"dark mode":"light mode";
 }
 
 /* CART */
 
 function add(id){
 
-  const product=
-    products.find(p=>String(p.id)===String(id))||
-    top5.find(p=>String(p.id)===String(id));
+  const product=products.find(p=>String(p.id)===String(id))
+    ||top5.find(p=>String(p.id)===String(id));
 
   if(!product){
     alert("Product could not be found.");
@@ -1590,9 +477,7 @@ function add(id){
 }
 
 function removeItem(id){
-
   cart=cart.filter(p=>String(p.id)!==String(id));
-
   drawCart();
 }
 
@@ -1609,7 +494,6 @@ function drawCart(){
           <b>${esc(p.name)}</b>
           <small>Qty ${p.qty} · ${money(p.price,p.currency)} each</small>
         </div>
-
         <div>
           <b>${money(p.price*p.qty,p.currency)}</b><br>
           <button class="remove" onclick="removeItem('${esc(p.id)}')">Remove</button>
@@ -1621,34 +505,22 @@ function drawCart(){
   const currencies=[...new Set(cart.map(p=>p.currency))];
 
   if(currencies.length===1){
-
     const total=cart.reduce((n,p)=>n+p.price*p.qty,0);
-
-    document.getElementById("total").textContent=
-      money(total,currencies[0]);
-
+    document.getElementById("total").textContent=money(total,currencies[0]);
   }else if(currencies.length>1){
-
     document.getElementById("total").textContent="Multiple currencies";
-
   }else{
-
     document.getElementById("total").textContent=money(0,"USD");
-
   }
 }
 
 function openCart(){
-
   document.getElementById("cartPanel").classList.add("open");
-
   document.getElementById("overlay").classList.add("open");
 }
 
 function closeCart(){
-
   document.getElementById("cartPanel").classList.remove("open");
-
   document.getElementById("overlay").classList.remove("open");
 }
 
@@ -1668,11 +540,6 @@ document.getElementById("year").textContent=new Date().getFullYear();
 
 drawCart();
 
-/*
-  Load website settings and store data.
-  Product area remains hidden until a visitor clicks a highlight.
-*/
-
 Promise.all([
   loadWebsiteSettings(),
   loadProducts(),
@@ -1681,8 +548,3 @@ Promise.all([
 ]).then(()=>{
   console.log("Almamoon website data loaded.");
 });
-
-</script>
-
-</body>
-</html>
