@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almamoon — Continue with Almamoon</title>
+<title>Almamoon</title>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
@@ -16,8 +17,11 @@
   --line:#e6e4df;
   --soft:#ecebe7;
 }
+
 *{box-sizing:border-box}
+
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   background:var(--bg);
@@ -25,6 +29,7 @@ body{
   font-family:"DM Sans",sans-serif;
   transition:.25s;
 }
+
 body.dark{
   --bg:#171817;
   --paper:#222421;
@@ -33,60 +38,174 @@ body.dark{
   --line:#393a36;
   --soft:#2c2e2a;
 }
-a{color:inherit;text-decoration:none}
+
 button,input{font:inherit}
 button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
 
 .topbar{
-  height:58px;
+  height:60px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 4.2%;
+  padding:0 4%;
   border-bottom:1px solid var(--line);
-  background:var(--bg);
-  position:relative;
-  z-index:10;
 }
+
 .brand{
-  font-size:13px;
+  font-size:14px;
   font-weight:700;
   display:flex;
-  gap:8px;
   align-items:center;
+  gap:8px;
 }
+
 .brand-mark{
-  width:18px;
-  height:18px;
+  width:20px;
+  height:20px;
   background:var(--ink);
   color:var(--bg);
   border-radius:6px;
   display:grid;
   place-items:center;
 }
+
+.right-tools{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
 .hamburger{
   border:0;
-  background:none;
-  color:var(--ink);
-  font-size:20px;
-}
-.right-tools{display:flex;align-items:center;gap:15px}
-.toplink{font-size:10px;color:var(--muted);text-decoration:underline}
-.mode{border:1px solid var(--line);border-radius:30px;padding:4px}
-.mode button{
-  border:0;
   background:transparent;
+  color:var(--ink);
+  font-size:25px;
+  padding:5px 10px;
+}
+
+.toplink{
+  font-size:10px;
   color:var(--muted);
-  border-radius:50%;
+  text-decoration:underline;
+}
+
+.mode{
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:3px;
+}
+
+.mode button{
   width:25px;
   height:25px;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:var(--muted);
 }
-.mode button.active{background:var(--ink);color:var(--bg)}
-.mode-label{font-size:8px;color:var(--muted)}
+
+.mode button.active{
+  background:var(--ink);
+  color:var(--bg);
+}
+
+.mode-label{
+  font-size:8px;
+  color:var(--muted);
+}
+
+/* THREE DOT MENU */
+
+.menu-wrap{
+  position:relative;
+  display:inline-flex;
+}
+
+.menu-dropdown{
+  display:none;
+  position:absolute;
+  top:43px;
+  left:0;
+  width:245px;
+  max-height:75vh;
+  overflow-y:auto;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:12px;
+  z-index:50;
+  box-shadow:0 15px 40px #0002;
+}
+
+.menu-dropdown.open{
+  display:flex;
+  flex-direction:column;
+}
+
+.menu-title{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--muted);
+  padding:9px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:6px;
+}
+
+.menu-dropdown button,
+.menu-dropdown a{
+  display:block;
+  width:100%;
+  padding:11px 10px;
+  text-align:left;
+  border:0;
+  border-radius:7px;
+  background:transparent;
+  color:var(--ink);
+  font-size:11px;
+}
+
+.menu-dropdown button:hover,
+.menu-dropdown a:hover{
+  background:var(--soft);
+}
+
+.menu-divider{
+  border-top:1px solid var(--line);
+  margin:7px 0;
+}
+
+/* TOP SEARCH */
+
+.search-top{
+  max-width:720px;
+  margin:17px auto 12px;
+  padding:0 15px;
+}
+
+.search-top input{
+  width:100%;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--ink);
+  padding:14px 20px;
+  border-radius:30px;
+  font-size:12px;
+  outline:none;
+}
+
+.search-top input:focus{
+  border-color:var(--muted);
+}
+
+/* HERO */
 
 main{padding:0 1.2%}
+
 .hero{
-  min-height:600px;
+  min-height:590px;
   background:var(--paper);
   border-radius:17px;
   margin:10px auto 0;
@@ -95,7 +214,13 @@ main{padding:0 1.2%}
   overflow:hidden;
   padding:38px 3.2% 28px;
 }
-.hero-heading{position:relative;z-index:3;max-width:390px}
+
+.hero-heading{
+  position:relative;
+  z-index:3;
+  max-width:390px;
+}
+
 .eyebrow{
   font-size:9px;
   text-transform:uppercase;
@@ -103,6 +228,7 @@ main{padding:0 1.2%}
   color:var(--muted);
   margin-bottom:15px;
 }
+
 .hero h1{
   font-size:clamp(34px,4.2vw,58px);
   font-weight:500;
@@ -110,118 +236,149 @@ main{padding:0 1.2%}
   letter-spacing:-.065em;
   margin:0;
 }
+
 .hero h1 em{
   font-family:"Playfair Display",serif;
   font-weight:500;
 }
+
 .hero-sub{
   font-size:11px;
   color:var(--muted);
   max-width:270px;
   line-height:1.7;
 }
-.counter{
-  position:absolute;
-  right:34%;
-  top:40px;
-  color:#aaa;
-  font-size:10px;
+
+/* HIGHLIGHTS */
+
+.stage{
+  height:390px;
+  position:relative;
+  margin-top:8px;
 }
-.hero-tags{
-  position:absolute;
-  right:3.4%;
-  top:27px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:4px;
-}
-.pill{
-  border:1px solid var(--ink);
-  border-radius:20px;
-  padding:5px 11px;
-  font-size:9px;
-}
-.stage{height:390px;position:relative;margin-top:8px}
+
 .product-card{
   position:absolute;
   border-radius:17px;
-  overflow:hidden;
-  box-shadow:0 18px 55px rgba(35,33,28,.12);
-  transition:.4s;
+  overflow:visible;
   cursor:pointer;
+  transition:transform .35s;
 }
+
 .product-card:hover{
-  transform:translateY(-10px) scale(1.015);
-  z-index:7!important;
+  transform:translateY(-8px) scale(1.025);
+  z-index:10!important;
 }
+
 .art{
-  height:100%;
   width:100%;
+  height:100%;
   position:relative;
   overflow:hidden;
+  border-radius:17px;
+  background:var(--soft);
 }
-.art:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
-  z-index:1;
-  pointer-events:none;
-}
+
 .art img{
-  position:absolute;
-  inset:0;
   width:100%;
   height:100%;
+  position:absolute;
+  inset:0;
   object-fit:cover;
 }
-.shape{
-  position:absolute;
-  width:65%;
-  height:78%;
-  left:17%;
-  top:8%;
-  background:#eee9df;
-  color:#333;
-  padding:15px;
-  box-shadow:10px 18px 30px #2225;
+
+/* HIGHLIGHT BACKGROUND FALLBACK */
+
+.art-template{
+  background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b);
+}
+
+.art-social{
+  background:linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68);
+}
+
+.art-brand{
+  background:linear-gradient(125deg,#697b79,#c5c4b7,#6d7770);
+}
+
+.art-ebook{
+  background:linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a);
+}
+
+.art-presentation{
+  background:linear-gradient(130deg,#9caaaf,#4f6975,#253a45);
+}
+
+/* ALL TEMPLATES IN THE CENTER */
+
+.card-one{
+  width:18%;
+  height:205px;
+  left:2%;
+  top:96px;
   z-index:1;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
 }
-.shape b{
-  font:500 clamp(15px,2.5vw,28px)/1 "Playfair Display",serif;
-}
-.shape i{font-size:7px;letter-spacing:.15em;font-style:normal}
-.meta{
-  position:absolute;
-  left:15px;
-  bottom:12px;
-  color:white;
+
+.card-two{
+  width:21%;
+  height:275px;
+  left:16%;
+  top:75px;
   z-index:2;
-  right:8px;
 }
-.meta small{display:block;font-size:8px;letter-spacing:.12em}
-.meta strong{
-  display:block;
-  font:500 20px "Playfair Display",serif;
-  margin:5px 0;
+
+/* CENTER CARD */
+
+.card-three{
+  width:29%;
+  height:330px;
+  left:36%;
+  top:24px;
+  z-index:5;
 }
-.meta span{font-size:8px}
 
-.card-one{width:18%;height:205px;left:2%;top:96px;z-index:1}
-.card-two{width:21%;height:275px;left:16%;top:75px;z-index:2}
-.card-three{width:29%;height:330px;left:36%;top:24px;z-index:4}
-.card-four{width:21%;height:245px;left:62%;top:100px;z-index:3}
-.card-five{width:17%;height:190px;right:1%;top:110px;z-index:1}
+.card-four{
+  width:21%;
+  height:245px;
+  left:62%;
+  top:100px;
+  z-index:3;
+}
 
-.art-template{background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b)}
-.art-social{background:linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68)}
-.art-brand{background:linear-gradient(125deg,#697b79,#c5c4b7,#6d7770)}
-.art-ebook{background:linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a)}
-.art-presentation{background:linear-gradient(130deg,#9caaaf,#4f6975,#253a45)}
+.card-five{
+  width:17%;
+  height:190px;
+  right:1%;
+  top:110px;
+  z-index:1;
+}
+
+/* CATEGORY LABEL ON HOVER */
+
+.highlight-category{
+  position:absolute;
+  top:calc(100% + 9px);
+  left:50%;
+  transform:translate(-50%,-5px);
+  background:var(--ink);
+  color:var(--bg);
+  padding:8px 13px;
+  border-radius:20px;
+  font-size:10px;
+  white-space:nowrap;
+  opacity:0;
+  visibility:hidden;
+  transition:.2s;
+  pointer-events:none;
+  z-index:15;
+}
+
+.product-card:hover .highlight-category,
+.product-card.show-category .highlight-category{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0);
+}
 
 .hero-bottom{
   display:flex;
@@ -232,13 +389,19 @@ main{padding:0 1.2%}
   z-index:5;
   margin:4px 1% 0;
 }
+
 .hero-bottom p{
   font-size:9px;
   line-height:1.6;
   color:var(--muted);
   max-width:280px;
 }
-.hero-bottom strong{font-size:22px;color:var(--ink)}
+
+.hero-bottom strong{
+  font-size:22px;
+  color:var(--ink);
+}
+
 .contact-btn{
   background:var(--ink);
   color:var(--bg);
@@ -248,55 +411,37 @@ main{padding:0 1.2%}
   font-size:9px;
 }
 
-/* TOP 5 SECTION */
-.featured-section{
+/* PRODUCT AREA - HIDDEN INITIALLY */
+
+.catalog{
+  display:none;
   max-width:1250px;
-  margin:65px auto 0;
+  margin:65px auto;
   padding:0 3.2%;
-}
-.section-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:20px;
-  margin-bottom:22px;
-}
-.section-heading h2{
-  font:500 clamp(28px,3vw,40px) "Playfair Display",serif;
-  margin:0;
-}
-.section-heading p{
-  font-size:11px;
-  color:var(--muted);
-  max-width:300px;
-  line-height:1.6;
 }
 
-/* CATEGORY PRODUCT SECTION */
-.catalog{
-  max-width:1250px;
-  margin:75px auto;
-  padding:0 3.2%;
-  display:none;
-}
 .catalog.visible{display:block}
+
 .catalog-head{
   display:flex;
   justify-content:space-between;
   align-items:end;
-  margin-bottom:22px;
   gap:20px;
+  margin-bottom:22px;
 }
+
 .catalog h2{
   font:500 clamp(28px,3vw,40px) "Playfair Display",serif;
   margin:0;
 }
+
 .catalog-head p{
   font-size:11px;
   color:var(--muted);
   max-width:300px;
   line-height:1.6;
 }
+
 .catalog-tools{
   display:flex;
   align-items:center;
@@ -304,19 +449,7 @@ main{padding:0 1.2%}
   gap:12px;
   margin-bottom:20px;
 }
-.filters{display:flex;gap:7px;flex-wrap:wrap}
-.filter{
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--muted);
-  padding:8px 13px;
-  border-radius:25px;
-  font-size:9px;
-}
-.filter.active,.filter:hover{
-  background:var(--ink);
-  color:var(--bg);
-}
+
 .search{
   border:1px solid var(--line);
   background:var(--paper);
@@ -327,73 +460,6 @@ main{padding:0 1.2%}
   width:220px;
 }
 
-/* PRODUCT CARDS */
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-.product{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:12px;
-  overflow:hidden;
-  transition:.25s;
-}
-.product:hover{transform:translateY(-5px)}
-.product-art{
-  height:210px;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  background:var(--soft);
-}
-.product-art img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:8px;
-}
-.product-art .mini{
-  width:54%;
-  height:76%;
-  background:#f3eee7;
-  color:#292723;
-  padding:14px;
-  box-shadow:8px 12px 25px #0003;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-.mini small{font-size:6px;letter-spacing:.15em}
-.mini b{font:500 21px "Playfair Display",serif}
-.mini span{font-size:7px}
-.product-info{padding:13px}
-.product-info h3{font-size:11px;margin:0}
-.product-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-top:1px solid var(--line);
-  margin-top:12px;
-  padding-top:10px;
-  gap:5px;
-}
-.price{font-size:11px;font-weight:600}
-.add{
-  border:0;
-  background:var(--ink);
-  color:var(--bg);
-  border-radius:20px;
-  padding:8px 11px;
-  font-size:8px;
-}
-.empty-message{
-  grid-column:1/-1;
-  color:var(--muted);
-  font-size:12px;
-  padding:25px 0;
-}
 .back-button{
   border:1px solid var(--line);
   background:transparent;
@@ -404,11 +470,84 @@ main{padding:0 1.2%}
   margin-bottom:18px;
 }
 
+/* PRODUCT GRID */
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.product{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+  transition:.25s;
+}
+
+.product:hover{transform:translateY(-5px)}
+
+.product-art{
+  height:210px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:var(--soft);
+}
+
+.product-art img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:8px;
+}
+
+.product-info{padding:13px}
+
+.product-info h3{
+  font-size:11px;
+  margin:0;
+}
+
+.product-info p{display:none}
+
+.product-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid var(--line);
+  margin-top:12px;
+  padding-top:10px;
+  gap:5px;
+}
+
+.price{font-size:11px;font-weight:600}
+
+.add{
+  border:0;
+  background:var(--ink);
+  color:var(--bg);
+  border-radius:20px;
+  padding:8px 11px;
+  font-size:8px;
+}
+
+.empty-message{
+  grid-column:1/-1;
+  color:var(--muted);
+  font-size:12px;
+  padding:25px 0;
+}
+
+/* ABOUT */
+
 .about{
   max-width:1250px;
   margin:90px auto 70px;
   padding:0 3.2%;
 }
+
 .about-box{
   background:var(--soft);
   border-radius:15px;
@@ -418,16 +557,21 @@ main{padding:0 1.2%}
   align-items:center;
   gap:30px;
 }
+
 .about h2{
   font:500 clamp(28px,3vw,42px) "Playfair Display",serif;
   margin:0;
 }
+
 .about p{
   font-size:11px;
   line-height:1.7;
   color:var(--muted);
   max-width:430px;
 }
+
+/* FOOTER */
+
 footer{
   border-top:1px solid var(--line);
   padding:25px 4.2%;
@@ -436,9 +580,14 @@ footer{
   color:var(--muted);
   font-size:9px;
 }
-footer div:last-child{display:flex;gap:18px}
+
+footer div:last-child{
+  display:flex;
+  gap:18px;
+}
 
 /* CART */
+
 .cart-panel{
   position:fixed;
   right:0;
@@ -446,7 +595,7 @@ footer div:last-child{display:flex;gap:18px}
   bottom:0;
   width:min(380px,100%);
   background:var(--paper);
-  z-index:20;
+  z-index:60;
   box-shadow:0 18px 55px #0002;
   padding:24px;
   transform:translateX(105%);
@@ -454,28 +603,44 @@ footer div:last-child{display:flex;gap:18px}
   display:flex;
   flex-direction:column;
 }
+
 .cart-panel.open{transform:translateX(0)}
+
 .cart-overlay{
   position:fixed;
   inset:0;
   background:#0007;
-  z-index:19;
+  z-index:59;
   opacity:0;
   pointer-events:none;
 }
-.cart-overlay.open{opacity:1;pointer-events:auto}
+
+.cart-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
 .cart-head{
   display:flex;
   justify-content:space-between;
   border-bottom:1px solid var(--line);
   padding-bottom:15px;
 }
+
 .cart-head h3{
   font:500 23px "Playfair Display",serif;
   margin:0;
 }
-.close{border:0;background:none;color:var(--ink);font-size:23px}
+
+.close{
+  border:0;
+  background:none;
+  color:var(--ink);
+  font-size:23px;
+}
+
 .cart-list{flex:1;overflow:auto}
+
 .cart-item{
   display:flex;
   justify-content:space-between;
@@ -484,7 +649,13 @@ footer div:last-child{display:flex;gap:18px}
   font-size:11px;
   gap:10px;
 }
-.cart-item small{display:block;color:var(--muted);margin-top:5px}
+
+.cart-item small{
+  display:block;
+  color:var(--muted);
+  margin-top:5px;
+}
+
 .remove{
   border:0;
   background:none;
@@ -492,8 +663,18 @@ footer div:last-child{display:flex;gap:18px}
   font-size:9px;
   text-decoration:underline;
 }
-.cart-foot{border-top:1px solid var(--line);padding-top:15px}
-.total{display:flex;justify-content:space-between;margin-bottom:14px}
+
+.cart-foot{
+  border-top:1px solid var(--line);
+  padding-top:15px;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+
 .checkout{
   width:100%;
   border:0;
@@ -503,34 +684,38 @@ footer div:last-child{display:flex;gap:18px}
   padding:13px;
   font-size:9px;
 }
-.cart-note{font-size:9px;color:var(--muted);line-height:1.5}
+
+.cart-note{
+  font-size:9px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* MOBILE */
 
 @media(max-width:900px){
   .product-grid{grid-template-columns:repeat(2,1fr)}
 }
+
 @media(max-width:600px){
-  .topbar{padding:0 15px}
-  .hero{min-height:650px;padding:30px 18px 22px}
+  .topbar{padding:0 12px}
+  .right-tools{gap:7px}
+  .mode-label{display:none}
+  .hero{min-height:590px;padding:30px 15px 22px}
   .hero h1{font-size:40px}
-  .stage{height:360px;margin-top:25px}
-  .card-one{width:37%;height:150px;left:-3%;top:150px}
-  .card-two{width:43%;height:205px;left:10%;top:110px}
-  .card-three{width:54%;height:270px;left:34%;top:25px}
-  .card-four{width:42%;height:185px;left:59%;top:160px}
-  .card-five{display:none}
-  .hero-tags{top:20px;right:15px}
-  .counter{right:30%;top:20px}
-  .meta{left:9px;bottom:8px}
-  .meta strong{font-size:15px}
-  .meta small,.meta span{font-size:7px}
-  .featured-section{margin:50px auto 0;padding:0 15px}
-  .section-heading{display:block}
-  .section-heading p{margin-top:10px}
-  .catalog{margin:60px auto;padding:0 15px}
+  .stage{height:340px;margin-top:25px}
+
+  .card-one{width:34%;height:140px;left:0;top:150px}
+  .card-two{width:39%;height:190px;left:12%;top:100px}
+  .card-three{width:48%;height:250px;left:26%;top:15px}
+  .card-four{width:38%;height:175px;left:58%;top:145px}
+  .card-five{width:28%;height:125px;right:0;top:35px}
+
+  .hero-bottom{margin-top:0}
+  .catalog{margin:50px auto;padding:0 15px}
   .catalog-head{display:block}
   .catalog-head p{margin-top:10px}
   .catalog-tools{display:block}
-  .filters{margin-bottom:12px}
   .search{width:100%}
   .product-grid{gap:10px}
   .product-art{height:145px}
@@ -546,180 +731,165 @@ footer div:last-child{display:flex;gap:18px}
 <body>
 
 <header class="topbar">
-  <button class="hamburger" onclick="jumpToCatalog()">☰</button>
-  <a class="brand" href="#"><span class="brand-mark">A</span> Almamoon</a>
+
+  <div class="menu-wrap">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">⋮</button>
+
+    <div class="menu-dropdown" id="mainMenu">
+      <div class="menu-title">ALMAMOON MENU</div>
+
+      <button onclick="showTop5();toggleMenu()">Home / Featured</button>
+      <button onclick="showAllProducts();toggleMenu()">All Templates</button>
+
+      <div class="menu-divider"></div>
+
+      <button onclick="showCategory('Resume & CV Templates');toggleMenu()">Resume & CV</button>
+      <button onclick="showCategory('Presentation Templates');toggleMenu()">Presentations</button>
+      <button onclick="showCategory('Social Media Templates');toggleMenu()">Social Media</button>
+      <button onclick="showCategory('Menu Templates');toggleMenu()">Menu Templates</button>
+
+      <div class="menu-divider"></div>
+
+      <button onclick="openCart();toggleMenu()">Shopping Cart</button>
+      <button onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});toggleMenu()">About / FAQs</button>
+      <button onclick="setTheme(!document.body.classList.contains('dark'));toggleMenu()">Switch Theme</button>
+      <a href="mailto:hello@almamoon.com">Contact Us ↗</a>
+    </div>
+  </div>
+
+  <a class="brand" href="#">
+    <span class="brand-mark">A</span> Almamoon
+  </a>
 
   <div class="right-tools">
     <a class="toplink" href="#faq">FAQs</a>
+
     <div class="mode">
       <button id="lightBtn" class="active" onclick="setTheme(false)">☼</button>
       <button id="darkBtn" onclick="setTheme(true)">☾</button>
     </div>
+
     <span class="mode-label" id="modeLabel">light mode</span>
+
     <button class="hamburger" onclick="openCart()">♧ <sup id="cartCount">0</sup></button>
   </div>
+
 </header>
+
+<!-- SEARCH AT THE TOP -->
+
+<div class="search-top">
+  <input id="topSearch" type="search" placeholder="Search products...">
+</div>
 
 <main>
 
-  <!-- ORIGINAL FIVE OVERLAPPING HIGHLIGHT CARDS -->
-  <section class="hero">
-    <div class="hero-heading">
-      <div class="eyebrow">A curated digital collection</div>
-      <h1><em>Continue</em><br>with <em>Almamoon</em></h1>
-      <p class="hero-sub">Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point.</p>
+<section class="hero">
+
+  <div class="hero-heading">
+    <div class="eyebrow">A curated digital collection</div>
+    <h1><em>Continue</em><br>with <em>Almamoon</em></h1>
+    <p class="hero-sub">
+      Thoughtful templates and digital tools for people building something beautiful.
+      Find your next creative starting point.
+    </p>
+  </div>
+
+  <div class="stage" id="highlightStage">
+
+    <!-- LEFT 1 -->
+    <article class="product-card card-one" onclick="selectHighlight(1)">
+      <div class="art art-template"></div>
+      <div class="highlight-category">Resume & CV Templates</div>
+    </article>
+
+    <!-- LEFT 2 -->
+    <article class="product-card card-two" onclick="selectHighlight(3)">
+      <div class="art art-social"></div>
+      <div class="highlight-category">Social Media Templates</div>
+    </article>
+
+    <!-- CENTER: ALL TEMPLATES -->
+    <article class="product-card card-three" onclick="selectHighlight(0)">
+      <div class="art art-brand"></div>
+      <div class="highlight-category">All Templates</div>
+    </article>
+
+    <!-- RIGHT 2 -->
+    <article class="product-card card-four" onclick="selectHighlight(2)">
+      <div class="art art-ebook"></div>
+      <div class="highlight-category">Presentation Templates</div>
+    </article>
+
+    <!-- RIGHT 1 -->
+    <article class="product-card card-five" onclick="selectHighlight(4)">
+      <div class="art art-presentation"></div>
+      <div class="highlight-category">Menu Templates</div>
+    </article>
+
+  </div>
+
+  <div class="hero-bottom">
+    <p><strong>Almamoon</strong><br>A growing collection for your next big idea.</p>
+    <button class="contact-btn" onclick="showTop5()">Explore products ↗</button>
+  </div>
+
+</section>
+
+<!-- PRODUCTS ARE HIDDEN UNTIL CLICK -->
+
+<section class="catalog" id="catalog">
+
+  <button class="back-button" onclick="hideCatalog()">← Back to homepage</button>
+
+  <div class="catalog-head">
+    <div>
+      <div class="eyebrow">The Almamoon edit</div>
+      <h2 id="catalogTitle">All Templates.</h2>
     </div>
+    <p id="catalogDescription">Explore the Almamoon collection.</p>
+  </div>
 
-    <div class="counter">01/05</div>
+  <div class="catalog-tools">
+    <input class="search" id="search" type="search" placeholder="Search products...">
+  </div>
 
-    <div class="hero-tags">
-      <span class="pill">Creative tools</span>
-      <span class="pill">Digital goods</span>
+  <div class="product-grid" id="productGrid"></div>
+
+</section>
+
+<section class="about" id="faq">
+  <div class="about-box">
+    <div>
+      <div class="eyebrow">A little about us</div>
+      <h2>Good ideas deserve beautiful tools.</h2>
+      <p>
+        Almamoon is a growing collection of digital resources for creators,
+        small businesses, and curious minds. Browse the collection and find
+        something that helps you make your next move.
+      </p>
     </div>
-
-    <div class="stage" id="highlightStage">
-
-      <article class="product-card card-one" onclick="selectHighlight(0)">
-        <div class="art art-template">
-          <div class="shape">
-            <i>ALMAMOON STUDIO</i>
-            <b>Simple<br>living.</b>
-            <i>THE BRAND COLLECTION</i>
-          </div>
-        </div>
-        <div class="meta">
-          <small>01 / Templates</small>
-          <strong>All Templates</strong>
-          <span>Explore the collection</span>
-        </div>
-      </article>
-
-      <article class="product-card card-two" onclick="selectHighlight(1)">
-        <div class="art art-social">
-          <div class="shape">
-            <i>THE SOCIAL EDIT</i>
-            <b>Make<br>some noise.</b>
-            <i>POST · SHARE · GROW</i>
-          </div>
-        </div>
-        <div class="meta">
-          <small>02 / Category</small>
-          <strong>Resume & CV</strong>
-          <span>Professional templates</span>
-        </div>
-      </article>
-
-      <article class="product-card card-three" onclick="selectHighlight(2)">
-        <div class="art art-brand">
-          <div class="shape">
-            <i>ALMAMOON / EDITION 01</i>
-            <b>Creative<br>by nature.</b>
-            <i>DESIGN YOUR NEXT CHAPTER</i>
-          </div>
-        </div>
-        <div class="meta">
-          <small>03 / Category</small>
-          <strong>Presentation</strong>
-          <span>Make your ideas matter</span>
-        </div>
-      </article>
-
-      <article class="product-card card-four" onclick="selectHighlight(3)">
-        <div class="art art-ebook">
-          <div class="shape">
-            <i>A LITTLE GUIDE</i>
-            <b>Find your<br>focus.</b>
-            <i>THE CREATOR'S HANDBOOK</i>
-          </div>
-        </div>
-        <div class="meta">
-          <small>04 / Category</small>
-          <strong>Social Media</strong>
-          <span>Content made simple</span>
-        </div>
-      </article>
-
-      <article class="product-card card-five" onclick="selectHighlight(4)">
-        <div class="art art-presentation">
-          <div class="shape">
-            <i>THE MENU EDIT</i>
-            <b>Make it<br>matter.</b>
-          </div>
-        </div>
-        <div class="meta">
-          <small>05 / Category</small>
-          <strong>Menu Templates</strong>
-          <span>Designed for business</span>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="hero-bottom">
-      <p><strong>Almamoon</strong><br>A growing collection for your next big idea.</p>
-      <button class="contact-btn" onclick="showAllProducts()">Explore products ↗</button>
-    </div>
-  </section>
-
-  <!-- ONLY ADMIN-SELECTED TOP 5 PRODUCTS SHOW HERE -->
-  <section class="featured-section" id="featuredSection">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">Handpicked for you</div>
-        <h2>Featured products.</h2>
-      </div>
-      <p>Discover five selected products from the Almamoon collection.</p>
-    </div>
-    <div class="product-grid" id="featuredGrid">
-      <p class="empty-message">Loading featured products...</p>
-    </div>
-  </section>
-
-  <!-- CATEGORY PRODUCTS ARE HIDDEN UNTIL A CATEGORY IS CLICKED -->
-  <section class="catalog" id="catalog">
-    <button class="back-button" onclick="hideCatalog()">← Back to homepage</button>
-
-    <div class="catalog-head">
-      <div>
-        <div class="eyebrow">The Almamoon edit</div>
-        <h2 id="catalogTitle">Explore templates.</h2>
-      </div>
-      <p id="catalogDescription">Explore practical, beautifully designed digital products.</p>
-    </div>
-
-    <div class="catalog-tools">
-      <div class="filters" id="filters"></div>
-      <input class="search" id="search" type="search" placeholder="Search products...">
-    </div>
-
-    <div class="product-grid" id="productGrid"></div>
-  </section>
-
-  <section class="about" id="faq">
-    <div class="about-box">
-      <div>
-        <div class="eyebrow">A little about us</div>
-        <h2>Good ideas deserve beautiful tools.</h2>
-        <p>Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move.</p>
-      </div>
-      <a href="mailto:hello@almamoon.com">Talk to our team ↗</a>
-    </div>
-  </section>
+    <a href="mailto:hello@almamoon.com">Talk to our team ↗</a>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <div>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
   <div>
-    <a href="#catalog" onclick="showAllProducts()">Shop</a>
+    <a href="#" onclick="showTop5()">Shop</a>
     <a href="#faq">About</a>
     <a href="mailto:hello@almamoon.com">Contact</a>
   </div>
 </footer>
 
+<!-- CART -->
+
 <div class="cart-overlay" id="overlay" onclick="closeCart()"></div>
 
 <aside class="cart-panel" id="cartPanel">
+
   <div class="cart-head">
     <h3>Your bag</h3>
     <button class="close" onclick="closeCart()">×</button>
@@ -732,62 +902,31 @@ footer div:last-child{display:flex;gap:18px}
       <span>Subtotal</span>
       <strong id="total">$0.00</strong>
     </div>
+
     <button class="checkout" onclick="checkout()">Continue to checkout</button>
-    <p class="cart-note">Checkout is currently in demo mode. Payments and secure downloads are not connected yet.</p>
+
+    <p class="cart-note">
+      Checkout is currently in demo mode. Payments and secure downloads are not connected yet.
+    </p>
   </div>
+
 </aside>
 
 <script>
-const API_BASE = "https://almamoon-backend.onrender.com/api";
+const API="https://almamoon-backend.onrender.com/api";
 
-const PRODUCTS_API = API_BASE + "/products";
-const TOP5_API = API_BASE + "/products/top5";
-const HIGHLIGHTS_API = API_BASE + "/highlights";
+const PRODUCTS_API=API+"/products";
+const TOP5_API=API+"/products/top5";
+const HIGHLIGHTS_API=API+"/highlights";
 
-let products = [];
-let featuredProducts = [];
-let highlights = [];
-let cart = [];
-let filter = "All Templates";
-let selectedCategory = null;
+let products=[];
+let top5=[];
+let highlights=[];
+let cart=[];
+let selectedCategory=null;
+let showingTop5=false;
 
-const grid = document.getElementById("productGrid");
-const featuredGrid = document.getElementById("featuredGrid");
-
-const defaultHighlights = [
-  {
-    title:"All Templates",
-    subtitle:"Explore the collection",
-    category:"All Templates",
-    image_url:""
-  },
-  {
-    title:"Resume & CV Templates",
-    subtitle:"Professional templates",
-    category:"Resume & CV Templates",
-    image_url:""
-  },
-  {
-    title:"Presentation Templates",
-    subtitle:"Make your ideas matter",
-    category:"Presentation Templates",
-    image_url:""
-  },
-  {
-    title:"Social Media Templates",
-    subtitle:"Content made simple",
-    category:"Social Media Templates",
-    image_url:""
-  },
-  {
-    title:"Menu Templates",
-    subtitle:"Designed for business",
-    category:"Menu Templates",
-    image_url:""
-  }
-];
-
-const cardClasses = [
+const classes=[
   "card-one",
   "card-two",
   "card-three",
@@ -795,7 +934,7 @@ const cardClasses = [
   "card-five"
 ];
 
-const artClasses = [
+const backgrounds=[
   "art-template",
   "art-social",
   "art-brand",
@@ -803,8 +942,16 @@ const artClasses = [
   "art-presentation"
 ];
 
-function escapeHTML(value){
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
+const defaults=[
+  {title:"All Templates",category:"All Templates"},
+  {title:"Resume & CV Templates",category:"Resume & CV Templates"},
+  {title:"Presentation Templates",category:"Presentation Templates"},
+  {title:"Social Media Templates",category:"Social Media Templates"},
+  {title:"Menu Templates",category:"Menu Templates"}
+];
+
+function esc(value){
+  return String(value??"").replace(/[&<>"']/g,char=>({
     "&":"&amp;",
     "<":"&lt;",
     ">":"&gt;",
@@ -813,360 +960,427 @@ function escapeHTML(value){
   })[char]);
 }
 
+function norm(value){
+  return String(value||"").trim().toLowerCase();
+}
+
+function isAll(value){
+  return ["all","all templates"].includes(norm(value));
+}
+
 function money(price,currency){
-  const symbol = currency === "BDT" ? "৳" : "$";
-  return symbol + Number(price || 0).toFixed(2);
-}
-
-function normalizeCategory(value){
-  return String(value || "").trim().toLowerCase();
-}
-
-function isAllCategory(value){
-  const category = normalizeCategory(value);
-  return category === "all" || category === "all templates";
+  return (currency==="BDT"?"৳":"$")+Number(price||0).toFixed(2);
 }
 
 function mapProduct(p){
   return {
     id:p.id,
-    name:p.title || p.name || "Untitled product",
-    desc:p.description || "",
-    price:Number(p.price || 0),
-    currency:p.currency || "USD",
-    image_url:p.image_url || "",
-    category:p.category || "Other",
-    featured_order:p.featured_order
+    name:p.title||"Untitled product",
+    description:p.description||"",
+    price:Number(p.price||0),
+    currency:p.currency||"USD",
+    image_url:p.image_url||"",
+    category:p.category||"Other"
   };
 }
 
-/* PRODUCT CARD */
-function productCard(p){
-  return `
+/* THREE DOT MENU */
+
+function toggleMenu(){
+  document.getElementById("mainMenu").classList.toggle("open");
+}
+
+document.addEventListener("click",function(event){
+  const menu=document.getElementById("mainMenu");
+
+  if(menu && !event.target.closest(".menu-wrap")){
+    menu.classList.remove("open");
+  }
+});
+
+/* HIGHLIGHTS FROM ADMIN PANEL */
+
+function renderHighlights(){
+
+  const stage=document.getElementById("highlightStage");
+
+  const items=defaults.map((defaultItem,index)=>{
+    return highlights[index]||defaultItem;
+  });
+
+  /*
+    The center card is index 0: All Templates.
+    Other positions keep their original visual layout.
+  */
+
+  const visualOrder=[
+    {className:"card-one",dataIndex:1,background:"art-template"},
+    {className:"card-two",dataIndex:3,background:"art-social"},
+    {className:"card-three",dataIndex:0,background:"art-brand"},
+    {className:"card-four",dataIndex:2,background:"art-ebook"},
+    {className:"card-five",dataIndex:4,background:"art-presentation"}
+  ];
+
+  stage.innerHTML=visualOrder.map(item=>{
+    const data=items[item.dataIndex];
+    const title=data.category||data.title||"All Templates";
+    const image=data.image_url||"";
+
+    return `
+      <article
+        class="product-card ${item.className}"
+        onclick="selectHighlight(${item.dataIndex})"
+        ontouchstart="this.classList.add('show-category')"
+        ontouchend="setTimeout(()=>this.classList.remove('show-category'),1800)"
+        aria-label="${esc(title)}">
+
+        <div class="art ${item.background}">
+          ${image?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy">`:""}
+        </div>
+
+        <div class="highlight-category">${esc(title)}</div>
+
+      </article>
+    `;
+  }).join("");
+}
+
+/* CLICK HIGHLIGHT */
+
+function selectHighlight(index){
+
+  const item=highlights[index]||defaults[index];
+
+  if(!item)return;
+
+  const category=item.category||item.title||"All Templates";
+
+  if(index===0||isAll(category)){
+    showTop5();
+  }else{
+    showCategory(category);
+  }
+}
+
+/* OPEN PRODUCT AREA */
+
+function openCatalog(title,description){
+
+  const section=document.getElementById("catalog");
+
+  section.classList.add("visible");
+
+  document.getElementById("catalogTitle").textContent=title;
+
+  document.getElementById("catalogDescription").textContent=description;
+
+  section.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+/* ALL TEMPLATES = ADMIN SELECTED TOP 5 */
+
+function showTop5(){
+
+  selectedCategory="All Templates";
+  showingTop5=true;
+
+  document.getElementById("search").value="";
+
+  openCatalog(
+    "All Templates.",
+    "Five products selected by you in the Admin Panel."
+  );
+
+  renderProducts();
+}
+
+/* CATEGORY PRODUCTS */
+
+function showCategory(category){
+
+  selectedCategory=category;
+  showingTop5=false;
+
+  document.getElementById("search").value="";
+
+  openCatalog(
+    category+".",
+    "Explore products in this category."
+  );
+
+  renderProducts();
+}
+
+function showAllProducts(){
+  showTop5();
+}
+
+function hideCatalog(){
+
+  document.getElementById("catalog").classList.remove("visible");
+
+  selectedCategory=null;
+  showingTop5=false;
+
+  document.getElementById("search").value="";
+  document.getElementById("topSearch").value="";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+/* PRODUCT DISPLAY */
+
+function renderProducts(){
+
+  const grid=document.getElementById("productGrid");
+
+  const q=document.getElementById("search").value.toLowerCase().trim();
+
+  let list;
+
+  if(showingTop5){
+    list=top5;
+  }else{
+    list=products.filter(p=>
+      norm(p.category)===norm(selectedCategory)
+    );
+  }
+
+  if(q){
+    list=list.filter(p=>
+      (p.name+" "+p.category).toLowerCase().includes(q)
+    );
+  }
+
+  if(!list.length){
+    grid.innerHTML=
+      '<p class="empty-message">No products found in this category.</p>';
+    return;
+  }
+
+  grid.innerHTML=list.map(p=>`
     <article class="product">
+
       <div class="product-art">
         ${
           p.image_url
-          ? `<img src="${escapeHTML(p.image_url)}" alt="${escapeHTML(p.name)}" loading="lazy">`
-          : `<div class="mini">
-              <small>ALMAMOON / DIGITAL EDITION</small>
-              <b>${escapeHTML(p.name)}</b>
-              <span>DESIGNED FOR YOU</span>
-            </div>`
+          ? `<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy">`
+          : `<div>${esc(p.name)}</div>`
         }
       </div>
 
       <div class="product-info">
-        <h3>${escapeHTML(p.name)}</h3>
+        <h3>${esc(p.name)}</h3>
+
         <div class="product-row">
           <span class="price">${money(p.price,p.currency)}</span>
-          <button class="add" onclick="add('${escapeHTML(p.id)}')">Add to bag +</button>
+          <button class="add" onclick="add('${esc(p.id)}')">
+            Add to bag +
+          </button>
         </div>
       </div>
+
     </article>
-  `;
-}
-
-/* RENDER TOP 5 */
-function renderFeatured(){
-  if(!featuredProducts.length){
-    featuredGrid.innerHTML =
-      '<p class="empty-message">No featured products selected yet. Select five products from your Admin Panel.</p>';
-    return;
-  }
-
-  featuredGrid.innerHTML = featuredProducts
-    .slice(0,5)
-    .map(productCard)
-    .join("");
-}
-
-/* RENDER CATEGORY PRODUCTS */
-function renderCategoryProducts(){
-  if(!selectedCategory){
-    grid.innerHTML = "";
-    return;
-  }
-
-  const q = document.getElementById("search").value.toLowerCase().trim();
-
-  const list = products.filter(p => {
-    const matchesSearch =
-      `${p.name} ${p.desc} ${p.category}`.toLowerCase().includes(q);
-
-    const matchesCategory =
-      isAllCategory(selectedCategory) ||
-      normalizeCategory(p.category) === normalizeCategory(selectedCategory);
-
-    return matchesSearch && matchesCategory;
-  });
-
-  grid.innerHTML = list.length
-    ? list.map(productCard).join("")
-    : '<p class="empty-message">No products found in this category. Try another category or search.</p>';
-}
-
-/* CATEGORY BUTTONS */
-function renderFilters(){
-  const container = document.getElementById("filters");
-
-  const categories = [
-    ...new Set(
-      products
-        .map(p => p.category)
-        .filter(c => c && !isAllCategory(c))
-    )
-  ];
-
-  const allCategories = ["All Templates", ...categories];
-
-  container.innerHTML = allCategories.map(category => `
-    <button
-      class="filter ${normalizeCategory(category) === normalizeCategory(selectedCategory) ? "active" : ""}"
-      onclick="selectCategory('${escapeHTML(category)}')">
-      ${escapeHTML(category)}
-    </button>
   `).join("");
 }
 
-/* OPEN CATEGORY */
-function selectCategory(category){
-  selectedCategory = category;
-  filter = category;
-
-  document.getElementById("catalogTitle").textContent =
-    isAllCategory(category) ? "All Templates." : category + ".";
-
-  document.getElementById("catalogDescription").textContent =
-    isAllCategory(category)
-    ? "Explore all available digital products from Almamoon."
-    : "Explore products in this category.";
-
-  document.getElementById("search").value = "";
-
-  document.getElementById("catalog").classList.add("visible");
-
-  renderFilters();
-  renderCategoryProducts();
-
-  document.getElementById("catalog").scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
-}
-
-/* HIGHLIGHT CARD CLICK */
-function selectHighlight(index){
-  const item = highlights[index] || defaultHighlights[index];
-
-  if(!item) return;
-
-  selectCategory(item.category || item.title || "All Templates");
-}
-
-function showAllProducts(){
-  selectCategory("All Templates");
-}
-
-function hideCatalog(){
-  document.getElementById("catalog").classList.remove("visible");
-  selectedCategory = null;
-  document.getElementById("search").value = "";
-
-  document.getElementById("featuredSection").scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
-}
-
-function jumpToCatalog(){
-  showAllProducts();
-}
-
-/* LOAD HIGHLIGHT DATA FROM ADMIN PANEL */
-function renderHighlights(){
-  const stage = document.getElementById("highlightStage");
-
-  stage.innerHTML = highlights.slice(0,5).map((item,index) => {
-    const title = item.title || defaultHighlights[index].title;
-    const subtitle = item.subtitle || defaultHighlights[index].subtitle;
-    const category = item.category || title;
-    const image = item.image_url || "";
-
-    return `
-      <article
-        class="product-card ${cardClasses[index]}"
-        onclick="selectHighlight(${index})"
-        title="Explore ${escapeHTML(title)}">
-
-        <div class="art ${artClasses[index]}">
-          ${
-            image
-            ? `<img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" loading="lazy">`
-            : `<div class="shape">
-                <i>ALMAMOON STUDIO</i>
-                <b>${escapeHTML(title)}</b>
-                <i>DESIGNED FOR YOUR NEXT IDEA</i>
-              </div>`
-          }
-        </div>
-
-        <div class="meta">
-          <small>0${index+1} / Category</small>
-          <strong>${escapeHTML(title)}</strong>
-          <span>${escapeHTML(subtitle)}</span>
-        </div>
-      </article>
-    `;
-  }).join("");
-
-  /* If API returns fewer than five, use default remaining cards */
-  if(highlights.length < 5){
-    const remaining = defaultHighlights.slice(highlights.length);
-
-    remaining.forEach((item,remainingIndex) => {
-      const index = highlights.length + remainingIndex;
-
-      stage.insertAdjacentHTML("beforeend", `
-        <article
-          class="product-card ${cardClasses[index]}"
-          onclick="selectCategory('${escapeHTML(item.category)}')">
-
-          <div class="art ${artClasses[index]}">
-            <div class="shape">
-              <i>ALMAMOON STUDIO</i>
-              <b>${escapeHTML(item.title)}</b>
-              <i>DESIGNED FOR YOUR NEXT IDEA</i>
-            </div>
-          </div>
-
-          <div class="meta">
-            <small>0${index+1} / Category</small>
-            <strong>${escapeHTML(item.title)}</strong>
-            <span>${escapeHTML(item.subtitle)}</span>
-          </div>
-        </article>
-      `);
-    });
-  }
-}
-
 /* LOAD PRODUCTS */
+
 async function loadProducts(){
+
   try{
-    const response = await fetch(PRODUCTS_API);
+
+    const response=await fetch(PRODUCTS_API);
 
     if(!response.ok){
-      throw new Error("Products API error: " + response.status);
+      throw new Error("Products API "+response.status);
     }
 
-    const data = await response.json();
+    const data=await response.json();
 
     if(!Array.isArray(data)){
       throw new Error("Invalid products response");
     }
 
-    products = data.map(mapProduct);
-
-    if(selectedCategory){
-      renderFilters();
-      renderCategoryProducts();
-    }
+    products=data.map(mapProduct);
 
   }catch(error){
-    console.error("Product loading error:",error);
-    products = [];
+
+    console.error("Products loading error:",error);
+
   }
 }
 
-/* LOAD TOP 5 SELECTED IN ADMIN PANEL */
-async function loadFeatured(){
+/* LOAD TOP 5 */
+
+async function loadTop5(){
+
   try{
-    const response = await fetch(TOP5_API);
+
+    const response=await fetch(TOP5_API);
 
     if(!response.ok){
-      throw new Error("Top 5 API error: " + response.status);
+      throw new Error("Top 5 API "+response.status);
     }
 
-    const data = await response.json();
+    const data=await response.json();
 
     if(!Array.isArray(data)){
       throw new Error("Invalid Top 5 response");
     }
 
-    featuredProducts = data.map(mapProduct).slice(0,5);
-    renderFeatured();
+    top5=data.map(mapProduct).slice(0,5);
 
   }catch(error){
-    console.error("Featured products loading error:",error);
 
-    featuredGrid.innerHTML =
-      '<p class="empty-message">Featured products could not be loaded. Please check the backend connection.</p>';
+    console.error("Top 5 loading error:",error);
+
   }
 }
 
-/* LOAD HIGHLIGHTS FROM ADMIN PANEL */
+/* LOAD HIGHLIGHTS */
+
 async function loadHighlights(){
+
   try{
-    const response = await fetch(HIGHLIGHTS_API);
+
+    const response=await fetch(HIGHLIGHTS_API);
 
     if(!response.ok){
-      throw new Error("Highlights API error: " + response.status);
+      throw new Error("Highlights API "+response.status);
     }
 
-    const data = await response.json();
+    const data=await response.json();
 
     if(!Array.isArray(data)){
       throw new Error("Invalid highlights response");
     }
 
-    const mapped = data
-      .map(item => ({
-        position:Number(item.position || 0),
-        title:item.title || "",
-        subtitle:item.subtitle || "",
-        category:item.category || item.title || "",
-        image_url:item.image_url || ""
-      }))
-      .sort((a,b) => a.position - b.position);
-
-    highlights = mapped.length ? mapped : defaultHighlights;
-    renderHighlights();
+    highlights=data
+      .sort((a,b)=>Number(a.position)-Number(b.position));
 
   }catch(error){
+
     console.error("Highlights loading error:",error);
-    highlights = defaultHighlights;
-    renderHighlights();
+
+    highlights=defaults.map(item=>({...item,image_url:""}));
+
   }
+
+  renderHighlights();
 }
 
-/* SEARCH */
-document.getElementById("search").addEventListener("input",renderCategoryProducts);
+/* TOP SEARCH */
+
+function searchProducts(query){
+
+  const q=query.trim().toLowerCase();
+
+  if(!q)return;
+
+  const matching=products.filter(p=>
+    (p.name+" "+p.category).toLowerCase().includes(q)
+  );
+
+  if(!matching.length){
+
+    showingTop5=false;
+    selectedCategory="__search__";
+
+    openCatalog("Search results.","Products matching your search.");
+
+    document.getElementById("search").value=q;
+
+    renderSearchResults(q);
+
+    return;
+  }
+
+  const category=matching[0].category;
+
+  showCategory(category);
+
+  document.getElementById("search").value=q;
+
+  renderProducts();
+}
+
+function renderSearchResults(q){
+
+  const grid=document.getElementById("productGrid");
+
+  const matching=products.filter(p=>
+    (p.name+" "+p.category).toLowerCase().includes(q)
+  );
+
+  grid.innerHTML=matching.length?matching.map(p=>`
+    <article class="product">
+      <div class="product-art">
+        ${p.image_url
+          ?`<img src="${esc(p.image_url)}" alt="${esc(p.name)}">`
+          :esc(p.name)}
+      </div>
+      <div class="product-info">
+        <h3>${esc(p.name)}</h3>
+        <div class="product-row">
+          <span class="price">${money(p.price,p.currency)}</span>
+          <button class="add" onclick="add('${esc(p.id)}')">Add to bag +</button>
+        </div>
+      </div>
+    </article>
+  `).join(""):'<p class="empty-message">No matching products found.</p>';
+}
+
+document.getElementById("topSearch").addEventListener("keydown",event=>{
+  if(event.key==="Enter"){
+    searchProducts(event.target.value);
+  }
+});
+
+document.getElementById("search").addEventListener("input",()=>{
+  if(selectedCategory==="__search__"){
+    renderSearchResults(document.getElementById("search").value.toLowerCase());
+  }else{
+    renderProducts();
+  }
+});
 
 /* THEME */
+
 function setTheme(dark){
+
   document.body.classList.toggle("dark",dark);
 
   document.getElementById("lightBtn").classList.toggle("active",!dark);
   document.getElementById("darkBtn").classList.toggle("active",dark);
 
-  document.getElementById("modeLabel").textContent =
-    dark ? "dark mode" : "light mode";
+  document.getElementById("modeLabel").textContent=
+    dark?"dark mode":"light mode";
 }
 
 /* CART */
+
 function add(id){
-  const product = products.find(p => String(p.id) === String(id));
+
+  const product=
+    products.find(p=>String(p.id)===String(id))||
+    top5.find(p=>String(p.id)===String(id));
 
   if(!product){
-    alert("Product could not be found. Please refresh the page.");
+    alert("Product could not be found.");
     return;
   }
 
-  const item = cart.find(p => String(p.id) === String(id));
+  const existing=cart.find(p=>String(p.id)===String(id));
 
-  if(item){
-    item.qty++;
+  if(existing){
+    existing.qty++;
   }else{
     cart.push({...product,qty:1});
   }
@@ -1176,68 +1390,84 @@ function add(id){
 }
 
 function removeItem(id){
-  cart = cart.filter(p => String(p.id) !== String(id));
+
+  cart=cart.filter(p=>String(p.id)!==String(id));
+
   drawCart();
 }
 
 function drawCart(){
-  document.getElementById("cartCount").textContent =
-    cart.reduce((n,p) => n + p.qty,0);
 
-  document.getElementById("cartList").innerHTML = cart.length
-    ? cart.map(p => `
+  document.getElementById("cartCount").textContent=
+    cart.reduce((n,p)=>n+p.qty,0);
+
+  document.getElementById("cartList").innerHTML=
+    cart.length
+    ?cart.map(p=>`
       <div class="cart-item">
         <div>
-          <b>${escapeHTML(p.name)}</b>
+          <b>${esc(p.name)}</b>
           <small>Qty ${p.qty} · ${money(p.price,p.currency)} each</small>
         </div>
+
         <div>
           <b>${money(p.price*p.qty,p.currency)}</b><br>
-          <button class="remove" onclick="removeItem('${escapeHTML(p.id)}')">Remove</button>
+          <button class="remove" onclick="removeItem('${esc(p.id)}')">Remove</button>
         </div>
       </div>
     `).join("")
-    : '<p>Your bag is empty. Explore the collection to find something you love.</p>';
+    :'<p>Your bag is empty.</p>';
 
-  const total = cart.reduce((n,p) => n + p.price*p.qty,0);
-  const currencies = [...new Set(cart.map(p => p.currency))];
+  const total=cart.reduce((n,p)=>n+p.price*p.qty,0);
 
-  document.getElementById("total").textContent =
-    currencies.length === 1
-    ? money(total,currencies[0])
-    : currencies.length > 1
-      ? "Multiple currencies"
-      : money(0,"USD");
+  const currencies=[...new Set(cart.map(p=>p.currency))];
+
+  document.getElementById("total").textContent=
+    currencies.length===1
+    ?money(total,currencies[0])
+    :currencies.length>1
+      ?"Multiple currencies"
+      :money(0,"USD");
 }
 
 function openCart(){
+
   document.getElementById("cartPanel").classList.add("open");
+
   document.getElementById("overlay").classList.add("open");
 }
 
 function closeCart(){
+
   document.getElementById("cartPanel").classList.remove("open");
+
   document.getElementById("overlay").classList.remove("open");
 }
 
 function checkout(){
+
   if(!cart.length){
     alert("Your bag is empty.");
     return;
   }
 
-  alert("Payment gateway is not connected yet. Please do not use this demo checkout for real payments.");
+  alert("Payment gateway is not connected yet. This checkout is demo mode.");
 }
 
 /* INITIALIZE */
-document.getElementById("year").textContent = new Date().getFullYear();
+
+document.getElementById("year").textContent=new Date().getFullYear();
 
 drawCart();
-renderHighlights();
 
-loadProducts();
-loadFeatured();
-loadHighlights();
+/* LOAD DATA WITHOUT SHOWING PRODUCTS */
+
+Promise.all([
+  loadProducts(),
+  loadTop5(),
+  loadHighlights()
+]);
+
 </script>
 
 </body>
