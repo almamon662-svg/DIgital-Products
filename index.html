@@ -1361,8 +1361,10 @@ function renderProducts(){
 
   let list;
 
-  if(showingTop5){
+ if(showingTop5){
     list=top5;
+  }else if(norm(selectedCategory)==="all templates"){
+    list=products;
   }else{
     list=products.filter(p=>
       norm(p.category)===norm(selectedCategory)
