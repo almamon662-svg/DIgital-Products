@@ -16,10 +16,11 @@
   --muted:#777873;
   --line:#e6e4df;
   --soft:#ecebe7;
+  --accent:#181818;
+  --button-text:#fff;
 }
 
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -117,7 +118,7 @@ a{color:inherit;text-decoration:none}
   color:var(--muted);
 }
 
-/* THREE DOT MENU */
+/* MENU */
 
 .menu-wrap{
   position:relative;
@@ -196,9 +197,7 @@ a{color:inherit;text-decoration:none}
   outline:none;
 }
 
-.search-top input:focus{
-  border-color:var(--muted);
-}
+.search-top input:focus{border-color:var(--muted)}
 
 /* HERO */
 
@@ -235,6 +234,7 @@ main{padding:0 1.2%}
   line-height:1.02;
   letter-spacing:-.065em;
   margin:0;
+  white-space:pre-line;
 }
 
 .hero h1 em{
@@ -287,29 +287,25 @@ main{padding:0 1.2%}
   object-fit:cover;
 }
 
-/* HIGHLIGHT BACKGROUND FALLBACK */
+/* HIGHLIGHT FALLBACK BACKGROUNDS */
 
 .art-template{
   background:linear-gradient(135deg,#c9b9a7,#8b8277,#464e4b);
 }
-
 .art-social{
   background:linear-gradient(140deg,#b89b8c,#d8c4b5,#736b68);
 }
-
 .art-brand{
   background:linear-gradient(125deg,#697b79,#c5c4b7,#6d7770);
 }
-
 .art-ebook{
   background:linear-gradient(135deg,#b4a2a0,#7b6670,#393d4a);
 }
-
 .art-presentation{
   background:linear-gradient(130deg,#9caaaf,#4f6975,#253a45);
 }
 
-/* ALL TEMPLATES IN THE CENTER */
+/* HIGHLIGHT CARD POSITIONS */
 
 .card-one{
   width:18%;
@@ -318,7 +314,6 @@ main{padding:0 1.2%}
   top:96px;
   z-index:1;
 }
-
 .card-two{
   width:21%;
   height:275px;
@@ -326,9 +321,6 @@ main{padding:0 1.2%}
   top:75px;
   z-index:2;
 }
-
-/* CENTER CARD */
-
 .card-three{
   width:29%;
   height:330px;
@@ -336,7 +328,6 @@ main{padding:0 1.2%}
   top:24px;
   z-index:5;
 }
-
 .card-four{
   width:21%;
   height:245px;
@@ -344,7 +335,6 @@ main{padding:0 1.2%}
   top:100px;
   z-index:3;
 }
-
 .card-five{
   width:17%;
   height:190px;
@@ -353,7 +343,7 @@ main{padding:0 1.2%}
   z-index:1;
 }
 
-/* CATEGORY LABEL ON HOVER */
+/* HIGHLIGHT LABEL */
 
 .highlight-category{
   position:absolute;
@@ -403,15 +393,15 @@ main{padding:0 1.2%}
 }
 
 .contact-btn{
-  background:var(--ink);
-  color:var(--bg);
+  background:var(--accent);
+  color:var(--button-text);
   border:0;
   border-radius:30px;
   padding:10px 17px;
   font-size:9px;
 }
 
-/* PRODUCT AREA - HIDDEN INITIALLY */
+/* CATALOG */
 
 .catalog{
   display:none;
@@ -504,12 +494,7 @@ main{padding:0 1.2%}
 }
 
 .product-info{padding:13px}
-
-.product-info h3{
-  font-size:11px;
-  margin:0;
-}
-
+.product-info h3{font-size:11px;margin:0}
 .product-info p{display:none}
 
 .product-row{
@@ -526,8 +511,8 @@ main{padding:0 1.2%}
 
 .add{
   border:0;
-  background:var(--ink);
-  color:var(--bg);
+  background:var(--accent);
+  color:var(--button-text);
   border-radius:20px;
   padding:8px 11px;
   font-size:8px;
@@ -678,8 +663,8 @@ footer div:last-child{
 .checkout{
   width:100%;
   border:0;
-  background:var(--ink);
-  color:var(--bg);
+  background:var(--accent);
+  color:var(--button-text);
   border-radius:25px;
   padding:13px;
   font-size:9px;
@@ -753,7 +738,7 @@ footer div:last-child{
       <button onclick="openCart();toggleMenu()">Shopping Cart</button>
       <button onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});toggleMenu()">About / FAQs</button>
       <button onclick="setTheme(!document.body.classList.contains('dark'));toggleMenu()">Switch Theme</button>
-      <a href="mailto:hello@almamoon.com">Contact Us ↗</a>
+      <a href="mailto:hello@almamoon.com" id="menuContact">Contact Us ↗</a>
     </div>
   </div>
 
@@ -776,8 +761,6 @@ footer div:last-child{
 
 </header>
 
-<!-- SEARCH AT THE TOP -->
-
 <div class="search-top">
   <input id="topSearch" type="search" placeholder="Search products...">
 </div>
@@ -787,9 +770,11 @@ footer div:last-child{
 <section class="hero">
 
   <div class="hero-heading">
-    <div class="eyebrow">A curated digital collection</div>
-    <h1><em>Continue</em><br>with <em>Almamoon</em></h1>
-    <p class="hero-sub">
+    <div class="eyebrow" id="heroEyebrow">A curated digital collection</div>
+
+    <h1 id="heroTitle"><em>Continue</em><br>with <em>Almamoon</em></h1>
+
+    <p class="hero-sub" id="heroSubtitle">
       Thoughtful templates and digital tools for people building something beautiful.
       Find your next creative starting point.
     </p>
@@ -797,31 +782,26 @@ footer div:last-child{
 
   <div class="stage" id="highlightStage">
 
-    <!-- LEFT 1 -->
     <article class="product-card card-one" onclick="selectHighlight(1)">
       <div class="art art-template"></div>
       <div class="highlight-category">Resume & CV Templates</div>
     </article>
 
-    <!-- LEFT 2 -->
     <article class="product-card card-two" onclick="selectHighlight(3)">
       <div class="art art-social"></div>
       <div class="highlight-category">Social Media Templates</div>
     </article>
 
-    <!-- CENTER: ALL TEMPLATES -->
     <article class="product-card card-three" onclick="selectHighlight(0)">
       <div class="art art-brand"></div>
       <div class="highlight-category">All Templates</div>
     </article>
 
-    <!-- RIGHT 2 -->
     <article class="product-card card-four" onclick="selectHighlight(2)">
       <div class="art art-ebook"></div>
       <div class="highlight-category">Presentation Templates</div>
     </article>
 
-    <!-- RIGHT 1 -->
     <article class="product-card card-five" onclick="selectHighlight(4)">
       <div class="art art-presentation"></div>
       <div class="highlight-category">Menu Templates</div>
@@ -830,13 +810,15 @@ footer div:last-child{
   </div>
 
   <div class="hero-bottom">
-    <p><strong>Almamoon</strong><br>A growing collection for your next big idea.</p>
-    <button class="contact-btn" onclick="showTop5()">Explore products ↗</button>
+    <p>
+      <strong>Almamoon</strong><br>
+      <span id="heroBottomText">A growing collection for your next big idea.</span>
+    </p>
+
+    <button class="contact-btn" id="heroButton" onclick="showTop5()">Explore products ↗</button>
   </div>
 
 </section>
-
-<!-- PRODUCTS ARE HIDDEN UNTIL CLICK -->
 
 <section class="catalog" id="catalog">
 
@@ -861,30 +843,29 @@ footer div:last-child{
 <section class="about" id="faq">
   <div class="about-box">
     <div>
-      <div class="eyebrow">A little about us</div>
-      <h2>Good ideas deserve beautiful tools.</h2>
-      <p>
+      <div class="eyebrow" id="aboutEyebrow">A little about us</div>
+      <h2 id="aboutHeading">Good ideas deserve beautiful tools.</h2>
+      <p id="aboutText">
         Almamoon is a growing collection of digital resources for creators,
         small businesses, and curious minds. Browse the collection and find
         something that helps you make your next move.
       </p>
     </div>
-    <a href="mailto:hello@almamoon.com">Talk to our team ↗</a>
+
+    <a href="mailto:hello@almamoon.com" id="aboutContact">Talk to our team ↗</a>
   </div>
 </section>
 
 </main>
 
 <footer>
-  <div>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
+  <div id="footerText">© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</div>
   <div>
     <a href="#" onclick="showTop5()">Shop</a>
     <a href="#faq">About</a>
-    <a href="mailto:hello@almamoon.com">Contact</a>
+    <a href="mailto:hello@almamoon.com" id="footerContact">Contact</a>
   </div>
 </footer>
-
-<!-- CART -->
 
 <div class="cart-overlay" id="overlay" onclick="closeCart()"></div>
 
@@ -918,6 +899,7 @@ const API="https://almamoon-backend.onrender.com/api";
 const PRODUCTS_API=API+"/products";
 const TOP5_API=API+"/products/top5";
 const HIGHLIGHTS_API=API+"/highlights";
+const SETTINGS_API=API+"/settings";
 
 let products=[];
 let top5=[];
@@ -925,14 +907,7 @@ let highlights=[];
 let cart=[];
 let selectedCategory=null;
 let showingTop5=false;
-
-const classes=[
-  "card-one",
-  "card-two",
-  "card-three",
-  "card-four",
-  "card-five"
-];
+let websiteSettings={};
 
 const backgrounds=[
   "art-template",
@@ -972,6 +947,71 @@ function money(price,currency){
   return (currency==="BDT"?"৳":"$")+Number(price||0).toFixed(2);
 }
 
+/* IMAGE SETTINGS FROM ADMIN PANEL */
+
+function getImageOptions(item,fallbackFit){
+
+  const fitValue=
+    item.image_fit||
+    item.imageFit||
+    item.fit||
+    fallbackFit;
+
+  const allowedFits=["contain","cover","fill","none","scale-down"];
+
+  const fit=allowedFits.includes(String(fitValue))
+    ?String(fitValue)
+    :fallbackFit;
+
+  const zoomValue=Number(
+    item.image_zoom||
+    item.imageZoom||
+    item.zoom||
+    100
+  );
+
+  const zoom=Math.min(200,Math.max(50,zoomValue||100));
+
+  const xValue=Number(
+    item.image_x??
+    item.image_position_x??
+    item.imageX??
+    item.position_x??
+    50
+  );
+
+  const yValue=Number(
+    item.image_y??
+    item.image_position_y??
+    item.imageY??
+    item.position_y??
+    50
+  );
+
+  const x=Math.min(100,Math.max(0,xValue));
+  const y=Math.min(100,Math.max(0,yValue));
+
+  return {
+    fit,
+    zoom,
+    x,
+    y
+  };
+}
+
+function imageStyle(item,fallbackFit){
+
+  const settings=getImageOptions(item,fallbackFit);
+
+  return `
+    object-fit:${settings.fit};
+    object-position:${settings.x}% ${settings.y}%;
+    transform:scale(${settings.zoom/100});
+  `;
+}
+
+/* PRODUCT DATA */
+
 function mapProduct(p){
   return {
     id:p.id,
@@ -980,25 +1020,172 @@ function mapProduct(p){
     price:Number(p.price||0),
     currency:p.currency||"USD",
     image_url:p.image_url||"",
-    category:p.category||"Other"
+    category:p.category||"Other",
+
+    image_fit:p.image_fit||p.imageFit||"contain",
+    image_zoom:p.image_zoom||p.imageZoom||100,
+    image_x:p.image_x??p.image_position_x??50,
+    image_y:p.image_y??p.image_position_y??50
   };
 }
 
-/* THREE DOT MENU */
+/* WEBSITE SETTINGS */
+
+function applyWebsiteSettings(settings){
+
+  if(!settings || typeof settings!=="object")return;
+
+  websiteSettings=settings;
+
+  const getValue=(key,fallback)=>{
+    const value=settings[key];
+    return value===undefined||value===null||String(value).trim()===""
+      ?fallback
+      :String(value);
+  };
+
+  const setText=(id,value)=>{
+    const element=document.getElementById(id);
+    if(element)element.textContent=value;
+  };
+
+  /* HERO CONTENT */
+
+  setText(
+    "heroEyebrow",
+    getValue("eyebrow","A curated digital collection")
+  );
+
+  setText(
+    "heroTitle",
+    getValue("heroTitle","Continue\nwith Almamoon")
+  );
+
+  setText(
+    "heroSubtitle",
+    getValue(
+      "heroSubtitle",
+      "Thoughtful templates and digital tools for people building something beautiful. Find your next creative starting point."
+    )
+  );
+
+  setText(
+    "heroButton",
+    getValue("buttonText","Explore products ↗")
+  );
+
+  /* ABOUT CONTENT */
+
+  setText(
+    "aboutText",
+    getValue(
+      "aboutText",
+      "Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move."
+    )
+  );
+
+  /* FOOTER */
+
+  setText(
+    "footerText",
+    getValue(
+      "footerText",
+      "© "+new Date().getFullYear()+" ALMAMOON — MADE FOR YOUR NEXT IDEA."
+    )
+  );
+
+  /* CONTACT TEXT */
+
+  setText(
+    "aboutContact",
+    getValue("contactText","Talk to our team ↗")
+  );
+
+  setText(
+    "footerContact",
+    getValue("contactText","Contact")
+  );
+
+  setText(
+    "menuContact",
+    getValue("contactText","Contact Us")+" ↗"
+  );
+
+  /* WEBSITE COLORS */
+
+  const root=document.documentElement;
+
+  const bg=getValue("bgColor","#f4f3f0");
+  const ink=getValue("inkColor","#181818");
+  const accent=getValue("accentColor","#181818");
+  const buttonText=getValue("buttonTextColor","#ffffff");
+
+  if(/^#[0-9a-fA-F]{3,8}$/.test(bg)){
+    root.style.setProperty("--bg",bg);
+  }
+
+  if(/^#[0-9a-fA-F]{3,8}$/.test(ink)){
+    root.style.setProperty("--ink",ink);
+  }
+
+  if(/^#[0-9a-fA-F]{3,8}$/.test(accent)){
+    root.style.setProperty("--accent",accent);
+  }
+
+  if(/^#[0-9a-fA-F]{3,8}$/.test(buttonText)){
+    root.style.setProperty("--button-text",buttonText);
+  }
+}
+
+async function loadWebsiteSettings(){
+
+  try{
+
+    const response=await fetch(SETTINGS_API);
+
+    if(!response.ok){
+      throw new Error("Settings API "+response.status);
+    }
+
+    const data=await response.json();
+
+    /*
+      Supports both:
+      { settings: {...} }
+      and direct settings object responses.
+    */
+
+    const settings=
+      data?.settings&&typeof data.settings==="object"
+      ?data.settings
+      :data;
+
+    applyWebsiteSettings(settings);
+
+  }catch(error){
+
+    console.error("Website settings loading error:",error);
+
+  }
+}
+
+/* MENU */
 
 function toggleMenu(){
   document.getElementById("mainMenu").classList.toggle("open");
 }
 
 document.addEventListener("click",function(event){
+
   const menu=document.getElementById("mainMenu");
 
   if(menu && !event.target.closest(".menu-wrap")){
     menu.classList.remove("open");
   }
+
 });
 
-/* HIGHLIGHTS FROM ADMIN PANEL */
+/* HIGHLIGHTS */
 
 function renderHighlights(){
 
@@ -1007,11 +1194,6 @@ function renderHighlights(){
   const items=defaults.map((defaultItem,index)=>{
     return highlights[index]||defaultItem;
   });
-
-  /*
-    The center card is index 0: All Templates.
-    Other positions keep their original visual layout.
-  */
 
   const visualOrder=[
     {className:"card-one",dataIndex:1,background:"art-template"},
@@ -1022,9 +1204,13 @@ function renderHighlights(){
   ];
 
   stage.innerHTML=visualOrder.map(item=>{
+
     const data=items[item.dataIndex];
+
     const title=data.category||data.title||"All Templates";
     const image=data.image_url||"";
+
+    const style=imageStyle(data,"cover");
 
     return `
       <article
@@ -1035,17 +1221,21 @@ function renderHighlights(){
         aria-label="${esc(title)}">
 
         <div class="art ${item.background}">
-          ${image?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy">`:""}
+          ${image
+            ?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy" style="${style}">`
+            :""
+          }
         </div>
 
         <div class="highlight-category">${esc(title)}</div>
 
       </article>
     `;
+
   }).join("");
 }
 
-/* CLICK HIGHLIGHT */
+/* SELECT HIGHLIGHT */
 
 function selectHighlight(index){
 
@@ -1062,7 +1252,7 @@ function selectHighlight(index){
   }
 }
 
-/* OPEN PRODUCT AREA */
+/* CATALOG */
 
 function openCatalog(title,description){
 
@@ -1080,8 +1270,6 @@ function openCatalog(title,description){
   });
 }
 
-/* ALL TEMPLATES = ADMIN SELECTED TOP 5 */
-
 function showTop5(){
 
   selectedCategory="All Templates";
@@ -1096,8 +1284,6 @@ function showTop5(){
 
   renderProducts();
 }
-
-/* CATEGORY PRODUCTS */
 
 function showCategory(category){
 
@@ -1136,6 +1322,37 @@ function hideCatalog(){
 
 /* PRODUCT DISPLAY */
 
+function productCardHTML(p){
+
+  const style=imageStyle(p,"contain");
+
+  return `
+    <article class="product">
+
+      <div class="product-art">
+        ${
+          p.image_url
+          ? `<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" style="${style}">`
+          : `<div>${esc(p.name)}</div>`
+        }
+      </div>
+
+      <div class="product-info">
+        <h3>${esc(p.name)}</h3>
+
+        <div class="product-row">
+          <span class="price">${money(p.price,p.currency)}</span>
+
+          <button class="add" onclick="add('${esc(p.id)}')">
+            Add to bag +
+          </button>
+        </div>
+      </div>
+
+    </article>
+  `;
+}
+
 function renderProducts(){
 
   const grid=document.getElementById("productGrid");
@@ -1164,30 +1381,7 @@ function renderProducts(){
     return;
   }
 
-  grid.innerHTML=list.map(p=>`
-    <article class="product">
-
-      <div class="product-art">
-        ${
-          p.image_url
-          ? `<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy">`
-          : `<div>${esc(p.name)}</div>`
-        }
-      </div>
-
-      <div class="product-info">
-        <h3>${esc(p.name)}</h3>
-
-        <div class="product-row">
-          <span class="price">${money(p.price,p.currency)}</span>
-          <button class="add" onclick="add('${esc(p.id)}')">
-            Add to bag +
-          </button>
-        </div>
-      </div>
-
-    </article>
-  `).join("");
+  grid.innerHTML=list.map(productCardHTML).join("");
 }
 
 /* LOAD PRODUCTS */
@@ -1262,14 +1456,18 @@ async function loadHighlights(){
       throw new Error("Invalid highlights response");
     }
 
-    highlights=data
-      .sort((a,b)=>Number(a.position)-Number(b.position));
+    highlights=data.sort((a,b)=>
+      Number(a.position)-Number(b.position)
+    );
 
   }catch(error){
 
     console.error("Highlights loading error:",error);
 
-    highlights=defaults.map(item=>({...item,image_url:""}));
+    highlights=defaults.map(item=>({
+      ...item,
+      image_url:""
+    }));
 
   }
 
@@ -1293,7 +1491,10 @@ function searchProducts(query){
     showingTop5=false;
     selectedCategory="__search__";
 
-    openCatalog("Search results.","Products matching your search.");
+    openCatalog(
+      "Search results.",
+      "Products matching your search."
+    );
 
     document.getElementById("search").value=q;
 
@@ -1302,13 +1503,17 @@ function searchProducts(query){
     return;
   }
 
-  const category=matching[0].category;
+  selectedCategory="__search__";
+  showingTop5=false;
 
-  showCategory(category);
+  openCatalog(
+    "Search results.",
+    "Products matching your search."
+  );
 
   document.getElementById("search").value=q;
 
-  renderProducts();
+  renderSearchResults(q);
 }
 
 function renderSearchResults(q){
@@ -1319,36 +1524,29 @@ function renderSearchResults(q){
     (p.name+" "+p.category).toLowerCase().includes(q)
   );
 
-  grid.innerHTML=matching.length?matching.map(p=>`
-    <article class="product">
-      <div class="product-art">
-        ${p.image_url
-          ?`<img src="${esc(p.image_url)}" alt="${esc(p.name)}">`
-          :esc(p.name)}
-      </div>
-      <div class="product-info">
-        <h3>${esc(p.name)}</h3>
-        <div class="product-row">
-          <span class="price">${money(p.price,p.currency)}</span>
-          <button class="add" onclick="add('${esc(p.id)}')">Add to bag +</button>
-        </div>
-      </div>
-    </article>
-  `).join(""):'<p class="empty-message">No matching products found.</p>';
+  grid.innerHTML=matching.length
+    ?matching.map(productCardHTML).join("")
+    :'<p class="empty-message">No matching products found.</p>';
 }
 
 document.getElementById("topSearch").addEventListener("keydown",event=>{
+
   if(event.key==="Enter"){
     searchProducts(event.target.value);
   }
+
 });
 
 document.getElementById("search").addEventListener("input",()=>{
+
   if(selectedCategory==="__search__"){
-    renderSearchResults(document.getElementById("search").value.toLowerCase());
+    renderSearchResults(
+      document.getElementById("search").value.toLowerCase()
+    );
   }else{
     renderProducts();
   }
+
 });
 
 /* THEME */
@@ -1418,16 +1616,24 @@ function drawCart(){
     `).join("")
     :'<p>Your bag is empty.</p>';
 
-  const total=cart.reduce((n,p)=>n+p.price*p.qty,0);
-
   const currencies=[...new Set(cart.map(p=>p.currency))];
 
-  document.getElementById("total").textContent=
-    currencies.length===1
-    ?money(total,currencies[0])
-    :currencies.length>1
-      ?"Multiple currencies"
-      :money(0,"USD");
+  if(currencies.length===1){
+
+    const total=cart.reduce((n,p)=>n+p.price*p.qty,0);
+
+    document.getElementById("total").textContent=
+      money(total,currencies[0]);
+
+  }else if(currencies.length>1){
+
+    document.getElementById("total").textContent="Multiple currencies";
+
+  }else{
+
+    document.getElementById("total").textContent=money(0,"USD");
+
+  }
 }
 
 function openCart(){
@@ -1460,13 +1666,19 @@ document.getElementById("year").textContent=new Date().getFullYear();
 
 drawCart();
 
-/* LOAD DATA WITHOUT SHOWING PRODUCTS */
+/*
+  Load website settings and store data.
+  Product area remains hidden until a visitor clicks a highlight.
+*/
 
 Promise.all([
+  loadWebsiteSettings(),
   loadProducts(),
   loadTop5(),
   loadHighlights()
-]);
+]).then(()=>{
+  console.log("Almamoon website data loaded.");
+});
 
 </script>
 
