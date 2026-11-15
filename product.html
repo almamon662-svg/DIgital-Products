@@ -89,8 +89,6 @@ header{
   align-items:start;
 }
 
-/* Product image */
-
 .gallery{
   background:#f0f2ed;
   border-radius:5px;
@@ -122,11 +120,7 @@ header{
   font-size:28px;
 }
 
-/* Product information */
-
-.details{
-  padding:5px 0;
-}
+.details{padding:5px 0}
 
 .category{
   display:inline-block;
@@ -146,6 +140,7 @@ header{
   line-height:1.3;
   font-weight:600;
   margin-bottom:18px;
+  overflow-wrap:anywhere;
 }
 
 .price{
@@ -196,8 +191,6 @@ header{
   color:var(--sage-dark);
 }
 
-/* Purchase box */
-
 .buy-box{
   background:white;
   border:1px solid var(--border);
@@ -238,14 +231,18 @@ header{
   transform:translateY(-1px);
 }
 
+.primary-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+}
+
 .buy-now{
   background:#e9ede5;
   color:var(--sage-dark);
 }
 
-.buy-now:hover{
-  background:#dce4d7;
-}
+.buy-now:hover{background:#dce4d7}
 
 .purchase-note{
   font-size:11px;
@@ -285,12 +282,10 @@ footer{
     grid-template-columns:1fr 1fr;
     gap:25px;
   }
-
   .buy-box{
     position:static;
     grid-column:1/-1;
   }
-
   .gallery{position:static}
 }
 
@@ -299,12 +294,10 @@ footer{
   .logo{font-size:25px}
   .header-right{gap:10px;font-size:11px}
   .container{margin:25px auto;padding:0 16px}
-
   .product-layout{
     grid-template-columns:1fr;
     gap:25px;
   }
-
   .gallery,.buy-box{position:static}
   .product-title{font-size:29px}
   .price{font-size:23px}
@@ -329,7 +322,7 @@ footer{
 <main class="container">
 
   <div class="breadcrumb">
-    <a href="index.html">Home</a> / 
+    <a href="index.html">Home</a> /
     <span>Product Details</span>
   </div>
 
@@ -391,7 +384,7 @@ footer{
           Digital Product · Online Purchase
         </p>
 
-        <button class="primary-btn" onclick="addToCart()">
+        <button class="primary-btn" id="add-cart-button" onclick="addToCart()">
           ADD TO CART
         </button>
 
@@ -416,11 +409,13 @@ footer{
 
 <script>
 const API = "https://almamoon-backend.onrender.com/api";
+const CART_KEY = "almamoon_cart";
 
 let currentProduct = null;
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
+
 
 function escapeHTML(value){
   return String(value ?? "").replace(/[&<>"']/g, function(char){
@@ -433,6 +428,7 @@ function escapeHTML(value){
     }[char];
   });
 }
+
 
 function formatPrice(price,currency){
   if(price === null || price === undefined || price === ""){
@@ -448,6 +444,9 @@ function formatPrice(price,currency){
   return (currency ? currency + " " : "$") +
     number.toLocaleString("en-US");
 }
+
+
+// LOAD PRODUCT
 
 async function loadProduct(){
 
@@ -487,12 +486,14 @@ async function loadProduct(){
   }
 }
 
+
+// DISPLAY PRODUCT
+
 function renderProduct(){
 
   const product = currentProduct;
 
   const title = product.title || product.name || "Untitled Product";
-
   const image = product.image_url || product.image || "";
 
   const description =
@@ -521,10 +522,12 @@ function renderProduct(){
     const img = document.createElement("img");
     img.src = image;
     img.alt = title;
+
     img.onerror = function(){
       imageContainer.innerHTML =
         '<span class="image-placeholder">Almamoon</span>';
     };
+
     imageContainer.innerHTML = "";
     imageContainer.appendChild(img);
   }
@@ -533,86 +536,180 @@ function renderProduct(){
   document.getElementById("product-content").style.display = "block";
 }
 
+
 function showError(message){
   document.getElementById("loading").style.display = "none";
   document.getElementById("error").style.display = "block";
   document.getElementById("error-message").textContent = message;
 }
 
-function addToCart(){
 
-  if(!currentProduct) return;
+// CART FUNCTIONS
 
-  let cart = [];
+function getCart(){
 
   try{
-    cart = JSON.parse(localStorage.getItem("almamoon_cart") || "[]");
-    if(!Array.isArray(cart)) cart = [];
+
+    const savedCart = localStorage.getItem(CART_KEY);
+    const cart = savedCart ? JSON.parse(savedCart) : [];
+
+    return Array.isArray(cart) ? cart : [];
+
   }catch(error){
-    cart = [];
+
+    console.error("Cart read error:",error);
+    return [];
+
   }
-
-  const id = String(currentProduct.id);
-
-  const existing = cart.find(item => String(item.id) === id);
-
-  if(existing){
-    existing.quantity = (existing.quantity || 1) + 1;
-  }else{
-    cart.push({
-      id: currentProduct.id,
-      title: currentProduct.title || currentProduct.name,
-      price: currentProduct.price,
-      image_url: currentProduct.image_url || currentProduct.image || "",
-      quantity: 1
-    });
-  }
-
-  localStorage.setItem("almamoon_cart", JSON.stringify(cart));
-
-  alert("Product added to your cart.");
 }
+
+
+function saveCart(cart){
+
+  try{
+
+    localStorage.setItem(CART_KEY,JSON.stringify(cart));
+
+    // Notify other open tabs
+    window.dispatchEvent(new Event("almamoon-cart-updated"));
+
+    return true;
+
+  }catch(error){
+
+    console.error("Cart save error:",error);
+    return false;
+
+  }
+}
+
+
+function addToCart(){
+
+  if(!currentProduct || !currentProduct.id){
+    alert("Product information is not ready. Please refresh the page.");
+    return false;
+  }
+
+  const cart = getCart();
+
+  const product = {
+    id: currentProduct.id,
+    title: currentProduct.title || currentProduct.name || "Untitled Product",
+    price: currentProduct.price ?? 0,
+    currency: currentProduct.currency || "USD",
+    image_url: currentProduct.image_url || currentProduct.image || "",
+    quantity: 1
+  };
+
+  const existingItem = cart.find(function(item){
+    return String(item.id) === String(product.id);
+  });
+
+  if(existingItem){
+
+    existingItem.quantity =
+      Math.max(1,Number(existingItem.quantity) || 1) + 1;
+
+    // Keep existing product data, but fill missing fields
+    existingItem.title = existingItem.title || product.title;
+    existingItem.price = existingItem.price ?? product.price;
+    existingItem.currency = existingItem.currency || product.currency;
+    existingItem.image_url = existingItem.image_url || product.image_url;
+
+  }else{
+
+    cart.push(product);
+
+  }
+
+  const saved = saveCart(cart);
+
+  if(!saved){
+    alert("Unable to save your cart. Please check your browser storage settings.");
+    return false;
+  }
+
+  const button = document.getElementById("add-cart-button");
+  const originalText = "ADD TO CART";
+
+  if(button){
+    button.textContent = "✓ ADDED TO CART";
+
+    setTimeout(function(){
+      button.textContent = originalText;
+    },1500);
+  }
+
+  alert("Product successfully added to your cart!");
+
+  return true;
+}
+
 
 function buyNow(){
-  addToCart();
-  alert("Your product has been added to the cart. Checkout and payment are not connected yet.");
+
+  const added = addToCart();
+
+  if(added){
+    alert("Your product has been added to the cart. Checkout and payment are not connected yet.");
+  }
+
 }
+
+
+// SHARE PRODUCT
 
 async function shareProduct(){
 
+  if(!currentProduct) return;
+
   const shareData = {
-    title: currentProduct?.title || "Almamoon Product",
+    title: currentProduct.title || currentProduct.name || "Almamoon Product",
     url: window.location.href
   };
 
   if(navigator.share){
+
     try{
       await navigator.share(shareData);
     }catch(error){}
+
   }else{
+
     copyProductLink();
+
   }
 }
+
 
 async function copyProductLink(){
 
   try{
+
     await navigator.clipboard.writeText(window.location.href);
     alert("Product link copied!");
+
   }catch(error){
 
     const textArea = document.createElement("textarea");
     textArea.value = window.location.href;
+
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand("copy");
     textArea.remove();
 
     alert("Product link copied!");
+
   }
 }
 
+
+// START
+
 loadProduct();
+
 </script>
 
 </body>
