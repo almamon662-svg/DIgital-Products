@@ -5,98 +5,449 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Almamoon — Digital Collection</title>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--bg:#e9ede5;--surface:#f8f9f5;--ink:#252a23;--muted:#788174;--green:#71836a;--line:#d8dfd3}
+:root{
+ --bg:#e9ede5;
+ --surface:#f8f9f5;
+ --ink:#252a23;
+ --muted:#788174;
+ --green:#71836a;
+ --line:#d8dfd3;
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
-button,input{font:inherit}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--ink);
+ font-family:"DM Sans",sans-serif;
+}
+button,input,select{font:inherit}
 button{cursor:pointer}
 .shell{width:min(1180px,calc(100% - 40px));margin:auto}
 
-header{height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{font:700 28px "Playfair Display",serif;text-decoration:none;color:var(--ink)}
+header{
+ height:82px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+
+.brand{
+ font:700 28px "Playfair Display",serif;
+ text-decoration:none;
+ color:var(--ink);
+}
 .brand span{color:var(--green)}
+
 nav{display:flex;gap:28px}
-nav a{text-decoration:none;color:var(--muted);font-size:13px}
+nav a{
+ text-decoration:none;
+ color:var(--muted);
+ font-size:13px;
+}
 nav a:hover{color:var(--green)}
+
 .header-actions{display:flex;gap:10px}
-.btn{border:1px solid var(--line);border-radius:30px;padding:11px 18px;background:transparent;color:var(--ink);font-size:12px;font-weight:700}
+.btn{
+ border:1px solid var(--line);
+ border-radius:30px;
+ padding:11px 18px;
+ background:transparent;
+ color:var(--ink);
+ font-size:12px;
+ font-weight:700;
+}
 .btn.dark{background:var(--ink);color:white;border-color:var(--ink)}
 
-.hero{min-height:420px;border-radius:28px;background:linear-gradient(110deg,#f8f9f5,#dce5d7);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:55px 7%;overflow:hidden}
-.eyebrow,.kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700}
-.hero h1{font:600 clamp(42px,5vw,68px)/1.08 "Playfair Display",serif;margin:18px 0}
-.hero p{max-width:470px;color:var(--muted);font-size:14px;line-height:1.8}
+.hero{
+ min-height:420px;
+ border-radius:28px;
+ background:linear-gradient(110deg,#f8f9f5,#dce5d7);
+ display:grid;
+ grid-template-columns:1.1fr .9fr;
+ align-items:center;
+ padding:55px 7%;
+ overflow:visible;
+}
 
-.search{display:flex;align-items:center;width:100%;max-width:470px;height:56px;background:#fff;border:1px solid #e0e6dc;border-radius:14px;padding:5px 6px 5px 18px;margin-top:26px;box-shadow:0 8px 24px rgba(55,75,48,.07);transition:.25s}
-.search:focus-within{border-color:#71836a;box-shadow:0 0 0 4px rgba(113,131,106,.12)}
-.search input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#252a23;padding:0 10px;font-size:13px}
+.eyebrow,.kicker{
+ font-size:10px;
+ letter-spacing:2px;
+ text-transform:uppercase;
+ color:var(--green);
+ font-weight:700;
+}
+
+.hero h1{
+ font:600 clamp(42px,5vw,68px)/1.08 "Playfair Display",serif;
+ margin:18px 0;
+}
+
+.hero p{
+ max-width:470px;
+ color:var(--muted);
+ font-size:14px;
+ line-height:1.8;
+}
+
+/* AMAZON STYLE SEARCH */
+
+.search{
+ display:flex;
+ align-items:stretch;
+ width:100%;
+ max-width:570px;
+ height:56px;
+ background:#fff;
+ border:1px solid #dce2d7;
+ border-radius:12px;
+ padding:4px;
+ margin-top:26px;
+ box-shadow:0 8px 24px rgba(55,75,48,.08);
+ transition:.25s;
+ position:relative;
+ z-index:5;
+}
+
+.search:focus-within{
+ border-color:#71836a;
+ box-shadow:0 0 0 4px rgba(113,131,106,.12);
+}
+
+.category-select{
+ width:150px;
+ flex-shrink:0;
+ border:0;
+ outline:0;
+ background:#f0f2ed;
+ color:#394437;
+ padding:0 11px;
+ border-radius:8px 0 0 8px;
+ font-size:11px;
+ font-weight:600;
+ cursor:pointer;
+ border-right:1px solid #e0e5dc;
+}
+
+.category-select:focus{
+ background:#e9ede5;
+}
+
+.category-select option{
+ background:white;
+ color:#252a23;
+ padding:10px;
+}
+
+.search input{
+ flex:1;
+ min-width:0;
+ height:100%;
+ border:0;
+ outline:0;
+ background:transparent;
+ color:#252a23;
+ padding:0 13px;
+ font-size:12px;
+}
+
 .search input::placeholder{color:#a0a89a}
-.search button{height:44px;min-width:105px;border:0;border-radius:10px;background:#71836a;color:#fff;padding:0 18px;font-size:12px;font-weight:700;transition:.2s}
+
+.search button{
+ width:94px;
+ flex-shrink:0;
+ border:0;
+ border-radius:8px;
+ background:#71836a;
+ color:#fff;
+ font-size:12px;
+ font-weight:700;
+ transition:.2s;
+}
+
 .search button:hover{background:#53694d}
 
-.hero-art{height:280px;display:grid;place-items:center;position:relative}
-.art-circle{width:245px;height:245px;border-radius:50%;background:linear-gradient(140deg,#dce7d5,#9eb493);position:absolute}
-.art-card{width:220px;height:190px;border-radius:22px;background:linear-gradient(140deg,#fff,#dce7d5);box-shadow:15px 25px 40px #52664c30;display:grid;place-items:center;z-index:1;transform:rotate(-7deg);font:70px "Playfair Display",serif;color:#71836a}
+/* HERO ART */
+
+.hero-art{
+ height:280px;
+ display:grid;
+ place-items:center;
+ position:relative;
+}
+
+.art-circle{
+ width:245px;
+ height:245px;
+ border-radius:50%;
+ background:linear-gradient(140deg,#dce7d5,#9eb493);
+ position:absolute;
+}
+
+.art-card{
+ width:220px;
+ height:190px;
+ border-radius:22px;
+ background:linear-gradient(140deg,#fff,#dce7d5);
+ box-shadow:15px 25px 40px #52664c30;
+ display:grid;
+ place-items:center;
+ z-index:1;
+ transform:rotate(-7deg);
+ font:70px "Playfair Display",serif;
+ color:#71836a;
+}
+
+/* PRODUCT SECTION */
 
 .catalog{padding:65px 0 55px}
-.section-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:25px}
-.section-heading h2{font:600 32px "Playfair Display",serif;margin:7px 0 0}
 
-/* PRODUCT GRID */
-.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.product-card{background:#fff;border:1px solid #e0e6dc;border-radius:15px;overflow:hidden;cursor:pointer;transition:.25s;min-width:0}
-.product-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px #394d3715}
-.product-image{width:100%;aspect-ratio:3/4;background:#f1f3ed;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.product-image img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .35s}
-.product-card:hover .product-image img{transform:scale(1.035)}
+.section-heading{
+ display:flex;
+ justify-content:space-between;
+ align-items:end;
+ gap:15px;
+ margin-bottom:25px;
+}
+
+.section-heading h2{
+ font:600 32px "Playfair Display",serif;
+ margin:7px 0 0;
+}
+
+.result-info{
+ font-size:11px;
+ color:var(--muted);
+ margin-top:8px;
+}
+
+.product-grid{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:20px;
+}
+
+.product-card{
+ background:#fff;
+ border:1px solid #e0e6dc;
+ border-radius:15px;
+ overflow:hidden;
+ cursor:pointer;
+ transition:.25s;
+ min-width:0;
+}
+
+.product-card:hover{
+ transform:translateY(-5px);
+ box-shadow:0 12px 28px #394d3715;
+}
+
+.product-image{
+ width:100%;
+ aspect-ratio:3/4;
+ background:#f1f3ed;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ overflow:hidden;
+}
+
+.product-image img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+ display:block;
+ transition:transform .35s;
+}
+
+.product-card:hover .product-image img{
+ transform:scale(1.035);
+}
+
 .product-info{padding:15px}
-.product-info h3{font-size:13px;line-height:1.5;margin:0 0 13px;min-height:38px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.product-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+
+.product-info h3{
+ font-size:13px;
+ line-height:1.5;
+ margin:0 0 13px;
+ min-height:38px;
+ display:-webkit-box;
+ -webkit-line-clamp:2;
+ -webkit-box-orient:vertical;
+ overflow:hidden;
+}
+
+.product-meta{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+}
+
 .price{font-weight:700;font-size:13px}
-.view-link{font-size:10px;color:var(--green);font-weight:700;white-space:nowrap}
-.empty{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
+.view-link{
+ font-size:10px;
+ color:var(--green);
+ font-weight:700;
+ white-space:nowrap;
+}
 
-.about{margin:20px 0 45px;background:#f6f7f2;border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 2fr;gap:30px}
-.about h2{font:600 28px "Playfair Display",serif;margin:0}
-.about p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
-footer{padding:30px 0;text-align:center;color:var(--muted);font-size:11px;border-top:1px solid var(--line)}
+.empty{
+ grid-column:1/-1;
+ text-align:center;
+ padding:40px;
+ color:var(--muted);
+ background:#f8f9f5;
+ border-radius:12px;
+}
 
-@media(max-width:900px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ABOUT */
+
+.about{
+ margin:20px 0 45px;
+ background:#f6f7f2;
+ border-radius:20px;
+ padding:40px;
+ display:grid;
+ grid-template-columns:1fr 2fr;
+ gap:30px;
+}
+
+.about h2{
+ font:600 28px "Playfair Display",serif;
+ margin:0;
+}
+
+.about p{
+ font-size:13px;
+ line-height:1.9;
+ color:var(--muted);
+ margin:0;
+}
+
+footer{
+ padding:30px 0;
+ text-align:center;
+ color:var(--muted);
+ font-size:11px;
+ border-top:1px solid var(--line);
+}
+
+/* DARK THEME */
+
+body.dark{
+ background:#172018;
+ color:#edf3e8;
+}
+
+body.dark header,
+body.dark .product-card,
+body.dark .search,
+body.dark .about{
+ background:#222d23;
+ color:#edf3e8;
+}
+
+body.dark .search input{color:white}
+body.dark .product-info h3{color:#edf3e8}
+body.dark .section-heading h2{color:#edf3e8}
+body.dark .category-select{
+ background:#344133;
+ color:white;
+}
+body.dark .empty{background:#222d23}
+body.dark .hero{
+ background:linear-gradient(110deg,#263327,#354637);
+}
+body.dark .hero h1{color:#edf3e8}
+body.dark .hero p{color:#bdc9b8}
+body.dark .about p{color:#bdc9b8}
+body.dark nav a{color:#bdc9b8}
+body.dark .brand{color:#edf3e8}
+body.dark .btn{color:#edf3e8}
+body.dark .btn.dark{background:#71836a;border-color:#71836a}
+body.dark .price{color:#d2e1c9}
+body.dark .product-image{background:#303a30}
+
+@media(max-width:900px){
+ .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .hero{padding:45px 5%}
+ .category-select{width:135px}
+}
+
 @media(max-width:600px){
  .shell{width:calc(100% - 28px)}
  header{height:70px}
  nav{display:none}
  .brand{font-size:24px}
- .hero{grid-template-columns:1fr;padding:35px 22px 10px}
+
+ .hero{
+  grid-template-columns:1fr;
+  padding:35px 17px 10px;
+  border-radius:20px;
+ }
  .hero h1{font-size:45px}
  .hero-art{height:190px}
  .art-circle{width:175px;height:175px}
  .art-card{width:165px;height:140px;font-size:50px}
- .search{height:53px;padding-left:12px}
- .search button{min-width:85px;padding:0 12px}
+
+ .search{
+  height:53px;
+  padding:4px;
+  border-radius:10px;
+ }
+ .category-select{
+  width:105px;
+  font-size:10px;
+  padding:0 5px;
+ }
+ .search input{
+  padding:0 7px;
+  font-size:11px;
+ }
+ .search button{
+  width:67px;
+  font-size:10px;
+ }
+
  .catalog{padding:45px 0}
  .section-heading h2{font-size:27px}
- .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .section-heading>.kicker{display:none}
+
+ .product-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+ }
  .product-info{padding:11px}
  .product-info h3{font-size:12px}
  .view-link{font-size:9px}
- .about{grid-template-columns:1fr;padding:25px;gap:12px}
+
+ .about{
+  grid-template-columns:1fr;
+  padding:25px;
+  gap:12px;
+ }
 }
 </style>
 </head>
 
 <body>
+
 <header class="shell">
  <a class="brand" href="index.html">Almamoon<span>.</span></a>
+
  <nav>
   <a href="#home">Home</a>
   <a href="#products">Products</a>
   <a href="#about">About</a>
  </nav>
+
  <div class="header-actions">
   <button class="btn" onclick="toggleTheme()">◐</button>
   <button class="btn dark" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore ↗</button>
@@ -104,125 +455,309 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:11px;border
 </header>
 
 <main class="shell">
+
  <section class="hero" id="home">
+
   <div>
    <div class="eyebrow">A CURATED DIGITAL COLLECTION</div>
+
    <h1>Create something<br>beautiful.</h1>
-   <p>Thoughtful templates and digital tools for creators, small businesses, and curious minds. Find your next creative starting point.</p>
+
+   <p>
+    Thoughtful templates and digital tools for creators, small businesses,
+    and curious minds. Find your next creative starting point.
+   </p>
+
    <div class="search">
-    <input id="searchInput" placeholder="Search templates and products..." type="search">
-    <button onclick="searchProducts()">Find now</button>
+
+    <select id="categoryFilter" class="category-select" aria-label="Select product category">
+     <option value="all">All Categories</option>
+     <option value="Restaurant & Food">Restaurant & Food</option>
+     <option value="Canva Templates">Canva Templates</option>
+     <option value="Instagram Templates">Instagram Templates</option>
+     <option value="Social Media Templates">Social Media Templates</option>
+     <option value="Pinterest Templates">Pinterest Templates</option>
+     <option value="Resume & CV Templates">Resume & CV Templates</option>
+     <option value="Business Templates">Business Templates</option>
+     <option value="Planners & Journals">Planners & Journals</option>
+     <option value="Notion Templates">Notion Templates</option>
+     <option value="Presentation Templates">Presentation Templates</option>
+     <option value="E-books & Guides">E-books & Guides</option>
+     <option value="Worksheets & Workbooks">Worksheets & Workbooks</option>
+     <option value="Wedding & Invitation Templates">Wedding & Invitation Templates</option>
+     <option value="Website Templates">Website Templates</option>
+     <option value="Marketing Templates">Marketing Templates</option>
+     <option value="Mockups & Graphics">Mockups & Graphics</option>
+     <option value="Digital Art & Wall Art">Digital Art & Wall Art</option>
+     <option value="Other Digital Products">Other Digital Products</option>
+    </select>
+
+    <input
+     id="searchInput"
+     placeholder="Search digital products..."
+     type="search"
+     aria-label="Search products"
+    >
+
+    <button onclick="searchProducts()">Search</button>
+
    </div>
   </div>
+
   <div class="hero-art">
    <div class="art-circle"></div>
    <div class="art-card">A.</div>
   </div>
+
  </section>
 
  <section class="catalog" id="products">
+
   <div class="section-heading">
    <div>
     <div class="kicker">THE COLLECTION</div>
     <h2 id="productHeading">Our Products</h2>
+    <div class="result-info" id="resultInfo"></div>
    </div>
+
    <span class="kicker">DISCOVER YOUR STYLE</span>
   </div>
+
   <div class="product-grid" id="productGrid">
    <p class="empty">Loading products...</p>
   </div>
+
  </section>
 
  <section class="about" id="about">
   <h2>Made for your next idea.</h2>
-  <p>Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move.</p>
+
+  <p>
+   Almamoon is a growing collection of digital resources for creators,
+   small businesses, and curious minds. Browse the collection and find
+   something that helps you make your next move.
+  </p>
  </section>
 
- <footer>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</footer>
+ <footer>
+  © <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.
+ </footer>
+
 </main>
 
 <script>
 const API="https://almamoon-backend.onrender.com/api";
+
 let products=[];
+let filteredProducts=[];
+
+const searchInput=document.getElementById("searchInput");
+const categoryFilter=document.getElementById("categoryFilter");
 
 function money(p,c){
- return (c==="BDT"?"৳":"$")+Number(p||0).toFixed(2);
+ const value=Number(p||0);
+ return (c==="BDT"?"৳":"$")+value.toFixed(2);
 }
+
 function esc(s){
- return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ return String(s??"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ }[c]));
+}
+
+function normalize(value){
+ return String(value??"")
+  .toLowerCase()
+  .trim()
+  .replace(/&/g,"and")
+  .replace(/[^a-z0-9]+/g," ")
+  .trim();
 }
 
 async function loadProducts(){
+
  const grid=document.getElementById("productGrid");
+
  try{
+
   const response=await fetch(API+"/products");
+
   if(!response.ok)throw Error("Products unavailable");
+
   const data=await response.json();
-  products=Array.isArray(data)?data:[];
+
+  products=Array.isArray(data)
+   ?data
+   :(data.products||data.data||[]);
+
+  filteredProducts=[...products];
+
   renderProducts(products);
+
  }catch(error){
+
   console.error(error);
-  grid.innerHTML='<p class="empty">Unable to load products. Please try again later.</p>';
+
+  grid.innerHTML=
+   '<p class="empty">Unable to load products. Please try again later.</p>';
  }
 }
 
 function renderProducts(list){
+
  const grid=document.getElementById("productGrid");
+
  if(!list.length){
-  grid.innerHTML='<p class="empty">No products found in this collection.</p>';
+
+  grid.innerHTML=
+   '<p class="empty">No products found. Try another category or search.</p>';
+
+  document.getElementById("resultInfo").textContent="0 products found";
   return;
  }
 
  grid.innerHTML=list.map(p=>{
+
   const id=p.id;
   const title=p.title||p.name||"Untitled product";
-  const image=p.image_url||"";
+  const image=p.image_url||p.image||"";
+
   return `
    <article class="product-card" onclick="openProduct('${encodeURIComponent(id)}')">
+
     <div class="product-image">
-     ${image?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy">`:`<span>Almamoon</span>`}
+     ${
+      image
+      ?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy">`
+      :`<span>Almamoon</span>`
+     }
     </div>
+
     <div class="product-info">
+
      <h3>${esc(title)}</h3>
+
      <div class="product-meta">
       <span class="price">${money(p.price,p.currency)}</span>
       <span class="view-link">VIEW PRODUCT ↗</span>
      </div>
+
     </div>
+
    </article>
   `;
+
  }).join("");
+
+ document.getElementById("resultInfo").textContent=
+  list.length+" product"+(list.length===1?"":"s")+" found";
 }
 
 function openProduct(id){
  window.location.href="product.html?id="+id;
 }
 
+/* CATEGORY + TEXT SEARCH */
+
 function searchProducts(){
- const q=document.getElementById("searchInput").value.trim().toLowerCase();
- const list=products.filter(p=>(String(p.title||p.name||"")+" "+String(p.category||"")).toLowerCase().includes(q));
- document.getElementById("productHeading").textContent=q?"Search results":"Our Products";
- renderProducts(list);
- document.getElementById("products").scrollIntoView({behavior:"smooth"});
+
+ const query=normalize(searchInput.value);
+ const selectedCategory=categoryFilter.value;
+
+ filteredProducts=products.filter(product=>{
+
+  const title=normalize(product.title||product.name||"");
+
+  const category=normalize(
+   product.category||
+   product.category_name||
+   ""
+  );
+
+  const description=normalize(
+   product.description||
+   product.details||
+   ""
+  );
+
+  const tags=normalize(
+   Array.isArray(product.tags)
+    ?product.tags.join(" ")
+    :product.tags||""
+  );
+
+  const searchText=
+   title+" "+category+" "+description+" "+tags;
+
+  const matchesSearch=
+   !query||searchText.includes(query);
+
+  const matchesCategory=
+   selectedCategory==="all"||
+   category===normalize(selectedCategory);
+
+  return matchesSearch&&matchesCategory;
+
+ });
+
+ const heading=document.getElementById("productHeading");
+
+ if(selectedCategory==="all"&&!query){
+  heading.textContent="Our Products";
+ }else if(selectedCategory!=="all"&&!query){
+  heading.textContent=selectedCategory;
+ }else if(selectedCategory!=="all"&&query){
+  heading.textContent="Search Results";
+ }else{
+  heading.textContent="Search Results";
+ }
+
+ renderProducts(filteredProducts);
+
+ document.getElementById("products").scrollIntoView({
+  behavior:"smooth"
+ });
 }
 
-document.getElementById("searchInput").addEventListener("keydown",e=>{
- if(e.key==="Enter")searchProducts();
+/* ENTER KEY SEARCH */
+
+searchInput.addEventListener("keydown",event=>{
+ if(event.key==="Enter"){
+  searchProducts();
+ }
 });
+
+/* CATEGORY CHANGE */
+
+categoryFilter.addEventListener("change",()=>{
+ searchProducts();
+});
+
+/* CLEAR SEARCH WHEN USER CLEARS INPUT */
+
+searchInput.addEventListener("search",()=>{
+ searchProducts();
+});
+
+/* THEME */
 
 function toggleTheme(){
  document.body.classList.toggle("dark");
- if(document.body.classList.contains("dark")){
-  document.body.style.background="#172018";
-  document.body.style.color="#edf3e8";
- }else{
-  document.body.style.background="";
-  document.body.style.color="";
- }
 }
 
-document.getElementById("year").textContent=new Date().getFullYear();
+/* YEAR */
+
+document.getElementById("year").textContent=
+ new Date().getFullYear();
+
+/* LOAD */
+
 loadProducts();
 </script>
+
 </body>
 </html>
