@@ -5,567 +5,193 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Almamoon — Digital Collection</title>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
- --bg:#e9ede5;
- --surface:#f8f9f5;
- --ink:#252a23;
- --muted:#788174;
- --green:#71836a;
- --line:#d8dfd3;
-}
-
+:root{--bg:#e9ede5;--surface:#f8f9f5;--ink:#252a23;--muted:#788174;--green:#71836a;--line:#d8dfd3}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif}
 button,input{font:inherit}
 button{cursor:pointer}
+.shell{width:min(1180px,calc(100% - 40px));margin:auto}
 
-.shell{
- width:min(1180px,calc(100% - 40px));
- margin:auto;
-}
-
-/* HEADER */
-
-header{
- height:82px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px;
-}
-
-.brand{
- font:700 28px "Playfair Display",serif;
- text-decoration:none;
- color:var(--ink);
-}
-
+header{height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font:700 28px "Playfair Display",serif;text-decoration:none;color:var(--ink)}
 .brand span{color:var(--green)}
-
 nav{display:flex;gap:28px}
-
-nav a{
- text-decoration:none;
- color:var(--muted);
- font-size:13px;
-}
-
+nav a{text-decoration:none;color:var(--muted);font-size:13px}
 nav a:hover{color:var(--green)}
-
 .header-actions{display:flex;gap:10px}
+.btn{border:1px solid var(--line);border-radius:30px;padding:11px 18px;background:transparent;color:var(--ink);font-size:12px;font-weight:700}
+.btn.dark{background:var(--ink);color:white;border-color:var(--ink)}
 
-.btn{
- border:1px solid var(--line);
- border-radius:30px;
- padding:11px 18px;
- background:transparent;
- color:var(--ink);
- font-size:12px;
- font-weight:700;
-}
+.hero{min-height:420px;border-radius:28px;background:linear-gradient(110deg,#f8f9f5,#dce5d7);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:55px 7%;overflow:hidden}
+.eyebrow,.kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700}
+.hero h1{font:600 clamp(42px,5vw,68px)/1.08 "Playfair Display",serif;margin:18px 0}
+.hero p{max-width:470px;color:var(--muted);font-size:14px;line-height:1.8}
 
-.btn.dark{
- background:var(--ink);
- color:white;
- border-color:var(--ink);
-}
-
-/* HERO */
-
-.hero{
- min-height:420px;
- border-radius:28px;
- background:linear-gradient(110deg,#f8f9f5,#dce5d7);
- display:grid;
- grid-template-columns:1.1fr .9fr;
- align-items:center;
- padding:55px 7%;
- overflow:hidden;
-}
-
-.eyebrow,.kicker{
- font-size:10px;
- letter-spacing:2px;
- text-transform:uppercase;
- color:var(--green);
- font-weight:700;
-}
-
-.hero h1{
- font:600 clamp(42px,5vw,68px)/1.08 "Playfair Display",serif;
- margin:18px 0;
-}
-
-.hero p{
- max-width:470px;
- color:var(--muted);
- font-size:14px;
- line-height:1.8;
-}
-
-/* UPDATED SEARCH BAR */
-
-.search{
- display:flex;
- align-items:center;
- width:100%;
- max-width:470px;
- height:56px;
- background:#ffffff;
- border:1px solid #e0e6dc;
- border-radius:14px;
- padding:5px 6px 5px 18px;
- margin-top:26px;
- box-shadow:0 8px 24px rgba(55,75,48,.07);
- transition:all .25s ease;
-}
-
-.search:focus-within{
- border-color:#71836a;
- box-shadow:0 0 0 4px rgba(113,131,106,.12);
-}
-
-.search input{
- flex:1;
- min-width:0;
- height:100%;
- border:0;
- outline:0;
- background:transparent;
- color:#252a23;
- padding:0 10px;
- font-family:"DM Sans",sans-serif;
- font-size:13px;
-}
-
+.search{display:flex;align-items:center;width:100%;max-width:470px;height:56px;background:#fff;border:1px solid #e0e6dc;border-radius:14px;padding:5px 6px 5px 18px;margin-top:26px;box-shadow:0 8px 24px rgba(55,75,48,.07);transition:.25s}
+.search:focus-within{border-color:#71836a;box-shadow:0 0 0 4px rgba(113,131,106,.12)}
+.search input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#252a23;padding:0 10px;font-size:13px}
 .search input::placeholder{color:#a0a89a}
-
-.search button{
- height:44px;
- min-width:105px;
- border:0;
- border-radius:10px;
- background:#71836a;
- color:#fff;
- padding:0 18px;
- font-size:12px;
- font-weight:700;
- transition:background .2s ease;
-}
-
+.search button{height:44px;min-width:105px;border:0;border-radius:10px;background:#71836a;color:#fff;padding:0 18px;font-size:12px;font-weight:700;transition:.2s}
 .search button:hover{background:#53694d}
 
-/* HERO ART */
-
-.hero-art{
- height:280px;
- display:grid;
- place-items:center;
- position:relative;
-}
-
-.art-circle{
- width:245px;
- height:245px;
- border-radius:50%;
- background:linear-gradient(140deg,#dce7d5,#9eb493);
- position:absolute;
-}
-
-.art-card{
- width:220px;
- height:190px;
- border-radius:22px;
- background:linear-gradient(140deg,#fff,#dce7d5);
- box-shadow:15px 25px 40px #52664c30;
- display:grid;
- place-items:center;
- z-index:1;
- transform:rotate(-7deg);
- font:70px "Playfair Display",serif;
- color:#71836a;
-}
-
-/* PRODUCTS */
+.hero-art{height:280px;display:grid;place-items:center;position:relative}
+.art-circle{width:245px;height:245px;border-radius:50%;background:linear-gradient(140deg,#dce7d5,#9eb493);position:absolute}
+.art-card{width:220px;height:190px;border-radius:22px;background:linear-gradient(140deg,#fff,#dce7d5);box-shadow:15px 25px 40px #52664c30;display:grid;place-items:center;z-index:1;transform:rotate(-7deg);font:70px "Playfair Display",serif;color:#71836a}
 
 .catalog{padding:65px 0 55px}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:25px}
+.section-heading h2{font:600 32px "Playfair Display",serif;margin:7px 0 0}
 
-.section-heading{
- display:flex;
- justify-content:space-between;
- align-items:end;
- gap:15px;
- margin-bottom:25px;
-}
-
-.section-heading h2{
- font:600 32px "Playfair Display",serif;
- margin:7px 0 0;
-}
-
-.product-grid{
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:18px;
-}
-
-.product-card{
- background:#fff;
- border:1px solid #e0e6dc;
- border-radius:15px;
- overflow:hidden;
- cursor:pointer;
- transition:.25s;
-}
-
-.product-card:hover{
- transform:translateY(-5px);
- box-shadow:0 12px 28px #394d3715;
-}
-
-.product-image{
- height:230px;
- background:#eef1e9;
- display:grid;
- place-items:center;
- overflow:hidden;
-}
-
-.product-image img{
- width:100%;
- height:100%;
- object-fit:contain;
- transition:transform .4s;
-}
-
-.product-card:hover .product-image img{
- transform:scale(1.04);
-}
-
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.product-card{background:#fff;border:1px solid #e0e6dc;border-radius:15px;overflow:hidden;cursor:pointer;transition:.25s;min-width:0}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px #394d3715}
+.product-image{width:100%;aspect-ratio:3/4;background:#f1f3ed;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .35s}
+.product-card:hover .product-image img{transform:scale(1.035)}
 .product-info{padding:15px}
-
-.product-info h3{
- font-size:13px;
- margin:0 0 13px;
- white-space:nowrap;
- overflow:hidden;
- text-overflow:ellipsis;
-}
-
-.product-meta{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:8px;
-}
-
+.product-info h3{font-size:13px;line-height:1.5;margin:0 0 13px;min-height:38px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .price{font-weight:700;font-size:13px}
+.view-link{font-size:10px;color:var(--green);font-weight:700;white-space:nowrap}
+.empty{grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
 
-.view-link{
- font-size:10px;
- color:var(--green);
- font-weight:700;
-}
+.about{margin:20px 0 45px;background:#f6f7f2;border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 2fr;gap:30px}
+.about h2{font:600 28px "Playfair Display",serif;margin:0}
+.about p{font-size:13px;line-height:1.9;color:var(--muted);margin:0}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:11px;border-top:1px solid var(--line)}
 
-.empty{
- grid-column:1/-1;
- text-align:center;
- padding:40px;
- color:var(--muted);
-}
-
-/* ABOUT */
-
-.about{
- margin:20px 0 45px;
- background:#f6f7f2;
- border-radius:20px;
- padding:40px;
- display:grid;
- grid-template-columns:1fr 2fr;
- gap:30px;
-}
-
-.about h2{
- font:600 28px "Playfair Display",serif;
- margin:0;
-}
-
-.about p{
- font-size:13px;
- line-height:1.9;
- color:var(--muted);
- margin:0;
-}
-
-/* FOOTER */
-
-footer{
- padding:30px 0;
- text-align:center;
- color:var(--muted);
- font-size:11px;
- border-top:1px solid var(--line);
-}
-
-/* RESPONSIVE */
-
-@media(max-width:800px){
- .hero{padding:40px 5%}
- .product-grid{grid-template-columns:repeat(3,1fr)}
-}
-
+@media(max-width:900px){.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){
-
  .shell{width:calc(100% - 28px)}
  header{height:70px}
  nav{display:none}
  .brand{font-size:24px}
-
- .hero{
-  grid-template-columns:1fr;
-  padding:35px 22px 10px;
- }
-
+ .hero{grid-template-columns:1fr;padding:35px 22px 10px}
  .hero h1{font-size:45px}
  .hero-art{height:190px}
-
- .art-circle{
-  width:175px;
-  height:175px;
- }
-
- .art-card{
-  width:165px;
-  height:140px;
-  font-size:50px;
- }
-
- .search{
-  height:53px;
-  padding-left:12px;
- }
-
- .search button{
-  min-width:85px;
-  padding:0 12px;
- }
-
+ .art-circle{width:175px;height:175px}
+ .art-card{width:165px;height:140px;font-size:50px}
+ .search{height:53px;padding-left:12px}
+ .search button{min-width:85px;padding:0 12px}
  .catalog{padding:45px 0}
  .section-heading h2{font-size:27px}
-
- .product-grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:11px;
- }
-
- .product-image{height:165px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
  .product-info{padding:11px}
-
- .about{
-  grid-template-columns:1fr;
-  padding:25px;
-  gap:12px;
- }
+ .product-info h3{font-size:12px}
+ .view-link{font-size:9px}
+ .about{grid-template-columns:1fr;padding:25px;gap:12px}
 }
 </style>
 </head>
 
 <body>
-
 <header class="shell">
-
- <a class="brand" href="index.html">
-  Almamoon<span>.</span>
- </a>
-
+ <a class="brand" href="index.html">Almamoon<span>.</span></a>
  <nav>
   <a href="#home">Home</a>
   <a href="#products">Products</a>
   <a href="#about">About</a>
  </nav>
-
  <div class="header-actions">
   <button class="btn" onclick="toggleTheme()">◐</button>
-  <button class="btn dark" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
-   Explore ↗
-  </button>
+  <button class="btn dark" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore ↗</button>
  </div>
-
 </header>
 
 <main class="shell">
-
-<section class="hero" id="home">
-
- <div>
-  <div class="eyebrow">A CURATED DIGITAL COLLECTION</div>
-
-  <h1>Create something<br>beautiful.</h1>
-
-  <p>
-   Thoughtful templates and digital tools for creators,
-   small businesses, and curious minds.
-   Find your next creative starting point.
-  </p>
-
-  <div class="search">
-   <input
-    id="searchInput"
-    placeholder="Search templates and products..."
-    type="search"
-   >
-   <button onclick="searchProducts()">Find now</button>
-  </div>
- </div>
-
- <div class="hero-art">
-  <div class="art-circle"></div>
-  <div class="art-card">A.</div>
- </div>
-
-</section>
-
-<section class="catalog" id="products">
-
- <div class="section-heading">
+ <section class="hero" id="home">
   <div>
-   <div class="kicker">THE COLLECTION</div>
-   <h2 id="productHeading">Our Products</h2>
+   <div class="eyebrow">A CURATED DIGITAL COLLECTION</div>
+   <h1>Create something<br>beautiful.</h1>
+   <p>Thoughtful templates and digital tools for creators, small businesses, and curious minds. Find your next creative starting point.</p>
+   <div class="search">
+    <input id="searchInput" placeholder="Search templates and products..." type="search">
+    <button onclick="searchProducts()">Find now</button>
+   </div>
   </div>
+  <div class="hero-art">
+   <div class="art-circle"></div>
+   <div class="art-card">A.</div>
+  </div>
+ </section>
 
-  <span class="kicker">DISCOVER YOUR STYLE</span>
- </div>
+ <section class="catalog" id="products">
+  <div class="section-heading">
+   <div>
+    <div class="kicker">THE COLLECTION</div>
+    <h2 id="productHeading">Our Products</h2>
+   </div>
+   <span class="kicker">DISCOVER YOUR STYLE</span>
+  </div>
+  <div class="product-grid" id="productGrid">
+   <p class="empty">Loading products...</p>
+  </div>
+ </section>
 
- <div class="product-grid" id="productGrid">
-  <p class="empty">Loading products...</p>
- </div>
+ <section class="about" id="about">
+  <h2>Made for your next idea.</h2>
+  <p>Almamoon is a growing collection of digital resources for creators, small businesses, and curious minds. Browse the collection and find something that helps you make your next move.</p>
+ </section>
 
-</section>
-
-<section class="about" id="about">
-
- <h2>Made for your next idea.</h2>
-
- <p>
-  Almamoon is a growing collection of digital resources
-  for creators, small businesses, and curious minds.
-  Browse the collection and find something that helps
-  you make your next move.
- </p>
-
-</section>
-
-<footer>
- © <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.
-</footer>
-
+ <footer>© <span id="year"></span> ALMAMOON — MADE FOR YOUR NEXT IDEA.</footer>
 </main>
 
 <script>
-
 const API="https://almamoon-backend.onrender.com/api";
 let products=[];
 
 function money(p,c){
  return (c==="BDT"?"৳":"$")+Number(p||0).toFixed(2);
 }
-
 function esc(s){
- return String(s??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#39;"
- }[c]));
+ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
 
 async function loadProducts(){
-
  const grid=document.getElementById("productGrid");
-
  try{
-
   const response=await fetch(API+"/products");
-
   if(!response.ok)throw Error("Products unavailable");
-
   const data=await response.json();
-
   products=Array.isArray(data)?data:[];
-
   renderProducts(products);
-
  }catch(error){
-
   console.error(error);
-
-  grid.innerHTML=`
-   <p class="empty">
-    Unable to load products. Please try again later.
-   </p>
-  `;
-
+  grid.innerHTML='<p class="empty">Unable to load products. Please try again later.</p>';
  }
-
 }
 
 function renderProducts(list){
-
  const grid=document.getElementById("productGrid");
-
  if(!list.length){
-  grid.innerHTML=`
-   <p class="empty">
-    No products found in this collection.
-   </p>
-  `;
+  grid.innerHTML='<p class="empty">No products found in this collection.</p>';
   return;
  }
 
  grid.innerHTML=list.map(p=>{
-
   const id=p.id;
   const title=p.title||p.name||"Untitled product";
   const image=p.image_url||"";
-
   return `
-   <article class="product-card"
-   onclick="openProduct('${encodeURIComponent(id)}')">
-
+   <article class="product-card" onclick="openProduct('${encodeURIComponent(id)}')">
     <div class="product-image">
-     ${
-      image
-      ? `<img src="${esc(image)}" alt="${esc(title)}" loading="lazy">`
-      : `<span>Almamoon</span>`
-     }
+     ${image?`<img src="${esc(image)}" alt="${esc(title)}" loading="lazy">`:`<span>Almamoon</span>`}
     </div>
-
     <div class="product-info">
      <h3>${esc(title)}</h3>
-
      <div class="product-meta">
-      <span class="price">
-       ${money(p.price,p.currency)}
-      </span>
-
-      <span class="view-link">
-       VIEW PRODUCT ↗
-      </span>
+      <span class="price">${money(p.price,p.currency)}</span>
+      <span class="view-link">VIEW PRODUCT ↗</span>
      </div>
     </div>
-
    </article>
   `;
-
  }).join("");
-
 }
 
 function openProduct(id){
@@ -573,40 +199,19 @@ function openProduct(id){
 }
 
 function searchProducts(){
-
- const q=document
-  .getElementById("searchInput")
-  .value.trim()
-  .toLowerCase();
-
- const list=products.filter(p=>{
-
-  const title=String(p.title||p.name||"");
-  const category=String(p.category||"");
-
-  return (title+" "+category).toLowerCase().includes(q);
-
- });
-
- document.getElementById("productHeading").textContent=
-  q?"Search results":"Our Products";
-
+ const q=document.getElementById("searchInput").value.trim().toLowerCase();
+ const list=products.filter(p=>(String(p.title||p.name||"")+" "+String(p.category||"")).toLowerCase().includes(q));
+ document.getElementById("productHeading").textContent=q?"Search results":"Our Products";
  renderProducts(list);
-
- document.getElementById("products")
-  .scrollIntoView({behavior:"smooth"});
-
+ document.getElementById("products").scrollIntoView({behavior:"smooth"});
 }
 
-document.getElementById("searchInput")
-.addEventListener("keydown",e=>{
+document.getElementById("searchInput").addEventListener("keydown",e=>{
  if(e.key==="Enter")searchProducts();
 });
 
 function toggleTheme(){
-
  document.body.classList.toggle("dark");
-
  if(document.body.classList.contains("dark")){
   document.body.style.background="#172018";
   document.body.style.color="#edf3e8";
@@ -614,15 +219,10 @@ function toggleTheme(){
   document.body.style.background="";
   document.body.style.color="";
  }
-
 }
 
-document.getElementById("year").textContent=
- new Date().getFullYear();
-
+document.getElementById("year").textContent=new Date().getFullYear();
 loadProducts();
-
 </script>
-
 </body>
 </html>
